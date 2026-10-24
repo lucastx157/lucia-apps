@@ -402,9 +402,8 @@ body{background-color:var(--bg)}
 .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,7,15,.35),transparent 35%,transparent 60%,rgba(13,18,34,.95));z-index:1}
 .cover .tag,.cover .st{z-index:2}
 .card:hover .cover img{transform:scale(1.06)}
-.dossie .d-img{display:block;width:100%;aspect-ratio:760/382;object-fit:cover;object-position:top}
+.dossie .d-img{display:block;width:100%;aspect-ratio:760/382;object-fit:cover;object-position:left top}
 .dossie{position:relative}
-/* chat LucIA */
 .ai-fab{position:fixed;right:16px;bottom:16px;z-index:60;display:flex;align-items:center;gap:10px;border:0;border-radius:999px;padding:10px 18px 10px 10px;background:linear-gradient(135deg,#3550ff,#8fa2ff);color:#fff;font-weight:600;box-shadow:0 10px 40px rgba(53,80,255,.55);animation:pulse 2.4s infinite}
 .ai-fab i{width:36px;height:36px;border-radius:50%;background:#05070f;display:grid;place-items:center;font-style:normal;font-family:var(--display);font-size:.85rem;color:#8fa2ff}
 .ai-fab.hide{display:none}
@@ -416,7 +415,7 @@ body{background-color:var(--bg)}
 .ai-h small{font-family:var(--mono);font-size:.7rem;color:var(--ok)}
 .ai-h small::before{content:"● "}
 .ai-h button{margin-left:auto;border:0;background:rgba(255,255,255,.08);color:#fff;width:34px;height:34px;border-radius:10px;font-size:1.1rem}
-.ai-log{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.ai-log{flex:1;min-height:0;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
 .msg{max-width:86%;padding:10px 12px;border-radius:16px;font-size:.93rem;line-height:1.45;white-space:pre-line}
 .msg.bot{background:#131a33;border:1px solid #222c52;border-radius:16px 16px 16px 4px}
 .msg.me{align-self:flex-end;background:#3550ff;color:#fff;border-radius:16px 16px 4px 16px}
@@ -433,6 +432,56 @@ body{background-color:var(--bg)}
 .ai-f input{flex:1;min-width:0;font:inherit;background:#0d1222;color:#fff;border:1.5px solid #2a3560;border-radius:12px;padding:10px 12px}
 .ai-f button{border:0;border-radius:12px;background:#3550ff;color:#fff;font-weight:700;padding:0 14px}
 @media (prefers-reduced-motion:reduce){.ai-fab{animation:none}}
+.phone{background:#1b2244!important;box-shadow:0 30px 70px -30px var(--accent),inset 0 0 0 1px #2a3560}
+.ai{height:min(680px,calc(100svh - 32px))}
+.msg.sum{padding:0;overflow:hidden;background:none;border:0}
+.pv-card{background:linear-gradient(180deg,#121a3a,#0b1022);border:1.5px solid var(--ac);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:12px;box-shadow:0 0 40px -12px var(--ac)}
+.pv-tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;color:var(--ac)}
+.pv-phone{background:#05070f;border:6px solid #1b2244;border-radius:26px;padding:10px;display:flex;flex-direction:column;gap:10px}
+.pv-notch{width:60px;height:5px;border-radius:9px;background:#1f2843;align-self:center}
+.pv-phone .apphead{padding:12px;border-radius:16px}
+.pv-phone .apphead .lg{width:36px;height:36px;border-radius:11px;font-size:.85rem}
+.pv-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pv-tile{border-radius:14px;padding:10px;background:linear-gradient(150deg,color-mix(in srgb,var(--ac) 80%,#fff 0%),color-mix(in srgb,var(--ac) 40%,#000));color:#fff;display:flex;flex-direction:column;gap:3px;min-height:86px;animation:pop .5s ease both}
+.pv-tile:nth-child(3n+2){background:linear-gradient(150deg,color-mix(in srgb,var(--ac) 55%,#a387ff),color-mix(in srgb,var(--ac) 30%,#000))}
+.pv-tile:nth-child(3n){background:linear-gradient(150deg,color-mix(in srgb,var(--ac) 55%,#2ee59d),color-mix(in srgb,var(--ac) 30%,#000))}
+.pv-tile span{font-size:1.1rem}
+.pv-tile b{font-size:.84rem;line-height:1.15}
+.pv-tile small{font-size:.7rem;opacity:.9;line-height:1.25}
+.pv-sum{margin:0;font-size:.88rem;color:#c9d0ea}
+.pv-con{display:flex;flex-direction:column;gap:4px;font-size:.82rem;color:#c9d0ea}
+.pv-con b,.pv-plan b{color:#fff;font-family:var(--display)}
+.pv-plan{display:flex;flex-direction:column;gap:2px;font-size:.82rem;color:#c9d0ea;border-top:1px solid #222c52;padding-top:10px}
+.ai-log>.msg{flex-shrink:0}
+.pv-card .pv-tile b,.pv-card .apphead b{color:#fff}
+.lab{align-items:start}
+.lab .pv-copy{gap:22px}
+.lab-step{display:flex;gap:14px}
+.lab-step>div{display:flex;flex-direction:column;gap:10px;flex:1;min-width:0}
+.lab-step b{font-family:var(--display);font-size:1.15rem}
+.lab-n{font-family:var(--mono);font-size:.8rem;color:var(--accent);border:1.5px solid var(--accent);border-radius:8px;height:30px;min-width:38px;display:grid;place-items:center}
+.lab-chips{display:flex;flex-wrap:wrap;gap:8px}
+.lab-chips button{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:9px 14px;font-weight:600;font-size:.9rem}
+.lab-chips button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.swatches{display:flex;gap:10px;flex-wrap:wrap}
+.swatches button{width:38px;height:38px;border-radius:12px;border:3px solid transparent;background:var(--c);box-shadow:0 0 18px -4px var(--c);transition:transform .2s}
+.swatches button[aria-pressed="true"]{border-color:#fff;transform:scale(1.1)}
+.lab-go{font-size:1.05rem}
+.lab-note{font-size:.8rem!important;font-family:var(--mono)}
+.boot{flex:1;display:flex;flex-direction:column;justify-content:center;gap:14px;padding:10px 6px}
+.boot .logo{width:84px;height:84px;border-radius:26px;align-self:center;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:1.9rem;color:#fff;background:var(--ac);box-shadow:0 0 50px -6px var(--ac);animation:pop .6s ease}
+.boot pre{margin:0;font-family:var(--mono);font-size:.74rem;line-height:1.7;color:var(--muted);white-space:pre-wrap;min-height:130px}
+.boot pre .ok{color:var(--ok)}
+.boot .pbar{height:6px;border-radius:9px;background:var(--soft);overflow:hidden}
+.boot .pbar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.splash{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;color:var(--muted);font-size:.9rem}
+.splash .ring{width:90px;height:90px;border-radius:28px;border:2px dashed var(--line);display:grid;place-items:center;font-family:var(--display);font-size:2rem;color:var(--muted)}
+.apphead{border-radius:20px;padding:16px;color:#fff;background:linear-gradient(135deg,var(--ac),color-mix(in srgb,var(--ac) 45%,#000));display:flex;align-items:center;gap:12px;animation:pop .5s ease}
+.apphead .lg{width:44px;height:44px;border-radius:14px;background:rgba(255,255,255,.22);display:grid;place-items:center;font-family:var(--display);font-weight:700}
+.apphead small{display:block;opacity:.85;font-size:.75rem}
+.apphead b{font-family:var(--display);font-size:1.1rem}
+.lab .tile{animation:pop .5s ease both;background:linear-gradient(150deg,var(--c),color-mix(in srgb,var(--c) 55%,#000))}
+.lab .mod-h{background:linear-gradient(135deg,var(--c),color-mix(in srgb,var(--c) 50%,#000))}
 </style>
 
 <div class="prog" id="prog" aria-hidden="true"></div>
@@ -492,25 +541,21 @@ body{background-color:var(--bg)}
 
   <!-- PRÉVIA -->
   <section class="sec" id="previa">
-    <div class="preview">
+    <div class="sec-head rv"><span class="label">Laboratório ao vivo</span><h2>Monte seu app agora</h2><p>Escolha pra quem é, dê um nome e uma cor. Em segundos o seu app nasce no celular aqui do lado.</p></div>
+    <div class="preview lab">
       <div class="pv-copy">
-        <span class="label">Prévia</span>
-        <h2>Assim começa o seu app</h2>
-        <p>A primeira parte é a agenda do studio. Marque um horário como a sua cliente faria. Depois peça partes novas pro assistente, embaixo do celular.</p>
-        <input type="text" id="pv-name" value="Studio Bella" placeholder="Digite o nome do seu studio" aria-label="Nome do studio" maxlength="28">
-        <ul>
-          <li>Clientes marcam sozinhas, 24 horas por dia</li>
-          <li>Lembrete automático no WhatsApp antes do horário</li>
-          <li>Sua foto, sua história e suas cores</li>
-          <li>Fica na tela do celular, igual app de loja</li>
-        </ul>
+        <div class="lab-step"><span class="lab-n">01</span><div><b>Pra quem é o app?</b><div class="lab-chips" id="lab-type"></div></div></div>
+        <div class="lab-step"><span class="lab-n">02</span><div><b>Qual o nome?</b><input type="text" id="pv-name" value="Studio Bella" maxlength="22" aria-label="Nome do app"></div></div>
+        <div class="lab-step"><span class="lab-n">03</span><div><b>Qual a sua cor?</b><div class="swatches" id="lab-color"></div></div></div>
+        <div class="btns"><button class="btn main lab-go" id="lab-go">Montar meu app ▸</button><button class="btn" id="lab-real">Quero o meu de verdade</button></div>
+        <p class="lab-note">Isso é uma prévia. O seu de verdade é desenhado com você, do zero.</p>
       </div>
       <div class="phone" aria-label="Prévia interativa do app">
         <div class="screen">
           <div class="notch"><span></span></div>
           <div class="view" id="view"></div>
-          <div class="agent">
-            <div class="bubble" id="say"><b>assistente</b>Oi! O que mais você quer no seu app?</div>
+          <div class="agent" id="agent" hidden>
+            <div class="bubble" id="say"><b>LucIA</b>Quer mais alguma parte? É só tocar.</div>
             <div class="asks" id="asks"></div>
           </div>
         </div>
@@ -797,50 +842,6 @@ function calc(){
 }
 document.querySelectorAll("#calc-vida input").forEach(i=>i.addEventListener("input",calc));calc();
 
-/* prévia */
-const MODS={
-  agenda:{n:"Agenda do studio",s:"3 clientes hoje",c:"var(--m1)",i:"A",ask:"Agenda do studio"},
-  fin:{n:"Finanças",s:"R$ 1.840 no mês",c:"var(--m4)",i:"$",ask:"Organizar meu dinheiro"},
-  dieta:{n:"Dieta e água",s:"4 de 8 copos",c:"var(--m2)",i:"D",ask:"Cuidar da minha dieta"},
-  metas:{n:"Metas",s:"2 de 3 hoje",c:"var(--m3)",i:"M",ask:"Acompanhar minhas metas"}
-};
-const st={have:["agenda"],open:null,fresh:null,cups:4,slot:null,metas:[true,true,false]};
-const view=document.getElementById("view"),say=document.getElementById("say"),asks=document.getElementById("asks"),pvn=document.getElementById("pv-name");
-const sname=()=>pvn.value.trim()||"Seu Studio";
-function home(){
-  view.innerHTML=`<div class="hello"><div><small>Bem-vinda ao</small><h3></h3></div><span class="demo-tag">prévia</span></div>
-  <div class="grid">${st.have.map(k=>{const m=MODS[k];return `<button class="tile${st.fresh===k?" new":""}" style="--c:${m.c}" data-o="${k}"><span class="i">${m.i}</span><span><b>${m.n}</b><br><small>${m.s}</small></span></button>`}).join("")}
-  ${st.have.length<4?`<div class="ghost">Peça abaixo e a parte nova aparece aqui</div>`:""}</div>`;
-  view.querySelector("h3").textContent=sname();
-  view.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{st.open=b.dataset.o;render()});
-}
-const HRS=["09:00","10:00","11:00","14:00","15:00","16:00","17:00"],BUSY=["10:00","15:00"];
-function mod(k){
-  const m=MODS[k];let body="";
-  if(k==="agenda")body=[["09:00","Escova · Ana"],["11:00","Sobrancelha · Paula"],["16:00","Corte · Rita"]].map(r=>`<div class="row"><b>${r[0]}</b><span>${r[1]}</span></div>`).join("")+`<small class="demo-tag" style="align-self:flex-start">o que a cliente vê</small><div class="slots">${HRS.map(h=>`<button data-h="${h}" aria-pressed="${st.slot===h}" ${BUSY.includes(h)||["09:00","11:00","16:00"].includes(h)?"disabled":""}>${h}</button>`).join("")}</div><button class="small-btn" id="book" ${st.slot?"":"disabled"}>${st.slot?"Marcar às "+st.slot:"Escolha um horário livre"}</button>`;
-  if(k==="fin")body=`<div class="row"><span>Entrou no mês</span><b>R$ 6.200</b></div><div class="row"><span>Saiu</span><b>R$ 4.360</b></div>${[["Produtos",38],["Aluguel",30],["Casa",20],["Lazer",12]].map(b=>`<div class="bar">${b[0]} · ${b[1]}%<div><span style="width:${b[1]}%"></span></div></div>`).join("")}`;
-  if(k==="dieta")body=`<div class="row"><span>Café da manhã</span><b>feito</b></div><div class="row"><span>Almoço</span><b>feito</b></div><div class="row"><span>Jantar</span><b>falta</b></div><small style="color:var(--muted)">Água de hoje (toque nos copos)</small><div class="cups">${Array.from({length:8},(_,i)=>`<button aria-label="Copo ${i+1}" aria-pressed="${i<st.cups}" data-c="${i}"></button>`).join("")}</div>`;
-  if(k==="metas")body=["Postar 1 trabalho no Instagram","Responder clientes até 19h","Separar R$ 50 pra reserva"].map((t,i)=>`<label class="row" style="cursor:pointer"><span>${t}</span><input type="checkbox" data-m="${i}" ${st.metas[i]?"checked":""}></label>`).join("");
-  view.innerHTML=`<button class="back" id="back">← Voltar</button><div class="mod-h" style="--c:${m.c}"><h3>${m.n}</h3><small>${sname()}</small></div>${body}`;
-  document.getElementById("back").onclick=()=>{st.open=null;render()};
-  view.querySelectorAll("[data-h]").forEach(b=>b.onclick=()=>{st.slot=b.dataset.h;render()});
-  const bk=document.getElementById("book");if(bk)bk.onclick=()=>{say.innerHTML=`<b>assistente</b>Horário das ${st.slot} reservado. A cliente recebe a confirmação no WhatsApp.`;MODS.agenda.s="4 clientes hoje";st.slot=null;st.open=null;render()};
-  view.querySelectorAll("[data-c]").forEach(b=>b.onclick=()=>{const i=+b.dataset.c;st.cups=st.cups===i+1?i:i+1;MODS.dieta.s=`${st.cups} de 8 copos`;render()});
-  view.querySelectorAll("[data-m]").forEach(b=>b.onchange=()=>{st.metas[+b.dataset.m]=b.checked;MODS.metas.s=`${st.metas.filter(Boolean).length} de 3 hoje`});
-}
-function render(){
-  st.open?mod(st.open):home();
-  asks.innerHTML=Object.keys(MODS).filter(k=>!st.have.includes(k)).map(k=>`<button data-a="${k}">${MODS[k].ask}</button>`).join("")||`<button disabled>Tudo no seu app</button>`;
-  asks.querySelectorAll("[data-a]").forEach(b=>b.onclick=()=>add(b.dataset.a));
-}
-function add(k){
-  asks.querySelectorAll("button").forEach(b=>b.disabled=true);
-  say.innerHTML=`<b>assistente</b>Entendi. Montando "${MODS[k].n}" no seu app...`;
-  setTimeout(()=>{st.have.push(k);st.fresh=k;st.open=null;say.innerHTML=`<b>assistente</b>Pronto! "${MODS[k].n}" já está no seu app. Quer mais alguma coisa?`;render();setTimeout(()=>st.fresh=null,600)},1000);
-}
-pvn.addEventListener("input",render);
-render();
-
 /* WhatsApp do LucIA Apps: coloque o número com DDI e DDD, só dígitos. Ex.: "5533999999999" */
 const WHATS="5537999999246";
 if(WHATS){const cw=document.getElementById('cta-whats');cw.href='https://wa.me/'+WHATS+'?text='+encodeURIComponent('Oi! Vi o site do LucIA Apps e quero meu app.');cw.target='_blank';cw.rel='noopener'}
@@ -1105,7 +1106,77 @@ const pr=document.getElementById("prog");addEventListener("scroll",()=>{const h=
 const T=["> carregando 20 agentes...","> estudando sua rotina...","> montando seu app..."];let ti=0,ci=0;const ty=document.getElementById("typed");
 (function tick(){const s=T[ti];ty.textContent=s.slice(0,ci);if(ci<s.length){ci++;setTimeout(tick,45)}else{setTimeout(()=>{ci=0;ti=(ti+1)%T.length;tick()},1400)}})();
 })();</script>
-
+<script>(function(){
+const TYPES={
+ studio:{t:"Studio de beleza",name:"Studio Bella",hi:"Bem-vinda ao",base:["agenda","clientes","caixa"],extra:["lembrete","estoque","fidel","metas"]},
+ loja:{t:"Loja",name:"Loja da Ana",hi:"Bem-vindo à",base:["catalogo","pedidos","estoque"],extra:["caixa","clientes","fidel","entrega"]},
+ lanche:{t:"Lanchonete",name:"Lanche do Zé",hi:"Bem-vindo ao",base:["cardapio","pedidos","caixa"],extra:["entrega","estoque","fidel"]},
+ pessoal:{t:"Vida pessoal",name:"Meu App",hi:"Bom dia! Esse é o",base:["metas","agua","financas"],extra:["habitos","parar","treino","leitura"]}
+};
+const M={
+ agenda:{n:"Agenda",s:"3 clientes hoje",i:"A",c:"#ff4d8d"},
+ clientes:{n:"Clientes",s:"128 cadastradas",i:"C",c:"#a387ff",rows:[["Ana Paula","última visita: 12 dias"],["Rita","aniversário sábado 🎂"],["Paula","3 visitas no mês"],["Carla","volta a cada 15 dias"]]},
+ caixa:{n:"Caixa",s:"R$ 1.840 hoje",i:"$",c:"#2ee59d",rows:[["Entrou hoje","R$ 1.840"],["Pix","R$ 1.120"],["Cartão","R$ 720"],["Meta do mês","72%"]]},
+ lembrete:{n:"Lembretes",s:"5 enviados hoje",i:"L",c:"#3fd2f0",rows:[["Ana · 14h","✓ confirmou"],["Rita · 15h","✓ confirmou"],["Paula · 16h","enviado"],["Faltas no mês","menos 60%"]]},
+ estoque:{n:"Estoque",s:"2 itens acabando",i:"E",c:"#ffb340",rows:[["Creme hidratante","3 un ⚠"],["Tinta 7.0","8 un"],["Luvas","1 caixa ⚠"],["Esmalte","24 un"]]},
+ fidel:{n:"Fidelidade",s:"12 cartões ativos",i:"F",c:"#ff7a55",rows:[["Ana","8 de 10 ⭐"],["Rita","5 de 10 ⭐"],["Prêmio","1 serviço grátis"],["Voltaram","+34%"]]},
+ metas:{n:"Metas",s:"2 de 3 hoje",i:"M",c:"#ff7a55",rows:[["Postar no Instagram","✓"],["Responder até 19h","✓"],["Guardar R$ 50","falta"]]},
+ catalogo:{n:"Catálogo",s:"86 produtos",i:"P",c:"#ff4d8d",rows:[["Vestido floral","R$ 89"],["Calça jeans","R$ 119"],["Blusa básica","R$ 39"],["Mais vendido","Vestido floral"]]},
+ pedidos:{n:"Pedidos",s:"7 novos hoje",i:"#",c:"#8fa2ff",rows:[["#104 · Maria","R$ 158 · novo"],["#103 · João","R$ 42 · saiu"],["#102 · Lia","R$ 89 · entregue"],["Hoje","R$ 612"]]},
+ entrega:{n:"Entregas",s:"3 na rua",i:"→",c:"#3fd2f0",rows:[["Rua das Flores","em rota"],["Centro","entregue ✓"],["Bairro Novo","saindo"]]},
+ cardapio:{n:"Cardápio",s:"24 itens",i:"☰",c:"#ffb340",rows:[["X-tudo","R$ 28"],["Batata média","R$ 15"],["Suco natural","R$ 9"],["Combo do dia","R$ 35"]]},
+ agua:{n:"Água",s:"4 de 8 copos",i:"Á",c:"#3fd2f0"},
+ financas:{n:"Finanças",s:"R$ 620 sobrando",i:"$",c:"#2ee59d",rows:[["Entrou","R$ 3.200"],["Contas","R$ 1.980"],["Mercado","R$ 600"],["Sobrou","R$ 620"]]},
+ habitos:{n:"Hábitos",s:"6 dias seguidos",i:"H",c:"#a387ff",rows:[["Acordar 6h","🔥 6 dias"],["Ler 10 min","🔥 3 dias"],["Sem celular na cama","🔥 2 dias"]]},
+ parar:{n:"Parar de beber",s:"21 dias firme",i:"✦",c:"#2ee59d",rows:[["Dias sem beber","21"],["Dinheiro guardado","R$ 420"],["Próxima meta","30 dias"]]},
+ treino:{n:"Treino",s:"3 de 4 na semana",i:"T",c:"#ff4d8d",rows:[["Segunda","✓ caminhada"],["Quarta","✓ academia"],["Sexta","✓ academia"],["Domingo","falta"]]},
+ leitura:{n:"Leitura",s:"livro 2 de 12",i:"✎",c:"#ffb340",rows:[["Lendo agora","pág. 84 de 210"],["Meta do ano","12 livros"]]}
+};
+const COLORS=["#3550ff","#ff4d8d","#2ee59d","#ffb340","#a387ff","#ff6a45"];
+const st={type:"studio",color:COLORS[1],have:[],open:null,built:false,slot:null,cups:4,busy:["09:00","11:00","15:00"]};
+const view=document.getElementById("view"),agent=document.getElementById("agent"),asks=document.getElementById("asks"),say=document.getElementById("say"),nm=document.getElementById("pv-name"),go=document.getElementById("lab-go");
+const esc=s=>String(s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+const name=()=>nm.value.trim()||TYPES[st.type].name;
+const ini=()=>{const w=name().split(/\s+/).filter(x=>x.length>2);return((w[0]||name())[0]+(w[1]?w[1][0]:"")).toUpperCase()};
+const tc=document.getElementById("lab-type");
+tc.innerHTML=Object.entries(TYPES).map(([k,v])=>`<button data-t="${k}" aria-pressed="${k===st.type}">${v.t}</button>`).join("");
+tc.querySelectorAll("button").forEach(b=>b.onclick=()=>{const old=TYPES[st.type].name;st.type=b.dataset.t;if(!nm.value.trim()||nm.value===old)nm.value=TYPES[st.type].name;tc.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));build()});
+const cc=document.getElementById("lab-color");
+cc.innerHTML=COLORS.map(c=>`<button style="--c:${c}" data-c="${c}" aria-label="Cor ${c}" aria-pressed="${c===st.color}"></button>`).join("");
+cc.querySelectorAll("button").forEach(b=>b.onclick=()=>{st.color=b.dataset.c;cc.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));view.style.setProperty("--ac",st.color);if(st.built)render()});
+view.style.setProperty("--ac",st.color);
+nm.addEventListener("input",()=>{if(st.built&&!st.open)render()});
+let bootT=[];
+function splash(){view.innerHTML=`<div class="splash"><div class="ring">+</div><b style="color:var(--fg)">Seu app começa aqui</b><span>Escolha ao lado e toque em<br>"Montar meu app"</span></div>`;agent.hidden=true}
+function build(){bootT.forEach(clearTimeout);bootT=[];st.built=false;st.open=null;agent.hidden=true;const T=TYPES[st.type];st.have=[];
+  view.innerHTML=`<div class="boot"><div class="logo">${esc(ini())}</div><pre id="blog"></pre><div class="pbar"><i id="bbar"></i></div></div>`;
+  const lines=[`> criando "${esc(name())}"`,`> aplicando a sua cor`,...T.base.map(k=>`> instalando ${M[k].n}`),`> conectando as partes`,`<span class="ok">✓ seu app está pronto</span>`];
+  const pre=view.querySelector("#blog"),bar=view.querySelector("#bbar");
+  lines.forEach((l,i)=>bootT.push(setTimeout(()=>{pre.innerHTML+=(i?"\n":"")+l+(i<lines.length-1?' <span class="ok">✓</span>':"");bar.style.width=((i+1)/lines.length*100)+"%"},350+i*380)));
+  bootT.push(setTimeout(()=>{st.built=true;T.base.forEach((k,i)=>bootT.push(setTimeout(()=>{st.have.push(k);render()},i*260)));
+    bootT.push(setTimeout(()=>{agent.hidden=false;say.innerHTML="<b>LucIA</b>Pronto! Toque numa parte pra abrir, ou peça uma nova aqui embaixo.";renderAsks()},T.base.length*260+200))},350+lines.length*380+300));
+  go.textContent="Montar de novo ↻"}
+function render(){if(st.open)return mod(st.open);const T=TYPES[st.type];
+  view.innerHTML=`<div class="apphead"><div class="lg">${esc(ini())}</div><div><small>${T.hi}</small><b>${esc(name())}</b></div></div><div class="grid">${st.have.map(k=>`<button class="tile" style="--c:${M[k].c}" data-o="${k}"><span class="i">${M[k].i}</span><span><b>${M[k].n}</b><br><small>${M[k].s}</small></span></button>`).join("")}<div class="ghost">+ peça uma parte nova abaixo</div></div>`;
+  view.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{st.open=b.dataset.o;render()})}
+const HRS=["09:00","10:00","11:00","14:00","15:00","16:00","17:00"];
+function mod(k){const m=M[k];let body="";
+  if(k==="agenda")body=[["09:00","Escova · Ana"],["11:00","Sobrancelha · Paula"],["15:00","Corte · Rita"]].map(r=>`<div class="row"><b>${r[0]}</b><span>${r[1]}</span></div>`).join("")+`<small class="demo-tag" style="align-self:flex-start">o que a cliente vê</small><div class="slots">${HRS.map(h=>`<button data-h="${h}" aria-pressed="${st.slot===h}" ${st.busy.includes(h)?"disabled":""}>${h}</button>`).join("")}</div><button class="small-btn" id="book" ${st.slot?"":"disabled"}>${st.slot?"Marcar às "+st.slot:"Escolha um horário livre"}</button>`;
+  else if(k==="agua")body=`<small style="color:var(--muted)">Toque nos copos de hoje</small><div class="cups">${Array.from({length:8},(_,i)=>`<button aria-label="Copo ${i+1}" aria-pressed="${i<st.cups}" data-c="${i}"></button>`).join("")}</div>`;
+  else body=m.rows.map(r=>`<div class="row"><span>${esc(r[0])}</span><b>${esc(r[1])}</b></div>`).join("");
+  view.innerHTML=`<button class="back" id="back">← Voltar</button><div class="mod-h" style="--c:${m.c}"><h3>${m.n}</h3><small>${esc(name())}</small></div>${body}`;
+  view.querySelector("#back").onclick=()=>{st.open=null;render()};
+  view.querySelectorAll("[data-h]").forEach(b=>b.onclick=()=>{st.slot=b.dataset.h;mod(k)});
+  const bk=view.querySelector("#book");if(bk)bk.onclick=()=>{say.innerHTML=`<b>LucIA</b>Horário das ${st.slot} marcado. A cliente recebe a confirmação no WhatsApp ✓`;st.busy.push(st.slot);M.agenda.s=st.busy.length+" clientes hoje";st.slot=null;st.open=null;render()};
+  view.querySelectorAll("[data-c]").forEach(b=>b.onclick=()=>{const i=+b.dataset.c;st.cups=st.cups===i+1?i:i+1;M.agua.s=st.cups+" de 8 copos";mod(k)})}
+function renderAsks(){const ex=TYPES[st.type].extra.filter(k=>!st.have.includes(k));
+  asks.innerHTML=ex.map(k=>`<button data-a="${k}">+ ${M[k].n}</button>`).join("")||`<button disabled>Tudo no seu app ✓</button>`;
+  asks.querySelectorAll("[data-a]").forEach(b=>b.onclick=()=>{asks.querySelectorAll("button").forEach(x=>x.disabled=true);const k=b.dataset.a;
+    say.innerHTML=`<b>LucIA</b>Montando "${M[k].n}"...`;setTimeout(()=>{st.have.push(k);st.open=null;render();say.innerHTML=`<b>LucIA</b>"${M[k].n}" entrou no seu app e já conversa com as outras partes ✓`;renderAsks()},900)})}
+go.onclick=build;splash();
+document.getElementById("lab-real").onclick=()=>{if(window.openLucIA)window.openLucIA()};
+new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){o.disconnect();setTimeout(()=>{if(!st.built)build()},400)}},{threshold:.45}).observe(document.querySelector("#previa .phone"));
+})();</script>
 <button class="ai-fab" id="ai-fab" aria-haspopup="dialog"><i>IA</i>Montar meu app com a LucIA</button>
 <section class="ai" id="ai" role="dialog" aria-label="Conversa com a LucIA">
   <div class="ai-h"><div class="av">IA</div><div><b>LucIA</b><small>online agora</small></div><button id="ai-x" aria-label="Fechar conversa">×</button></div>
@@ -1114,81 +1185,119 @@ const T=["> carregando 20 agentes...","> estudando sua rotina...","> montando se
   <form class="ai-f" id="ai-f"><input id="ai-in" autocomplete="off" placeholder="Escreva aqui..." aria-label="Sua mensagem"><button>Enviar</button></form>
 </section>
 <script>(function(){
-/* ===== LucIA: assistente que descobre o que a pessoa quer no app =====
-   Hoje funciona sozinha no navegador (entende palavras-chave).
-   Pra ligar uma IA de verdade, coloque aqui o endereço do seu servidor.
-   Ele recebe {mensagens} e devolve {resposta, partes:[...]}. */
-const AI_ENDPOINT="";
+/* ===== LucIA: consultora com IA de verdade =====
+   Usa uma IA gratuita (text.pollinations.ai) direto do navegador.
+   Se a IA cair, entra o modo rápido (roteiro com palavras-chave). */
+const AI_URL="https://text.pollinations.ai/openai";
 const W=typeof WHATS!=="undefined"?WHATS:"";
-const MODS={
- agenda:{n:"Agenda online",k:["agenda","horario","horário","marcar","agend","falta","encaixe","consulta","atendimento"]},
- lembrete:{n:"Lembrete no WhatsApp",k:["esquece","lembr","whats","mensagem","responder","confirm"]},
- financas:{n:"Finanças e caixa",k:["dinheiro","caixa","conta","lucro","gasto","pagamento","pix","fiado","cobr","financ","divida","dívida","salario","salário"]},
- estoque:{n:"Estoque de produtos",k:["estoque","produto","acaba","material","mercadoria","reposi"]},
- vendas:{n:"Catálogo e pedidos",k:["vend","pedido","catalogo","catálogo","loja","encomenda","delivery","entrega","cardapio","cardápio"]},
- clientes:{n:"Cadastro e fidelidade de clientes",k:["fideli","cadastro","cliente volta","aniversar","indica","promo"]},
- metas:{n:"Metas e hábitos",k:["meta","habito","hábito","foco","organiz","rotina","procrastin","produtiv"]},
- dieta:{n:"Dieta e água",k:["dieta","peso","agua","água","comer","comida","emagre","academia","treino","saude","saúde"]},
- parar:{n:"Parar de beber ou fumar",k:["beber","bebida","fumar","cigarro","vicio","vício","parar de"]},
- equipe:{n:"Equipe e funcionários",k:["funcionario","funcionário","equipe","colaborador","escala","comissão","comissao"]}
-};
+const PLANS={Essencial:["R$ 197","R$ 69","até 2 partes"],Profissional:["R$ 347","R$ 119","até 5 partes"],Exclusivo:["R$ 597","R$ 197","partes ilimitadas"]};
+const SYSTEM=`Você é a LucIA, consultora da LucIA Apps ("aplicativos reais para pessoas normais"). A LucIA Apps cria um app próprio e personalizado pra cada pessoa ou negócio. Ele é montado com IA, conferido por uma pessoa, e cresce por partes que conversam entre si (ex.: quando a cliente marca na Agenda, o Caixa já sabe). Funciona no celular, Android e iPhone, com ícone na tela igual app de loja. Conecta com WhatsApp, Pix, Instagram e Google Agenda.
+Planos (montagem paga uma vez + mensalidade com suporte e ajustes):
+- Essencial: até 2 partes. Montagem R$ 397 (R$ 197 pros 5 Clientes Fundadores). R$ 69/mês.
+- Profissional: até 5 partes, lembrete no WhatsApp, 1 parte nova por mês. Montagem R$ 697 (R$ 347 fundador). R$ 119/mês.
+- Exclusivo: partes ilimitadas, assistente com IA dentro do app, reunião mensal. Montagem R$ 1.197 (R$ 597 fundador). R$ 197/mês.
+Garantia de 30 dias: se não gostar, devolve a montagem. Cancela quando quiser e leva os dados numa planilha.
+
+Seu trabalho: entrevistar a pessoa como uma consultora experiente e calorosa, entender a fundo a rotina e as dores dela, e no fim desenhar o app sob medida.
+Regras:
+- Português do Brasil, simples, sem termo técnico, tom amigável e humano. No máximo 3 frases por mensagem. UMA pergunta por vez.
+- Antes de cada pergunta nova, mostre que entendeu: resuma a dor dela com outras palavras em meia frase.
+- Descubra, numa conversa natural: se é pra negócio ou vida pessoal; o ramo ou rotina; como funciona o dia a dia hoje (como os clientes chegam, quantos por dia, o que usa hoje: caderno, WhatsApp, planilha, outro app); as 2 ou 3 maiores dores; o que ela sonha que o app faça sozinho; o nome que quer pro app; uma cor preferida.
+- Se a resposta for vaga, peça um exemplo concreto do dia a dia.
+- Quando ajudar, termine a mensagem com opções clicáveis neste formato exato: [[opção 1|opção 2|opção 3]]. Use no máximo 4 opções curtas.
+- Não invente preço, prazo ou recurso fora do que está aqui. Não prometa integração com banco nem nota fiscal.
+- Depois de 6 a 9 perguntas, quando já souber o suficiente, diga numa frase que vai montar a prévia e termine com este bloco, com JSON válido:
+<APP>{"nome_app":"...","cor":"#rrggbb","para":"negócio ou vida pessoal","resumo":"uma frase sobre a pessoa e o objetivo do app","partes":[{"nome":"até 3 palavras","faz":"o que resolve pra ela, até 10 palavras","icone":"1 emoji"}],"conexoes":["frase curta mostrando uma parte avisando outra"],"plano":"Essencial ou Profissional ou Exclusivo"}</APP>
+- partes: de 2 a 7, bem específicas pra rotina dela. O plano segue a quantidade de partes (até 2 Essencial, até 5 Profissional, mais que isso Exclusivo). conexoes: 2 ou 3 frases.
+- Se depois da prévia ela pedir mudança, ajuste e mande um bloco <APP> novo e completo.`;
 const log=document.getElementById("ai-log"),chips=document.getElementById("ai-chips"),form=document.getElementById("ai-f"),inp=document.getElementById("ai-in");
 const box=document.getElementById("ai"),fab=document.getElementById("ai-fab");
-const st={step:0,nome:"",tipo:"",ramo:"",dor:"",canal:"",pick:new Set(),extra:[],hist:[]};
-const esc=s=>String(s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
-function add(t,who,cls){const d=document.createElement("div");d.className="msg "+(who||"bot")+(cls?" "+cls:"");if(cls==="sum")d.innerHTML=t;else d.textContent=t;log.append(d);log.scrollTop=log.scrollHeight;st.hist.push({de:who==="me"?"cliente":"lucia",texto:d.textContent});return d}
-function say(t,cb,cls){const d=document.createElement("div");d.className="msg bot";d.innerHTML='<span class="dots"><i></i><i></i><i></i></span>';log.append(d);log.scrollTop=log.scrollHeight;
-  setTimeout(()=>{d.remove();add(t,"bot",cls);cb&&cb()},Math.min(1400,500+t.length*12))}
-function setChips(list,multi){chips.innerHTML="";list.forEach(c=>{const b=document.createElement("button");b.type="button";b.textContent=c.t;if(c.go)b.className="go";if(multi&&!c.go)b.setAttribute("aria-pressed",st.pick.has(c.v));b.onclick=()=>c.f(b);chips.append(b)})}
-function detect(txt){const t=txt.toLowerCase();const out=[];for(const k in MODS)if(MODS[k].k.some(w=>t.includes(w)))out.push(k);return out}
-async function askAI(){if(!AI_ENDPOINT)return null;try{const r=await fetch(AI_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({mensagens:st.hist,partes_disponiveis:Object.keys(MODS)})});return await r.json()}catch(e){return null}}
-function plano(n){return n<=2?["Essencial","R$ 197","R$ 69"]:n<=5?["Profissional","R$ 347","R$ 119"]:["Exclusivo","R$ 597","R$ 197"]}
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+let msgs=[],busy=false,mode="ai",started=false,lastApp=null;
 
-function start(){log.innerHTML="";st.step=1;st.pick=new Set();st.extra=[];st.hist=[];chips.innerHTML="";
-  say("Oi! Eu sou a LucIA 👋\nEu converso com você e já desenho o app do seu jeito. Leva uns 2 minutos.",()=>say("Como posso te chamar?",()=>inp.focus()))}
-function step2(){st.step=2;say(`Prazer, ${st.nome}! O seu app vai ser pra quê?`,()=>setChips([
-  {t:"Meu negócio",f:()=>pickTipo("negócio")},{t:"Minha vida pessoal",f:()=>pickTipo("vida pessoal")},{t:"Os dois",f:()=>pickTipo("negócio e vida pessoal")}]))}
-function pickTipo(t){st.tipo=t;chips.innerHTML="";add(t[0].toUpperCase()+t.slice(1),"me");
-  if(t==="vida pessoal"){st.step=4;say("Boa. Me conta do seu jeito: o que você queria organizar ou mudar na sua rotina?",()=>inp.focus())}
-  else{st.step=3;say("Qual é o seu negócio? Ex.: salão, loja de roupa, mecânica, lanchonete...",()=>inp.focus())}}
-async function afterDor(){chips.innerHTML="";let found=detect(st.dor+" "+st.ramo);
-  if(/sal[aã]o|studio|est[uú]dio|barbe|sobrancel|unha|cabel|est[eé]tica|cl[ií]nica|consult/i.test(st.ramo)){found.push("agenda","lembrete")}
-  if(/loja|lanch|restaur|aliment|doce|bolo|fogos|roupa|venda/i.test(st.ramo)){found.push("vendas")}
-  const ai=await askAI();if(ai&&Array.isArray(ai.partes))found=found.concat(ai.partes.filter(p=>MODS[p]));
-  found=[...new Set(found)];if(!found.length)found=st.tipo==="vida pessoal"?["metas","financas"]:["agenda","financas"];
-  found.forEach(k=>st.pick.add(k));
-  const intro=ai&&ai.resposta?ai.resposta:"Entendi! Pelo que você contou, eu montaria seu app com estas partes:";
-  say(intro+"\n\n"+found.map(k=>"• "+MODS[k].n).join("\n")+"\n\nToque pra tirar ou pôr o que quiser. Depois é só confirmar.",showPick)}
-function showPick(){st.step=5;const all=Object.keys(MODS);
-  setChips([...all.map(k=>({t:MODS[k].n,v:k,f:b=>{st.pick.has(k)?st.pick.delete(k):st.pick.add(k);b.setAttribute("aria-pressed",st.pick.has(k))}})),{t:"Pronto, é isso ✓",go:1,f:confirmPick}],true)}
-function confirmPick(){if(!st.pick.size){say("Escolhe pelo menos uma parte pra eu montar 🙂");return}
-  chips.innerHTML="";add([...st.pick].map(k=>MODS[k].n).join(", "),"me");st.step=6;
-  say("Tem mais alguma coisa que você sonha ter no app e não apareceu aí? Pode escrever do seu jeito, ou tocar em \"Não, só isso\".",()=>{setChips([{t:"Não, só isso",f:()=>{chips.innerHTML="";add("Não, só isso","me");step7()}}]);inp.focus()})}
-function step7(){st.step=7;say(st.tipo==="vida pessoal"?"Última: você usa mais o celular Android ou iPhone?":"Última: hoje seus clientes falam com você mais por onde?",()=>setChips(
-  (st.tipo==="vida pessoal"?["Android","iPhone"]:["WhatsApp","Instagram","Pessoalmente","Telefone"]).map(c=>({t:c,f:()=>{st.canal=c;chips.innerHTML="";add(c,"me");finish()}}))))}
-function finish(){st.step=8;const parts=[...st.pick].map(k=>MODS[k].n).concat(st.extra);const [pl,mont,mens]=plano(parts.length);
-  const txt=`Oi! Conversei com a LucIA no site e quero meu app.\n\nNome: ${st.nome}\nPra: ${st.tipo}${st.ramo?"\nNegócio: "+st.ramo:""}\nO que mais me incomoda: ${st.dor}\n\nPartes do meu app:\n${parts.map(p=>"- "+p).join("\n")}\n\n${st.tipo==="vida pessoal"?"Celular":"Clientes chegam por"}: ${st.canal}\nPlano sugerido: ${pl}`;
-  const html=`<b>Seu app, ${esc(st.nome)}</b>\n\n${parts.map(p=>"✓ "+esc(p)).join("\n")}\n\n<b>Plano ${pl}</b>\nMontagem ${mont} pra Cliente Fundador\nDepois ${mens}/mês, com suporte e ajustes\nGarantia de 30 dias`;
-  say("Prontinho! Olha como ficou o desenho do seu app:",()=>{add(html,"bot","sum");
-    say(W?"Toque em enviar que o pedido chega pronto no WhatsApp, e a gente marca a conversa pra começar.":"Copie o pedido e mande pra gente.",()=>{
-      const list=[];if(W)list.push({t:"Enviar no WhatsApp ✓",go:1,f:()=>window.open("https://wa.me/"+W+"?text="+encodeURIComponent(txt),"_blank","noopener")});
-      list.push({t:"Copiar pedido",f:async b=>{try{await navigator.clipboard.writeText(txt);b.textContent="Copiado ✓"}catch(e){b.textContent="Não deu pra copiar"}}});
-      list.push({t:"Recomeçar",f:start});setChips(list)})})
-  /* preenche também o formulário da página */
-  try{const n=document.getElementById("nome");if(n){n.value=st.nome;document.getElementById("negocio").value=st.ramo||"";
-    const map={agenda:"p-agenda",financas:"p-fin",estoque:"p-est",metas:"p-metas",dieta:"p-dieta"};Object.values(map).forEach(id=>document.getElementById(id).checked=false);
-    const rest=[];st.pick.forEach(k=>map[k]?document.getElementById(map[k]).checked=true:rest.push(MODS[k].n));
-    document.getElementById("outro").value=rest.concat(st.extra).join(", ");document.getElementById("nome").dispatchEvent(new Event("input",{bubbles:true}))}}catch(e){}}
-form.addEventListener("submit",e=>{e.preventDefault();const v=inp.value.trim();if(!v)return;inp.value="";
-  if(st.step===1){st.nome=v.split(/\s+/).slice(0,2).join(" ").replace(/^./,c=>c.toUpperCase());add(v,"me");step2()}
-  else if(st.step===2){add(v,"me");pickTipo(/pesso|vida|minha/i.test(v)?"vida pessoal":/dois|ambos/i.test(v)?"negócio e vida pessoal":"negócio")}
-  else if(st.step===3){st.ramo=v;add(v,"me");st.step=4;say(`${v}, show! Agora me conta do seu jeito: o que mais te dá dor de cabeça no dia a dia? Pode desabafar 😅`,()=>inp.focus())}
-  else if(st.step===4){st.dor=v;add(v,"me");afterDor()}
-  else if(st.step===5){add(v,"me");detect(v).forEach(k=>st.pick.add(k));showPick();say("Anotado. Ajustei as partes aí embaixo.")}
-  else if(st.step===6){add(v,"me");const d=detect(v);d.forEach(k=>st.pick.add(k));if(!d.length)st.extra.push(v);chips.innerHTML="";say("Ótima ideia, coloquei no seu app ✓",step7)}
-  else{add(v,"me");say("Anotei! Se quiser mudar alguma coisa, toque em Recomeçar.")}});
-function open(){box.classList.add("open");fab.classList.add("hide");if(!st.step)start();setTimeout(()=>inp.focus(),300)}
+function add(t,who,html){const d=document.createElement("div");d.className="msg "+(who||"bot");if(html)d.innerHTML=t;else d.textContent=t;log.append(d);log.scrollTop=log.scrollHeight;return d}
+function typing(){const d=document.createElement("div");d.className="msg bot";d.innerHTML='<span class="dots"><i></i><i></i><i></i></span>';log.append(d);log.scrollTop=log.scrollHeight;return d}
+function setChips(list){chips.innerHTML="";list.forEach(c=>{const b=document.createElement("button");b.type="button";b.textContent=c.t;if(c.go)b.className="go";b.onclick=()=>c.f(b);chips.append(b)})}
+function optChips(opts){setChips(opts.map(o=>({t:o,f:()=>send(o)})))}
+
+async function callAI(){
+  for(let tries=0;tries<3;tries++){
+    try{const ctl=new AbortController();const to=setTimeout(()=>ctl.abort(),45000);
+      const r=await fetch(AI_URL,{method:"POST",headers:{"Content-Type":"application/json"},signal:ctl.signal,
+        body:JSON.stringify({model:"openai",messages:[{role:"system",content:SYSTEM},...msgs.slice(-24)],temperature:.7})});
+      clearTimeout(to);
+      if(r.status===429){await new Promise(z=>setTimeout(z,4000+tries*4000));continue}
+      if(!r.ok)throw new Error("http "+r.status);
+      const j=await r.json();const c=j&&j.choices&&j.choices[0]&&j.choices[0].message&&j.choices[0].message.content;
+      if(c&&c.trim())return c.trim();
+    }catch(e){await new Promise(z=>setTimeout(z,2500))}
+  }
+  return null}
+
+function parseApp(t){const m=t.match(/<APP>([\s\S]*?)(<\/APP>|$)/i);if(!m)return null;
+  let raw=m[1].trim().replace(/^```(json)?/,"").replace(/```$/,"");const a=raw.indexOf("{"),b=raw.lastIndexOf("}");if(a<0||b<0)return null;
+  try{const o=JSON.parse(raw.slice(a,b+1));if(!Array.isArray(o.partes)||!o.partes.length)return null;return o}catch(e){return null}}
+function clean(t){return t.replace(/<APP>[\s\S]*?(<\/APP>|$)/i,"").replace(/\[\[[^\]]*\]\]/g,"").replace(/\*\*/g,"").trim()}
+function opts(t){const m=t.match(/\[\[([^\]]+)\]\]/);return m?m[1].split("|").map(s=>s.trim()).filter(Boolean).slice(0,4):[]}
+function planFor(a){let p=a.plano;if(!PLANS[p]){const n=a.partes.length;p=n<=2?"Essencial":n<=5?"Profissional":"Exclusivo"}return p}
+function okColor(c){return /^#[0-9a-f]{6}$/i.test(c||"")?c:"#3550ff"}
+function initials(n){const w=String(n||"Meu App").split(/\s+/).filter(x=>x.length>2);return((w[0]||n||"A")[0]+(w[1]?w[1][0]:"")).toUpperCase()}
+
+function showPreview(a){lastApp=a;const p=planFor(a),pr=PLANS[p],cor=okColor(a.cor);
+  const html=`<div class="pv-card" style="--ac:${cor}">
+    <div class="pv-tag">PRÉVIA DO SEU APP</div>
+    <div class="pv-phone"><div class="pv-notch"></div>
+      <div class="apphead"><div class="lg">${esc(initials(a.nome_app))}</div><div><small>${esc(a.para==="vida pessoal"?"Seu app pessoal":"Seu app")}</small><b>${esc(a.nome_app||"Meu App")}</b></div></div>
+      <div class="pv-grid">${a.partes.slice(0,8).map((x,i)=>`<div class="pv-tile" style="animation-delay:${i*.12}s"><span>${esc(x.icone||"✦")}</span><b>${esc(x.nome)}</b><small>${esc(x.faz||"")}</small></div>`).join("")}</div>
+    </div>
+    ${a.resumo?`<p class="pv-sum">${esc(a.resumo)}</p>`:""}
+    ${Array.isArray(a.conexoes)&&a.conexoes.length?`<div class="pv-con"><b>As partes conversam</b>${a.conexoes.slice(0,3).map(c=>`<span>↳ ${esc(c)}</span>`).join("")}</div>`:""}
+    <div class="pv-plan"><b>Plano ${p}</b><span>${pr[2]}</span><span>Montagem ${pr[0]} pra Cliente Fundador · depois ${pr[1]}/mês</span><span>Garantia de 30 dias</span></div>
+  </div>`;
+  const card=add(html,"bot sum",true);setTimeout(()=>{log.scrollTop=card.offsetTop-10},60);
+  setChips([{t:"Gostei! Enviar no WhatsApp ✓",go:1,f:()=>sendWhats(a)},{t:"Quero mudar algo",f:()=>{chips.innerHTML="";add("O que você quer mudar? Pode falar do seu jeito.","bot");inp.focus()}},{t:"Recomeçar",f:start}]);
+  fillForm(a)}
+
+function sendWhats(a){const p=planFor(a);
+  const txt=`Oi! Conversei com a LucIA no site e quero meu app.\n\nApp: ${a.nome_app}\nPra: ${a.para}\n${a.resumo||""}\n\nPartes:\n${a.partes.map(x=>`- ${x.nome}: ${x.faz||""}`).join("\n")}\n\nPlano sugerido: ${p}\nQuero uma vaga de Cliente Fundador.`;
+  if(W)window.open("https://wa.me/"+W+"?text="+encodeURIComponent(txt),"_blank","noopener");
+  else navigator.clipboard&&navigator.clipboard.writeText(txt)}
+
+function fillForm(a){try{document.getElementById("nome").value=a.nome_app||"";document.getElementById("negocio").value=a.nome_app||"";
+  ["p-agenda","p-fin","p-est","p-metas","p-dieta"].forEach(id=>document.getElementById(id).checked=false);
+  document.getElementById("outro").value=a.partes.map(x=>x.nome).join(", ");document.getElementById("nome").dispatchEvent(new Event("input",{bubbles:true}))}catch(e){}}
+
+async function send(text){if(busy||!text)return;chips.innerHTML="";add(text,"me");
+  if(mode!=="ai")return fbInput(text);
+  msgs.push({role:"user",content:text});busy=true;const t=typing();
+  const r=await callAI();t.remove();busy=false;
+  if(!r){mode="fb";add("Minha conexão com a IA oscilou agora. Vou continuar no modo rápido pra não te deixar esperando 🙂","bot");return fbResume(text)}
+  msgs.push({role:"assistant",content:r});
+  const app=parseApp(r),txt=clean(r);
+  if(txt)add(txt,"bot");
+  if(app)return showPreview(app);
+  const o=opts(r);if(o.length)optChips(o);inp.focus()}
+
+function start(){log.innerHTML="";chips.innerHTML="";msgs=[];mode="ai";lastApp=null;fb.step=0;
+  const hi="Oi! Eu sou a LucIA 👋 Vou te fazer umas perguntas rápidas pra entender sua rotina e, no fim, te mostro uma prévia do seu app. Pra começar, como posso te chamar?";
+  const t=typing();setTimeout(()=>{t.remove();add(hi,"bot");msgs.push({role:"assistant",content:hi});inp.focus()},700)}
+
+/* ---------- modo rápido (sem IA) ---------- */
+const MODS={agenda:["Agenda online","📅",["agenda","horario","horário","marcar","agend","falta","consulta","atendimento"]],lembrete:["Lembretes no WhatsApp","💬",["esquece","lembr","whats","mensagem","responder","confirm"]],financas:["Caixa e finanças","💰",["dinheiro","caixa","conta","lucro","gasto","pagamento","pix","fiado","cobr","financ"]],estoque:["Estoque","📦",["estoque","produto","acaba","material","mercadoria"]],vendas:["Catálogo e pedidos","🛍️",["vend","pedido","catalogo","catálogo","loja","encomenda","delivery","entrega","cardapio","cardápio"]],clientes:["Clientes e fidelidade","⭐",["fideli","cadastro","aniversar","indica","promo"]],metas:["Metas e hábitos","🎯",["meta","habito","hábito","foco","organiz","rotina"]],dieta:["Dieta e água","💧",["dieta","peso","agua","água","comer","emagre","academia","treino"]],parar:["Parar de beber","🌱",["beber","bebida","fumar","cigarro","vicio","vício"]]};
+const fb={step:0,nome:"",ramo:"",dor:""};
+function fbResume(last){if(!fb.nome){fb.nome=(msgs.find(m=>m.role==="user")||{content:last}).content.split(/\s+/)[0]}fb.step=2;add(`${fb.nome}, qual é o seu negócio ou a rotina que você quer organizar?`,"bot")}
+function fbInput(v){
+  if(fb.step===2){fb.ramo=v;fb.step=3;add("Entendi! E o que mais te dá dor de cabeça no dia a dia? Pode desabafar 😅","bot");return}
+  if(fb.step===3){fb.dor=v;const t=(fb.ramo+" "+fb.dor).toLowerCase();let ks=Object.keys(MODS).filter(k=>MODS[k][2].some(w=>t.includes(w)));
+    if(/sal[aã]o|studio|est[uú]dio|barbe|sobrancel|unha|cabel|est[eé]tica|cl[ií]nica/.test(t))ks.push("agenda","lembrete");
+    ks=[...new Set(ks)];if(ks.length<2)ks=[...new Set(ks.concat(["agenda","financas"]))];
+    showPreview({nome_app:fb.ramo.length<24?fb.ramo.replace(/^./,c=>c.toUpperCase()):"Meu App",cor:"#3550ff",para:"negócio",resumo:`App pra ${fb.nome} resolver: ${fb.dor}`,partes:ks.slice(0,6).map(k=>({nome:MODS[k][0],faz:"",icone:MODS[k][1]})),conexoes:[]});fb.step=4;return}
+  add("Anotei! A gente ajusta tudo isso na conversa pelo WhatsApp.","bot")}
+
+form.addEventListener("submit",e=>{e.preventDefault();const v=inp.value.trim();if(!v)return;inp.value="";send(v)});
+function open(){box.classList.add("open");fab.classList.add("hide");if(!started){started=true;start()}setTimeout(()=>inp.focus(),300)}
 fab.onclick=open;document.getElementById("ai-x").onclick=()=>{box.classList.remove("open");fab.classList.remove("hide")};
 document.querySelectorAll('a[href="#pedido"]').forEach(a=>{if(a.closest(".plan")||a.closest(".dossie"))return;a.addEventListener("click",e=>{e.preventDefault();open()})});
+window.openLucIA=open;
 })();</script>
 </body></html>
