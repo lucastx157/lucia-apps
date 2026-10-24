@@ -1185,116 +1185,116 @@ new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){o.disconnect();setTim
   <form class="ai-f" id="ai-f"><input id="ai-in" autocomplete="off" placeholder="Escreva aqui..." aria-label="Sua mensagem"><button>Enviar</button></form>
 </section>
 <script>(function(){
-/* ===== LucIA: consultora com IA de verdade =====
-   Usa uma IA gratuita (text.pollinations.ai) direto do navegador.
-   Se a IA cair, entra o modo rápido (roteiro com palavras-chave). */
+/* ===== LucIA: entrevista completa + IA que desenha o app =====
+   A entrevista roda no navegador. No fim, uma IA gratuita (text.pollinations.ai)
+   desenha o app sob medida. Se a IA não responder, um gerador local assume. */
 const AI_URL="https://text.pollinations.ai/openai";
 const W=typeof WHATS!=="undefined"?WHATS:"";
 const PLANS={Essencial:["R$ 197","R$ 69","até 2 partes"],Profissional:["R$ 347","R$ 119","até 5 partes"],Exclusivo:["R$ 597","R$ 197","partes ilimitadas"]};
-const SYSTEM=`Você é a LucIA, consultora da LucIA Apps ("aplicativos reais para pessoas normais"). A LucIA Apps cria um app próprio e personalizado pra cada pessoa ou negócio. Ele é montado com IA, conferido por uma pessoa, e cresce por partes que conversam entre si (ex.: quando a cliente marca na Agenda, o Caixa já sabe). Funciona no celular, Android e iPhone, com ícone na tela igual app de loja. Conecta com WhatsApp, Pix, Instagram e Google Agenda.
-Planos (montagem paga uma vez + mensalidade com suporte e ajustes):
-- Essencial: até 2 partes. Montagem R$ 397 (R$ 197 pros 5 Clientes Fundadores). R$ 69/mês.
-- Profissional: até 5 partes, lembrete no WhatsApp, 1 parte nova por mês. Montagem R$ 697 (R$ 347 fundador). R$ 119/mês.
-- Exclusivo: partes ilimitadas, assistente com IA dentro do app, reunião mensal. Montagem R$ 1.197 (R$ 597 fundador). R$ 197/mês.
-Garantia de 30 dias: se não gostar, devolve a montagem. Cancela quando quiser e leva os dados numa planilha.
-
-Seu trabalho: entrevistar a pessoa como uma consultora experiente e calorosa, entender a fundo a rotina e as dores dela, e no fim desenhar o app sob medida.
-Regras:
-- Português do Brasil, simples, sem termo técnico, tom amigável e humano. No máximo 3 frases por mensagem. UMA pergunta por vez.
-- Antes de cada pergunta nova, mostre que entendeu: resuma a dor dela com outras palavras em meia frase.
-- Descubra, numa conversa natural: se é pra negócio ou vida pessoal; o ramo ou rotina; como funciona o dia a dia hoje (como os clientes chegam, quantos por dia, o que usa hoje: caderno, WhatsApp, planilha, outro app); as 2 ou 3 maiores dores; o que ela sonha que o app faça sozinho; o nome que quer pro app; uma cor preferida.
-- Se a resposta for vaga, peça um exemplo concreto do dia a dia.
-- Quando ajudar, termine a mensagem com opções clicáveis neste formato exato: [[opção 1|opção 2|opção 3]]. Use no máximo 4 opções curtas.
-- Não invente preço, prazo ou recurso fora do que está aqui. Não prometa integração com banco nem nota fiscal.
-- Depois de 6 a 9 perguntas, quando já souber o suficiente, diga numa frase que vai montar a prévia e termine com este bloco, com JSON válido:
-<APP>{"nome_app":"...","cor":"#rrggbb","para":"negócio ou vida pessoal","resumo":"uma frase sobre a pessoa e o objetivo do app","partes":[{"nome":"até 3 palavras","faz":"o que resolve pra ela, até 10 palavras","icone":"1 emoji"}],"conexoes":["frase curta mostrando uma parte avisando outra"],"plano":"Essencial ou Profissional ou Exclusivo"}</APP>
-- partes: de 2 a 7, bem específicas pra rotina dela. O plano segue a quantidade de partes (até 2 Essencial, até 5 Profissional, mais que isso Exclusivo). conexoes: 2 ou 3 frases.
-- Se depois da prévia ela pedir mudança, ajuste e mande um bloco <APP> novo e completo.`;
+const COLORS={"Azul":"#3550ff","Rosa":"#ff4d8d","Verde":"#14a06a","Dourado":"#c9962b","Roxo":"#7048e8","Laranja":"#f0603a","Preto e dourado":"#2a2a2a"};
+const SYS=`Você é a LucIA, designer de apps da LucIA Apps ("aplicativos reais para pessoas normais"). A LucIA Apps cria um app próprio pra cada pessoa ou negócio, montado com IA, conferido por uma pessoa, que funciona no celular e cresce por partes que conversam entre si. Conecta com WhatsApp, Pix, Instagram e Google Agenda.
+Planos: Essencial (até 2 partes, R$ 69/mês), Profissional (até 5 partes, lembrete no WhatsApp, R$ 119/mês), Exclusivo (partes ilimitadas e assistente com IA dentro do app, R$ 197/mês).
+Você recebe a entrevista de um cliente e desenha o app dele, sob medida pra rotina e as dores que ele contou. Responda APENAS com JSON válido, sem texto fora dele, neste formato:
+{"mensagem":"2 frases calorosas, em português do Brasil, mostrando que você entendeu a dor principal e como o app resolve","nome_app":"...","para":"negócio ou vida pessoal","resumo":"1 frase sobre a pessoa e o objetivo","partes":[{"nome":"até 3 palavras","faz":"o que resolve pra essa pessoa, até 10 palavras","icone":"1 emoji"}],"conexoes":["frase curta mostrando uma parte avisando outra"],"primeiro_passo":"qual parte montar primeiro e por quê, 1 frase","plano":"Essencial ou Profissional ou Exclusivo"}
+Regras: de 3 a 7 partes, específicas pra rotina dele (nada genérico), começando pela que resolve a maior dor. 2 ou 3 conexões. O plano segue a quantidade de partes (até 2 Essencial, até 5 Profissional, mais Exclusivo). Não prometa integração com banco nem nota fiscal. Linguagem simples, sem termo técnico.`;
 const log=document.getElementById("ai-log"),chips=document.getElementById("ai-chips"),form=document.getElementById("ai-f"),inp=document.getElementById("ai-in");
 const box=document.getElementById("ai"),fab=document.getElementById("ai-fab");
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
-let msgs=[],busy=false,mode="ai",started=false,lastApp=null;
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+let A={},step=0,busy=false,started=false,last=null,waitFn=null;
 
 function add(t,who,html){const d=document.createElement("div");d.className="msg "+(who||"bot");if(html)d.innerHTML=t;else d.textContent=t;log.append(d);log.scrollTop=log.scrollHeight;return d}
 function typing(){const d=document.createElement("div");d.className="msg bot";d.innerHTML='<span class="dots"><i></i><i></i><i></i></span>';log.append(d);log.scrollTop=log.scrollHeight;return d}
-function setChips(list){chips.innerHTML="";list.forEach(c=>{const b=document.createElement("button");b.type="button";b.textContent=c.t;if(c.go)b.className="go";b.onclick=()=>c.f(b);chips.append(b)})}
-function optChips(opts){setChips(opts.map(o=>({t:o,f:()=>send(o)})))}
+function bot(t,then){const d=typing();setTimeout(()=>{d.remove();add(t,"bot");then&&then()},Math.min(1300,450+t.length*10))}
+function setChips(list){chips.innerHTML="";list.forEach(c=>{const b=document.createElement("button");b.type="button";b.textContent=c.t||c;if(c.go)b.className="go";b.onclick=()=>c.f?c.f(b):answer(c.t||c);chips.append(b)})}
+function ask(t,opts,fn){bot(t,()=>{if(opts&&opts.length)setChips(opts);waitFn=fn;inp.focus()})}
+function answer(v){if(busy||!waitFn)return;chips.innerHTML="";add(v,"me");const f=waitFn;waitFn=null;f(v.trim())}
+const NEG=()=>A.para!=="vida pessoal";
+const ack=()=>pick(["Entendi.","Anotado.","Faz total sentido.","Boa!","Show."]);
 
-async function callAI(){
-  for(let tries=0;tries<3;tries++){
-    try{const ctl=new AbortController();const to=setTimeout(()=>ctl.abort(),45000);
-      const r=await fetch(AI_URL,{method:"POST",headers:{"Content-Type":"application/json"},signal:ctl.signal,
-        body:JSON.stringify({model:"openai",messages:[{role:"system",content:SYSTEM},...msgs.slice(-24)],temperature:.7})});
+/* ---------- entrevista ---------- */
+function start(){log.innerHTML="";chips.innerHTML="";A={};last=null;
+  bot("Oi! Eu sou a LucIA 👋 Vou te fazer umas perguntas rápidas sobre a sua rotina. No fim, eu desenho o seu app e te mostro uma prévia antes de qualquer coisa.",()=>q1())}
+function q1(){ask("Pra começar, como posso te chamar?",null,v=>{A.nome=v.split(/\s+/).slice(0,2).join(" ").replace(/^./,c=>c.toUpperCase());q2()})}
+function q2(){ask(`Prazer, ${A.nome}! O seu app vai ser pra quê?`,["Meu negócio","Minha vida pessoal","Os dois"],v=>{A.para=/pessoal/i.test(v)?"vida pessoal":/dois/i.test(v)?"negócio e vida pessoal":"negócio";q3()})}
+function q3(){if(NEG())ask("Qual é o seu negócio?",["Salão ou studio","Barbearia","Loja","Lanchonete","Outro"],v=>{if(v==="Outro")return ask("Me conta qual é, do seu jeito:",null,w=>{A.ramo=w;q4()});A.ramo=v;q4()});
+  else ask("O que você mais quer organizar na sua vida?",["Dinheiro","Saúde e dieta","Rotina e hábitos","Parar um vício"],v=>{A.ramo=v;q4()})}
+function q4(){if(NEG())ask(`${ack()} E hoje, como os clientes chegam até você? Quantos você atende por dia, mais ou menos?`,["Pelo WhatsApp","Pelo Instagram","Na porta","Indicação"],v=>{A.clientes=v;if(!/\d/.test(v))return ask("E quantos clientes por dia, mais ou menos?",["Até 5","5 a 15","15 a 30","Mais de 30"],w=>{A.clientes+=", "+w+" por dia";q5()});q5()});
+  else ask(`${ack()} Como é a sua rotina hoje? Me conta um dia normal seu.`,null,v=>{A.clientes=v;q5()})}
+function q5(){ask("O que você usa hoje pra se organizar?",["Caderno","WhatsApp","Planilha","Outro app","Nada, tudo de cabeça"],v=>{A.usa=v;q6()})}
+function q6(){ask(`${v6()} Agora a mais importante: o que mais te dá dor de cabeça hoje? Pode desabafar 😅`,null,v=>{A.dor=v;if(v.split(/\s+/).length<5)return ask("Me dá um exemplo de um dia em que isso aconteceu?",null,w=>{A.dor+=". Exemplo: "+w;q7()});q7()})}
+function v6(){return A.usa&&/cabe/i.test(A.usa)?"Tudo de cabeça cansa, né?":A.usa?`${A.usa}, entendi.`:""}
+function q7(){ask("Pesado mesmo. Se o app pudesse fazer UMA coisa sozinho por você, todo dia, o que seria?",null,v=>{A.sonho=v;q8()})}
+function q8(){const sug=NEG()?(A.ramo.length<18&&!/ou|outro/i.test(A.ramo)?A.ramo.replace(/ ou .*/,"")+" "+A.nome.split(" ")[0]:"App do "+A.nome.split(" ")[0]):"Meu App "+A.nome.split(" ")[0];
+  ask("Que nome você quer dar pro seu app?",[sug,"Ainda não sei"],v=>{A.nome_app=/n[aã]o sei/i.test(v)?sug:v;q9()})}
+function q9(){ask("Última! Qual cor tem a sua cara?",Object.keys(COLORS),v=>{A.cor=COLORS[v]||"#3550ff";A.corNome=v;design()})}
+
+/* ---------- IA desenha o app ---------- */
+async function callAI(user,onWait){
+  for(let t=0;t<3;t++){
+    try{const ctl=new AbortController();const to=setTimeout(()=>ctl.abort(),50000);
+      const r=await fetch(AI_URL,{method:"POST",headers:{"Content-Type":"application/json"},signal:ctl.signal,body:JSON.stringify({model:"openai",messages:[{role:"system",content:SYS},{role:"user",content:user}]})});
       clearTimeout(to);
-      if(r.status===429){await new Promise(z=>setTimeout(z,4000+tries*4000));continue}
-      if(!r.ok)throw new Error("http "+r.status);
-      const j=await r.json();const c=j&&j.choices&&j.choices[0]&&j.choices[0].message&&j.choices[0].message.content;
-      if(c&&c.trim())return c.trim();
-    }catch(e){await new Promise(z=>setTimeout(z,2500))}
-  }
-  return null}
+      if(r.status===402||r.status===429){const tx=await r.text();const s=+((tx.match(/after (\d+)/)||[])[1]||20);onWait&&onWait(s);await new Promise(z=>setTimeout(z,(s+1)*1000));continue}
+      if(!r.ok)throw 0;const j=await r.json();const c=j&&j.choices&&j.choices[0]&&j.choices[0].message&&j.choices[0].message.content;
+      const o=parse(c);if(o)return o;
+    }catch(e){await new Promise(z=>setTimeout(z,2000))}
+  }return null}
+function parse(c){if(!c)return null;const a=c.indexOf("{"),b=c.lastIndexOf("}");if(a<0||b<0)return null;try{const o=JSON.parse(c.slice(a,b+1));return Array.isArray(o.partes)&&o.partes.length?o:null}catch(e){return null}}
+function interview(){return `Entrevista:
+Nome: ${A.nome}
+App pra: ${A.para}
+${NEG()?"Negócio":"Quer organizar"}: ${A.ramo}
+${NEG()?"Como os clientes chegam e volume":"Rotina"}: ${A.clientes}
+Usa hoje pra se organizar: ${A.usa}
+Maior dor: ${A.dor}
+O que sonha que o app faça sozinho: ${A.sonho}
+Nome do app: ${A.nome_app}`}
+async function design(extra){busy=true;chips.innerHTML="";
+  const steps=["Lendo tudo o que você me contou...","Escolhendo as partes certas pra sua rotina...","Ligando uma parte na outra...","Pintando com a sua cor..."];
+  const d=add("","bot");let i=0;const paint=()=>{d.innerHTML=`<span class="dots"><i></i><i></i><i></i></span> ${esc(steps[i%steps.length])}`;i++};paint();const iv=setInterval(paint,2600);
+  const prompt=interview()+(extra?`\n\nApp que você já desenhou:\n${JSON.stringify(last)}\n\nO cliente pediu esta mudança: ${extra}\nRefaça o app inteiro com a mudança.`:"");
+  let o=await callAI(prompt,()=>{steps.splice(0,steps.length,"Muita gente pedindo app agora 😅 Já já fica pronto...","Caprichando em cada parte...","Quase lá...")});
+  clearInterval(iv);d.remove();busy=false;
+  if(!o)o=localDesign(extra);
+  o.nome_app=o.nome_app||A.nome_app;o.cor=A.cor||"#3550ff";o.para=o.para||A.para;
+  if(o.mensagem)add(o.mensagem,"bot");
+  show(o)}
+const LIB={agenda:["Agenda online","clientes marcam sozinhos, 24 horas","📅",/agend|hor[aá]rio|marc|falt|sal[aã]o|studio|barbe|consult/],lembrete:["Lembrete automático","avisa o cliente antes e evita falta","💬",/falt|esquec|n[aã]o aparec|whats|lembr/],caixa:["Caixa do dia","quanto entrou, saiu e o lucro","💰",/lucr|dinheir|caix|conta|pix|pag|financ|gast/],clientes:["Meus clientes","histórico e aniversário de cada um","👥",/client|cadastr|aniver|caderno/],fidel:["Fidelidade","cliente que volta ganha prêmio","⭐",/volt|fideli|promo|indica/],catalogo:["Catálogo","produtos com foto e preço","🛍️",/loja|produt|vend|cat[aá]logo|roupa/],pedidos:["Pedidos","pedido chega pronto no WhatsApp","🧾",/pedid|lanch|encomend|deliver|vend/],estoque:["Estoque","avisa o que está acabando","📦",/estoq|acab|material|mercador/],metas:["Metas do mês","acompanha o que você quer alcançar","🎯",/meta|h[aá]bit|rotin|foco|organiz/],dieta:["Dieta e água","refeições e copos do dia","💧",/dieta|sa[uú]de|peso|[aá]gua|comer/],vicio:["Dias firme","conta os dias e o dinheiro guardado","🌱",/v[ií]cio|beber|fumar|parar/]};
+function localDesign(extra){const t=[A.ramo,A.clientes,A.usa,A.dor,A.sonho,extra].join(" ").toLowerCase();let ks=Object.keys(LIB).filter(k=>LIB[k][3].test(t));
+  if(ks.length<3)ks=[...new Set(ks.concat(NEG()?["agenda","caixa","clientes"]:["metas","caixa","dieta"]))];ks=ks.slice(0,6);
+  const n=ks.length;return{mensagem:`Pelo que você contou, ${A.nome.split(" ")[0]}, o que mais pesa hoje é: ${A.dor.split(".")[0].toLowerCase()}. Desenhei o seu app começando por isso.`,nome_app:A.nome_app,para:A.para,resumo:`${A.nome} quer ${A.sonho.toLowerCase()}.`,
+    partes:ks.map(k=>({nome:LIB[k][0],faz:LIB[k][1],icone:LIB[k][2]})),conexoes:ks.includes("agenda")&&ks.includes("caixa")?["Cliente marca na Agenda e o Caixa já espera o pagamento","Atendimento feito entra sozinho no Caixa do dia"]:[],primeiro_passo:`Começar por ${LIB[ks[0]][0]}, que resolve a sua maior dor.`,plano:n<=2?"Essencial":n<=5?"Profissional":"Exclusivo"}}
 
-function parseApp(t){const m=t.match(/<APP>([\s\S]*?)(<\/APP>|$)/i);if(!m)return null;
-  let raw=m[1].trim().replace(/^```(json)?/,"").replace(/```$/,"");const a=raw.indexOf("{"),b=raw.lastIndexOf("}");if(a<0||b<0)return null;
-  try{const o=JSON.parse(raw.slice(a,b+1));if(!Array.isArray(o.partes)||!o.partes.length)return null;return o}catch(e){return null}}
-function clean(t){return t.replace(/<APP>[\s\S]*?(<\/APP>|$)/i,"").replace(/\[\[[^\]]*\]\]/g,"").replace(/\*\*/g,"").trim()}
-function opts(t){const m=t.match(/\[\[([^\]]+)\]\]/);return m?m[1].split("|").map(s=>s.trim()).filter(Boolean).slice(0,4):[]}
-function planFor(a){let p=a.plano;if(!PLANS[p]){const n=a.partes.length;p=n<=2?"Essencial":n<=5?"Profissional":"Exclusivo"}return p}
-function okColor(c){return /^#[0-9a-f]{6}$/i.test(c||"")?c:"#3550ff"}
-function initials(n){const w=String(n||"Meu App").split(/\s+/).filter(x=>x.length>2);return((w[0]||n||"A")[0]+(w[1]?w[1][0]:"")).toUpperCase()}
-
-function showPreview(a){lastApp=a;const p=planFor(a),pr=PLANS[p],cor=okColor(a.cor);
-  const html=`<div class="pv-card" style="--ac:${cor}">
+/* ---------- prévia ---------- */
+function planFor(o){let p=o.plano;if(!PLANS[p]){const n=o.partes.length;p=n<=2?"Essencial":n<=5?"Profissional":"Exclusivo"}return p}
+function initials(n){const w=String(n||"App").split(/\s+/).filter(x=>x.length>2);return((w[0]||n||"A")[0]+(w[1]?w[1][0]:"")).toUpperCase()}
+function show(o){last=o;const p=planFor(o),pr=PLANS[p];
+  const html=`<div class="pv-card" style="--ac:${o.cor}">
     <div class="pv-tag">PRÉVIA DO SEU APP</div>
     <div class="pv-phone"><div class="pv-notch"></div>
-      <div class="apphead"><div class="lg">${esc(initials(a.nome_app))}</div><div><small>${esc(a.para==="vida pessoal"?"Seu app pessoal":"Seu app")}</small><b>${esc(a.nome_app||"Meu App")}</b></div></div>
-      <div class="pv-grid">${a.partes.slice(0,8).map((x,i)=>`<div class="pv-tile" style="animation-delay:${i*.12}s"><span>${esc(x.icone||"✦")}</span><b>${esc(x.nome)}</b><small>${esc(x.faz||"")}</small></div>`).join("")}</div>
+      <div class="apphead"><div class="lg">${esc(initials(o.nome_app))}</div><div><small>${esc(o.para==="vida pessoal"?"Seu app pessoal":"Seu app")}</small><b>${esc(o.nome_app)}</b></div></div>
+      <div class="pv-grid">${o.partes.slice(0,8).map((x,i)=>`<div class="pv-tile" style="animation-delay:${i*.12}s"><span>${esc(x.icone||"✦")}</span><b>${esc(x.nome)}</b><small>${esc(x.faz||"")}</small></div>`).join("")}</div>
     </div>
-    ${a.resumo?`<p class="pv-sum">${esc(a.resumo)}</p>`:""}
-    ${Array.isArray(a.conexoes)&&a.conexoes.length?`<div class="pv-con"><b>As partes conversam</b>${a.conexoes.slice(0,3).map(c=>`<span>↳ ${esc(c)}</span>`).join("")}</div>`:""}
+    ${o.resumo?`<p class="pv-sum">${esc(o.resumo)}</p>`:""}
+    ${Array.isArray(o.conexoes)&&o.conexoes.length?`<div class="pv-con"><b>As partes conversam</b>${o.conexoes.slice(0,3).map(c=>`<span>↳ ${esc(c)}</span>`).join("")}</div>`:""}
+    ${o.primeiro_passo?`<div class="pv-con"><b>Primeiro passo</b><span>${esc(o.primeiro_passo)}</span></div>`:""}
     <div class="pv-plan"><b>Plano ${p}</b><span>${pr[2]}</span><span>Montagem ${pr[0]} pra Cliente Fundador · depois ${pr[1]}/mês</span><span>Garantia de 30 dias</span></div>
   </div>`;
   const card=add(html,"bot sum",true);setTimeout(()=>{log.scrollTop=card.offsetTop-10},60);
-  setChips([{t:"Gostei! Enviar no WhatsApp ✓",go:1,f:()=>sendWhats(a)},{t:"Quero mudar algo",f:()=>{chips.innerHTML="";add("O que você quer mudar? Pode falar do seu jeito.","bot");inp.focus()}},{t:"Recomeçar",f:start}]);
-  fillForm(a)}
-
-function sendWhats(a){const p=planFor(a);
-  const txt=`Oi! Conversei com a LucIA no site e quero meu app.\n\nApp: ${a.nome_app}\nPra: ${a.para}\n${a.resumo||""}\n\nPartes:\n${a.partes.map(x=>`- ${x.nome}: ${x.faz||""}`).join("\n")}\n\nPlano sugerido: ${p}\nQuero uma vaga de Cliente Fundador.`;
-  if(W)window.open("https://wa.me/"+W+"?text="+encodeURIComponent(txt),"_blank","noopener");
-  else navigator.clipboard&&navigator.clipboard.writeText(txt)}
-
-function fillForm(a){try{document.getElementById("nome").value=a.nome_app||"";document.getElementById("negocio").value=a.nome_app||"";
+  setTimeout(()=>bot("Gostou? Se quiser, eu mudo o que você quiser antes de mandar.",()=>setChips([
+    {t:"Gostei! Enviar no WhatsApp ✓",go:1,f:()=>whats(o)},
+    {t:"Quero mudar algo",f:()=>{chips.innerHTML="";ask("O que você quer mudar? Pode falar do seu jeito.",null,v=>design(v))}},
+    {t:"Recomeçar",f:start}])),900);
+  fill(o)}
+function whats(o){const p=planFor(o);
+  const txt=`Oi! Conversei com a LucIA no site e quero meu app.\n\nNome: ${A.nome}\nApp: ${o.nome_app}\nPra: ${o.para}${A.ramo?"\n"+(NEG()?"Negócio":"Quero organizar")+": "+A.ramo:""}\nMaior dor: ${A.dor}\n\nPartes do app:\n${o.partes.map(x=>`- ${x.nome}: ${x.faz||""}`).join("\n")}\n\nPlano sugerido: ${p}\nCor: ${A.corNome||""}\nQuero uma vaga de Cliente Fundador.`;
+  if(W)window.open("https://wa.me/"+W+"?text="+encodeURIComponent(txt),"_blank","noopener");else{navigator.clipboard&&navigator.clipboard.writeText(txt);add("Pedido copiado. É só colar na conversa com a gente.","bot")}}
+function fill(o){try{document.getElementById("nome").value=A.nome||"";document.getElementById("negocio").value=o.nome_app||"";
   ["p-agenda","p-fin","p-est","p-metas","p-dieta"].forEach(id=>document.getElementById(id).checked=false);
-  document.getElementById("outro").value=a.partes.map(x=>x.nome).join(", ");document.getElementById("nome").dispatchEvent(new Event("input",{bubbles:true}))}catch(e){}}
+  document.getElementById("outro").value=o.partes.map(x=>x.nome).join(", ");document.getElementById("nome").dispatchEvent(new Event("input",{bubbles:true}))}catch(e){}}
 
-async function send(text){if(busy||!text)return;chips.innerHTML="";add(text,"me");
-  if(mode!=="ai")return fbInput(text);
-  msgs.push({role:"user",content:text});busy=true;const t=typing();
-  const r=await callAI();t.remove();busy=false;
-  if(!r){mode="fb";add("Minha conexão com a IA oscilou agora. Vou continuar no modo rápido pra não te deixar esperando 🙂","bot");return fbResume(text)}
-  msgs.push({role:"assistant",content:r});
-  const app=parseApp(r),txt=clean(r);
-  if(txt)add(txt,"bot");
-  if(app)return showPreview(app);
-  const o=opts(r);if(o.length)optChips(o);inp.focus()}
-
-function start(){log.innerHTML="";chips.innerHTML="";msgs=[];mode="ai";lastApp=null;fb.step=0;
-  const hi="Oi! Eu sou a LucIA 👋 Vou te fazer umas perguntas rápidas pra entender sua rotina e, no fim, te mostro uma prévia do seu app. Pra começar, como posso te chamar?";
-  const t=typing();setTimeout(()=>{t.remove();add(hi,"bot");msgs.push({role:"assistant",content:hi});inp.focus()},700)}
-
-/* ---------- modo rápido (sem IA) ---------- */
-const MODS={agenda:["Agenda online","📅",["agenda","horario","horário","marcar","agend","falta","consulta","atendimento"]],lembrete:["Lembretes no WhatsApp","💬",["esquece","lembr","whats","mensagem","responder","confirm"]],financas:["Caixa e finanças","💰",["dinheiro","caixa","conta","lucro","gasto","pagamento","pix","fiado","cobr","financ"]],estoque:["Estoque","📦",["estoque","produto","acaba","material","mercadoria"]],vendas:["Catálogo e pedidos","🛍️",["vend","pedido","catalogo","catálogo","loja","encomenda","delivery","entrega","cardapio","cardápio"]],clientes:["Clientes e fidelidade","⭐",["fideli","cadastro","aniversar","indica","promo"]],metas:["Metas e hábitos","🎯",["meta","habito","hábito","foco","organiz","rotina"]],dieta:["Dieta e água","💧",["dieta","peso","agua","água","comer","emagre","academia","treino"]],parar:["Parar de beber","🌱",["beber","bebida","fumar","cigarro","vicio","vício"]]};
-const fb={step:0,nome:"",ramo:"",dor:""};
-function fbResume(last){if(!fb.nome){fb.nome=(msgs.find(m=>m.role==="user")||{content:last}).content.split(/\s+/)[0]}fb.step=2;add(`${fb.nome}, qual é o seu negócio ou a rotina que você quer organizar?`,"bot")}
-function fbInput(v){
-  if(fb.step===2){fb.ramo=v;fb.step=3;add("Entendi! E o que mais te dá dor de cabeça no dia a dia? Pode desabafar 😅","bot");return}
-  if(fb.step===3){fb.dor=v;const t=(fb.ramo+" "+fb.dor).toLowerCase();let ks=Object.keys(MODS).filter(k=>MODS[k][2].some(w=>t.includes(w)));
-    if(/sal[aã]o|studio|est[uú]dio|barbe|sobrancel|unha|cabel|est[eé]tica|cl[ií]nica/.test(t))ks.push("agenda","lembrete");
-    ks=[...new Set(ks)];if(ks.length<2)ks=[...new Set(ks.concat(["agenda","financas"]))];
-    showPreview({nome_app:fb.ramo.length<24?fb.ramo.replace(/^./,c=>c.toUpperCase()):"Meu App",cor:"#3550ff",para:"negócio",resumo:`App pra ${fb.nome} resolver: ${fb.dor}`,partes:ks.slice(0,6).map(k=>({nome:MODS[k][0],faz:"",icone:MODS[k][1]})),conexoes:[]});fb.step=4;return}
-  add("Anotei! A gente ajusta tudo isso na conversa pelo WhatsApp.","bot")}
-
-form.addEventListener("submit",e=>{e.preventDefault();const v=inp.value.trim();if(!v)return;inp.value="";send(v)});
+form.addEventListener("submit",e=>{e.preventDefault();const v=inp.value.trim();if(!v)return;if(!waitFn){add(v,"me");inp.value="";return bot(busy?"Só um instante, estou terminando o seu app 🙂":"Toque numa das opções aqui embaixo 🙂")}inp.value="";answer(v)});
 function open(){box.classList.add("open");fab.classList.add("hide");if(!started){started=true;start()}setTimeout(()=>inp.focus(),300)}
 fab.onclick=open;document.getElementById("ai-x").onclick=()=>{box.classList.remove("open");fab.classList.remove("hide")};
 document.querySelectorAll('a[href="#pedido"]').forEach(a=>{if(a.closest(".plan")||a.closest(".dossie"))return;a.addEventListener("click",e=>{e.preventDefault();open()})});
