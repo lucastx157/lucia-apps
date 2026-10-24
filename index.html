@@ -563,6 +563,18 @@ body{background-color:var(--bg)}
     </div>
   </section>
 
+  <!-- CAMINHONEIRO -->
+  <section class="sec" id="trecho">
+    <div class="sec-head rv"><span class="label">Do trecho pro app</span><h2>Caminhoneiro também precisa de app</h2><p>Quem vive na estrada controla frete, gasto e manutenção de cabeça ou no caderno. Não precisa ser assim. O seu app do trecho junta tudo num lugar só.</p></div>
+    <div class="phases">
+      <div class="panel phase rv"><small>🚛 FRETES</small><h3>Quanto sobrou?</h3><p>Cada frete com valor, se já pagou e quanto sobrou no fim do mês.</p></div>
+      <div class="panel phase rv"><small>⛽ GASTOS</small><h3>Nota na foto</h3><p>Diesel, pedágio e comida. Tira foto da nota e o app soma sozinho.</p></div>
+      <div class="panel phase rv"><small>🔧 LEMBRETES</small><h3>Antes de vencer</h3><p>Óleo, pneu, revisão, tacógrafo e documentos. O app avisa antes.</p></div>
+      <div class="panel phase rv"><small>🗺️ ROTAS</small><h3>Paradas salvas</h3><p>Posto bom, comida caseira e pátio seguro pra dormir, sempre à mão.</p></div>
+    </div>
+    <div class="btns rv"><a class="btn main" href="#previa" id="go-truck">Montar o app do meu trecho ▸</a></div>
+  </section>
+
   <!-- AS PARTES CONVERSAM -->
   <section class="sec" id="conversam">
     <div class="sec-head">
@@ -1111,6 +1123,7 @@ const TYPES={
  studio:{t:"Studio de beleza",name:"Studio Bella",hi:"Bem-vinda ao",base:["agenda","clientes","caixa"],extra:["lembrete","estoque","fidel","metas"]},
  loja:{t:"Loja",name:"Loja da Ana",hi:"Bem-vindo à",base:["catalogo","pedidos","estoque"],extra:["caixa","clientes","fidel","entrega"]},
  lanche:{t:"Lanchonete",name:"Lanche do Zé",hi:"Bem-vindo ao",base:["cardapio","pedidos","caixa"],extra:["entrega","estoque","fidel"]},
+ caminhao:{t:"Caminhoneiro",name:"Meu Trecho",hi:"Boa viagem! Esse é o",base:["fretes","gastos","lembretes","rotas"],extra:["manut","jornada","docs","familia"]},
  pessoal:{t:"Vida pessoal",name:"Meu App",hi:"Bom dia! Esse é o",base:["metas","agua","financas"],extra:["habitos","parar","treino","leitura"]}
 };
 const M={
@@ -1130,6 +1143,14 @@ const M={
  habitos:{n:"Hábitos",s:"6 dias seguidos",i:"H",c:"#a387ff",rows:[["Acordar 6h","🔥 6 dias"],["Ler 10 min","🔥 3 dias"],["Sem celular na cama","🔥 2 dias"]]},
  parar:{n:"Parar de beber",s:"21 dias firme",i:"✦",c:"#2ee59d",rows:[["Dias sem beber","21"],["Dinheiro guardado","R$ 420"],["Próxima meta","30 dias"]]},
  treino:{n:"Treino",s:"3 de 4 na semana",i:"T",c:"#ff4d8d",rows:[["Segunda","✓ caminhada"],["Quarta","✓ academia"],["Sexta","✓ academia"],["Domingo","falta"]]},
+ fretes:{n:"Fretes",s:"R$ 4.850 no mês",i:"F",c:"#2ee59d",rows:[["Ovos · MG → SP","R$ 2.400 · pago ✓"],["Grãos · GO → MG","R$ 1.650 · a receber"],["Retorno · SP → MG","R$ 800 · pago ✓"],["Sobrou no mês","R$ 2.130"]]},
+ gastos:{n:"Gastos da viagem",s:"R$ 1.920 na viagem",i:"$",c:"#ff6a45",rows:[["Diesel","R$ 1.280 · foto da nota ✓"],["Pedágio","R$ 310"],["Comida","R$ 210"],["Borracharia","R$ 120"]]},
+ lembretes:{n:"Lembretes",s:"2 vencendo",i:"!",c:"#ffb340",rows:[["Troca de óleo","em 1.200 km ⚠"],["Pneus · rodízio","em 3.000 km"],["Tacógrafo","vence em 20 dias ⚠"],["Pagar parcela","dia 10"]]},
+ rotas:{n:"Rotas",s:"3 paradas salvas",i:"→",c:"#3fd2f0",rows:[["Posto bom de diesel","km 412 · BR-381"],["Restaurante caseiro","km 538"],["Pátio seguro p/ dormir","km 610"],["Balança aberta","km 702"]]},
+ manut:{n:"Manutenção",s:"última: 12 dias",i:"🔧",c:"#a387ff",rows:[["Embreagem","revisada ✓"],["Freios","ok ✓"],["Eixo elevatório","verificar ⚠"],["Próxima revisão","em 8.000 km"]]},
+ jornada:{n:"Jornada",s:"7h20 dirigindo hoje",i:"⏱",c:"#ff4d8d",rows:[["Dirigindo hoje","7h20"],["Próxima parada","em 40 min"],["Descanso feito","11h ✓"]]},
+ docs:{n:"Documentos",s:"tudo em dia",i:"D",c:"#8fa2ff",rows:[["CNH","vence em 2028"],["CRLV","em dia ✓"],["Seguro de carga","renova em 3 meses"]]},
+ familia:{n:"Família",s:"chego em 2 dias",i:"♥",c:"#ff4d8d",rows:[["Previsão de chegada","sexta, 18h"],["Mandar localização","1 toque"],["Aniversário da filha","dia 15 🎂"]]},
  leitura:{n:"Leitura",s:"livro 2 de 12",i:"✎",c:"#ffb340",rows:[["Lendo agora","pág. 84 de 210"],["Meta do ano","12 livros"]]}
 };
 const COLORS=["#3550ff","#ff4d8d","#2ee59d","#ffb340","#a387ff","#ff6a45"];
@@ -1137,7 +1158,7 @@ const st={type:"studio",color:COLORS[1],have:[],open:null,built:false,slot:null,
 const view=document.getElementById("view"),agent=document.getElementById("agent"),asks=document.getElementById("asks"),say=document.getElementById("say"),nm=document.getElementById("pv-name"),go=document.getElementById("lab-go");
 const esc=s=>String(s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
 const name=()=>nm.value.trim()||TYPES[st.type].name;
-const ini=()=>{const w=name().split(/\s+/).filter(x=>x.length>2);return((w[0]||name())[0]+(w[1]?w[1][0]:"")).toUpperCase()};
+const ini=()=>{const w=name().split(/\s+/).filter(x=>x.length>1&&!/^(de|do|da|dos|das|e)$/i.test(x));return((w[0]||name())[0]+(w[1]?w[1][0]:"")).toUpperCase()};
 const tc=document.getElementById("lab-type");
 tc.innerHTML=Object.entries(TYPES).map(([k,v])=>`<button data-t="${k}" aria-pressed="${k===st.type}">${v.t}</button>`).join("");
 tc.querySelectorAll("button").forEach(b=>b.onclick=()=>{const old=TYPES[st.type].name;st.type=b.dataset.t;if(!nm.value.trim()||nm.value===old)nm.value=TYPES[st.type].name;tc.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));build()});
@@ -1174,6 +1195,7 @@ function renderAsks(){const ex=TYPES[st.type].extra.filter(k=>!st.have.includes(
   asks.querySelectorAll("[data-a]").forEach(b=>b.onclick=()=>{asks.querySelectorAll("button").forEach(x=>x.disabled=true);const k=b.dataset.a;
     say.innerHTML=`<b>LucIA</b>Montando "${M[k].n}"...`;setTimeout(()=>{st.have.push(k);st.open=null;render();say.innerHTML=`<b>LucIA</b>"${M[k].n}" entrou no seu app e já conversa com as outras partes ✓`;renderAsks()},900)})}
 go.onclick=build;splash();
+const gt=document.getElementById("go-truck");if(gt)gt.addEventListener("click",()=>{const b=tc.querySelector('[data-t="caminhao"]');setTimeout(()=>b&&b.click(),500)});
 document.getElementById("lab-real").onclick=()=>{if(window.openLucIA)window.openLucIA()};
 new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){o.disconnect();setTimeout(()=>{if(!st.built)build()},400)}},{threshold:.45}).observe(document.querySelector("#previa .phone"));
 })();</script>
@@ -1196,6 +1218,7 @@ const SYS=`Você é a LucIA, designer de apps da LucIA Apps ("aplicativos reais 
 Planos: Essencial (até 2 partes, R$ 69/mês), Profissional (até 5 partes, lembrete no WhatsApp, R$ 119/mês), Exclusivo (partes ilimitadas e assistente com IA dentro do app, R$ 197/mês).
 Você recebe a entrevista de um cliente e desenha o app dele, sob medida pra rotina e as dores que ele contou. Responda APENAS com JSON válido, sem texto fora dele, neste formato:
 {"mensagem":"2 frases calorosas, em português do Brasil, mostrando que você entendeu a dor principal e como o app resolve","nome_app":"...","para":"negócio ou vida pessoal","resumo":"1 frase sobre a pessoa e o objetivo","partes":[{"nome":"até 3 palavras","faz":"o que resolve pra essa pessoa, até 10 palavras","icone":"1 emoji"}],"conexoes":["frase curta mostrando uma parte avisando outra"],"primeiro_passo":"qual parte montar primeiro e por quê, 1 frase","plano":"Essencial ou Profissional ou Exclusivo"}
+Se for caminhoneiro, pense em partes como fretes (quanto ganhou e quanto sobrou), gastos da viagem (diesel, pedágio, comida, com foto da nota), lembretes de manutenção e documentos, rotas e paradas salvas, jornada e descanso, e contato com a família.
 Regras: de 3 a 7 partes, específicas pra rotina dele (nada genérico), começando pela que resolve a maior dor. 2 ou 3 conexões. O plano segue a quantidade de partes (até 2 Essencial, até 5 Profissional, mais Exclusivo). Não prometa integração com banco nem nota fiscal. Linguagem simples, sem termo técnico.`;
 const log=document.getElementById("ai-log"),chips=document.getElementById("ai-chips"),form=document.getElementById("ai-f"),inp=document.getElementById("ai-in");
 const box=document.getElementById("ai"),fab=document.getElementById("ai-fab");
@@ -1210,6 +1233,7 @@ function setChips(list){chips.innerHTML="";list.forEach(c=>{const b=document.cre
 function ask(t,opts,fn){bot(t,()=>{if(opts&&opts.length)setChips(opts);waitFn=fn;inp.focus()})}
 function answer(v){if(busy||!waitFn)return;chips.innerHTML="";add(v,"me");const f=waitFn;waitFn=null;f(v.trim())}
 const NEG=()=>A.para!=="vida pessoal";
+const TRUCK=()=>/caminh|frete|carreta|truck|motorista/i.test(A.ramo||"");
 const ack=()=>pick(["Entendi.","Anotado.","Faz total sentido.","Boa!","Show."]);
 
 /* ---------- entrevista ---------- */
@@ -1217,9 +1241,10 @@ function start(){log.innerHTML="";chips.innerHTML="";A={};last=null;
   bot("Oi! Eu sou a LucIA 👋 Vou te fazer umas perguntas rápidas sobre a sua rotina. No fim, eu desenho o seu app e te mostro uma prévia antes de qualquer coisa.",()=>q1())}
 function q1(){ask("Pra começar, como posso te chamar?",null,v=>{A.nome=v.split(/\s+/).slice(0,2).join(" ").replace(/^./,c=>c.toUpperCase());q2()})}
 function q2(){ask(`Prazer, ${A.nome}! O seu app vai ser pra quê?`,["Meu negócio","Minha vida pessoal","Os dois"],v=>{A.para=/pessoal/i.test(v)?"vida pessoal":/dois/i.test(v)?"negócio e vida pessoal":"negócio";q3()})}
-function q3(){if(NEG())ask("Qual é o seu negócio?",["Salão ou studio","Barbearia","Loja","Lanchonete","Outro"],v=>{if(v==="Outro")return ask("Me conta qual é, do seu jeito:",null,w=>{A.ramo=w;q4()});A.ramo=v;q4()});
+function q3(){if(NEG())ask("Qual é o seu negócio?",["Caminhoneiro","Salão ou studio","Barbearia","Loja","Lanchonete","Outro"],v=>{if(v==="Outro")return ask("Me conta qual é, do seu jeito:",null,w=>{A.ramo=w;q4()});A.ramo=v;q4()});
   else ask("O que você mais quer organizar na sua vida?",["Dinheiro","Saúde e dieta","Rotina e hábitos","Parar um vício"],v=>{A.ramo=v;q4()})}
-function q4(){if(NEG())ask(`${ack()} E hoje, como os clientes chegam até você? Quantos você atende por dia, mais ou menos?`,["Pelo WhatsApp","Pelo Instagram","Na porta","Indicação"],v=>{A.clientes=v;if(!/\d/.test(v))return ask("E quantos clientes por dia, mais ou menos?",["Até 5","5 a 15","15 a 30","Mais de 30"],w=>{A.clientes+=", "+w+" por dia";q5()});q5()});
+function q4(){if(TRUCK())return ask(`${ack()} Caminhoneiro também merece app próprio! Você roda mais com frete fixo ou pega frete avulso? E faz quantas viagens por mês, mais ou menos?`,["Frete fixo","Frete avulso","Os dois"],v=>{A.clientes=v;q5()});
+  if(NEG())ask(`${ack()} E hoje, como os clientes chegam até você? Quantos você atende por dia, mais ou menos?`,["Pelo WhatsApp","Pelo Instagram","Na porta","Indicação"],v=>{A.clientes=v;if(!/\d/.test(v))return ask("E quantos clientes por dia, mais ou menos?",["Até 5","5 a 15","15 a 30","Mais de 30"],w=>{A.clientes+=", "+w+" por dia";q5()});q5()});
   else ask(`${ack()} Como é a sua rotina hoje? Me conta um dia normal seu.`,null,v=>{A.clientes=v;q5()})}
 function q5(){ask("O que você usa hoje pra se organizar?",["Caderno","WhatsApp","Planilha","Outro app","Nada, tudo de cabeça"],v=>{A.usa=v;q6()})}
 function q6(){ask(`${v6()} Agora a mais importante: o que mais te dá dor de cabeça hoje? Pode desabafar 😅`,null,v=>{A.dor=v;if(v.split(/\s+/).length<5)return ask("Me dá um exemplo de um dia em que isso aconteceu?",null,w=>{A.dor+=". Exemplo: "+w;q7()});q7()})}
@@ -1260,15 +1285,16 @@ async function design(extra){busy=true;chips.innerHTML="";
   o.nome_app=o.nome_app||A.nome_app;o.cor=A.cor||"#3550ff";o.para=o.para||A.para;
   if(o.mensagem)add(o.mensagem,"bot");
   show(o)}
-const LIB={agenda:["Agenda online","clientes marcam sozinhos, 24 horas","📅",/agend|hor[aá]rio|marc|falt|sal[aã]o|studio|barbe|consult/],lembrete:["Lembrete automático","avisa o cliente antes e evita falta","💬",/falt|esquec|n[aã]o aparec|whats|lembr/],caixa:["Caixa do dia","quanto entrou, saiu e o lucro","💰",/lucr|dinheir|caix|conta|pix|pag|financ|gast/],clientes:["Meus clientes","histórico e aniversário de cada um","👥",/client|cadastr|aniver|caderno/],fidel:["Fidelidade","cliente que volta ganha prêmio","⭐",/volt|fideli|promo|indica/],catalogo:["Catálogo","produtos com foto e preço","🛍️",/loja|produt|vend|cat[aá]logo|roupa/],pedidos:["Pedidos","pedido chega pronto no WhatsApp","🧾",/pedid|lanch|encomend|deliver|vend/],estoque:["Estoque","avisa o que está acabando","📦",/estoq|acab|material|mercador/],metas:["Metas do mês","acompanha o que você quer alcançar","🎯",/meta|h[aá]bit|rotin|foco|organiz/],dieta:["Dieta e água","refeições e copos do dia","💧",/dieta|sa[uú]de|peso|[aá]gua|comer/],vicio:["Dias firme","conta os dias e o dinheiro guardado","🌱",/v[ií]cio|beber|fumar|parar/]};
+const LIB={fretes:["Fretes","quanto ganhou e quanto sobrou","🚛",/caminh|frete|carreta|viagem/],gastos:["Gastos da viagem","diesel, pedágio e comida com foto da nota","⛽",/caminh|diesel|ped[aá]gio|gasto|viagem/],manut:["Lembretes do caminhão","óleo, pneu e revisão antes de vencer","🔧",/caminh|manuten|[oó]leo|pneu|revis|quebr/],rotas:["Rotas e paradas","postos, comida e pátio seguro salvos","🗺️",/caminh|rota|parada|estrada|p[aá]tio/],agenda:["Agenda online","clientes marcam sozinhos, 24 horas","📅",/agend|hor[aá]rio|marc|falt|sal[aã]o|studio|barbe|consult/],lembrete:["Lembrete automático","avisa o cliente antes e evita falta","💬",/falt|esquec|n[aã]o aparec|whats|lembr/],caixa:["Caixa do dia","quanto entrou, saiu e o lucro","💰",/lucr|dinheir|caix|conta|pix|pag|financ|gast/],clientes:["Meus clientes","histórico e aniversário de cada um","👥",/client|cadastr|aniver|caderno/],fidel:["Fidelidade","cliente que volta ganha prêmio","⭐",/volt|fideli|promo|indica/],catalogo:["Catálogo","produtos com foto e preço","🛍️",/loja|produt|vend|cat[aá]logo|roupa/],pedidos:["Pedidos","pedido chega pronto no WhatsApp","🧾",/pedid|lanch|encomend|deliver|vend/],estoque:["Estoque","avisa o que está acabando","📦",/estoq|acab|material|mercador/],metas:["Metas do mês","acompanha o que você quer alcançar","🎯",/meta|h[aá]bit|rotin|foco|organiz/],dieta:["Dieta e água","refeições e copos do dia","💧",/dieta|sa[uú]de|peso|[aá]gua|comer/],vicio:["Dias firme","conta os dias e o dinheiro guardado","🌱",/v[ií]cio|beber|fumar|parar/]};
 function localDesign(extra){const t=[A.ramo,A.clientes,A.usa,A.dor,A.sonho,extra].join(" ").toLowerCase();let ks=Object.keys(LIB).filter(k=>LIB[k][3].test(t));
+  if(TRUCK())ks=[...new Set(["fretes","gastos","manut","rotas"].concat(ks.filter(k=>!["agenda","lembrete","clientes","fidel"].includes(k))))];
   if(ks.length<3)ks=[...new Set(ks.concat(NEG()?["agenda","caixa","clientes"]:["metas","caixa","dieta"]))];ks=ks.slice(0,6);
   const n=ks.length;return{mensagem:`Pelo que você contou, ${A.nome.split(" ")[0]}, o que mais pesa hoje é: ${A.dor.split(".")[0].toLowerCase()}. Desenhei o seu app começando por isso.`,nome_app:A.nome_app,para:A.para,resumo:`${A.nome} quer ${A.sonho.toLowerCase()}.`,
     partes:ks.map(k=>({nome:LIB[k][0],faz:LIB[k][1],icone:LIB[k][2]})),conexoes:ks.includes("agenda")&&ks.includes("caixa")?["Cliente marca na Agenda e o Caixa já espera o pagamento","Atendimento feito entra sozinho no Caixa do dia"]:[],primeiro_passo:`Começar por ${LIB[ks[0]][0]}, que resolve a sua maior dor.`,plano:n<=2?"Essencial":n<=5?"Profissional":"Exclusivo"}}
 
 /* ---------- prévia ---------- */
 function planFor(o){let p=o.plano;if(!PLANS[p]){const n=o.partes.length;p=n<=2?"Essencial":n<=5?"Profissional":"Exclusivo"}return p}
-function initials(n){const w=String(n||"App").split(/\s+/).filter(x=>x.length>2);return((w[0]||n||"A")[0]+(w[1]?w[1][0]:"")).toUpperCase()}
+function initials(n){const w=String(n||"App").split(/\s+/).filter(x=>x.length>1&&!/^(de|do|da|dos|das|e)$/i.test(x));return((w[0]||n||"A")[0]+(w[1]?w[1][0]:"")).toUpperCase()}
 function show(o){last=o;const p=planFor(o),pr=PLANS[p];
   const html=`<div class="pv-card" style="--ac:${o.cor}">
     <div class="pv-tag">PRÉVIA DO SEU APP</div>
