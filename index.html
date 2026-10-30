@@ -176,6 +176,21 @@ html,body{max-width:100%;overflow-x:hidden;overflow-x:clip}
 .plan ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:.93rem;flex:1}
 .plan .btn{text-align:center}
 @media (max-width:860px){.plans{grid-template-columns:minmax(0,1fr);max-width:520px}.plan.hot{order:-1}}
+.plan .who{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent)}
+.plan h3{margin:-6px 0 0;font-size:1.5rem}
+.plan .save{align-self:flex-start;background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok);font-weight:600;font-size:.85rem;padding:4px 10px;border-radius:999px}
+.plan .pitch{margin:0;font-size:.95rem;line-height:1.5}
+.incl{max-width:1040px;margin:16px auto 0}
+.incl h3{margin:0 0 14px;font-size:1.2rem}
+.incl ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.incl li{display:flex;flex-direction:column;gap:4px;border-left:3px solid var(--accent);padding:2px 0 2px 12px}
+.incl li span{font-size:.9rem;color:var(--muted);line-height:1.45}
+.steps-plan{list-style:none;max-width:1040px;margin:16px auto 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.steps-plan li{display:flex;flex-direction:column;gap:4px;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:14px}
+.steps-plan li span{font-size:.9rem;color:var(--muted)}
+@media (max-width:860px){.incl ul{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.steps-plan{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media (max-width:520px){.incl ul,.steps-plan{grid-template-columns:minmax(0,1fr)}}
+
 
 /* pedido */
 .build{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -730,18 +745,47 @@ body{background-color:var(--bg)}
   <section class="sec" id="planos">
     <div class="sec-head">
       <span class="label">Planos</span>
-      <h2>Um app feito só pra você</h2>
-      <p>Cada app é desenhado do zero com você, não é modelo pronto. A montagem é paga uma vez. A mensalidade mantém tudo no ar, com suporte direto, ajustes e evolução contínua.</p>
+      <h2>Comece pagando pouco. Cresça todo mês.</h2>
+      <p>A montagem custa quase nada, porque a gente não quer só te entregar um app: quer ficar do seu lado. Todo mês o seu app recebe ajustes, produtos novos e melhorias, e você fala direto com quem fez ele, pelo WhatsApp.</p>
     </div>
     <div class="plans">
-      <article class="panel plan"><h3>Essencial</h3><div class="price"><strong class="num">R$ 197<small>/mês</small></strong><span>Montagem R$ 2.997 · pagamento único</span></div>
-        <ul><li>App sob medida com até 3 partes</li><li>Seu nome, suas fotos, suas cores e sua história</li><li>Pedidos e avisos direto no WhatsApp</li><li>Hospedagem e manutenção inclusas</li><li>Suporte direto pelo WhatsApp</li></ul><a class="btn" href="#pedido" data-plan="Essencial">Quero o Essencial</a></article>
-      <article class="panel plan hot"><h3>Profissional</h3><div class="price"><strong class="num">R$ 297<small>/mês</small></strong><span>Montagem R$ 4.497 · pagamento único</span></div>
-        <ul><li>App sob medida com até 6 partes conversando entre si</li><li>Painel pra você mudar preços, fotos e produtos</li><li>Pedidos e avisos direto no WhatsApp</li><li>Domínio próprio, hospedagem e manutenção inclusos</li><li>Ajustes sempre que precisar</li></ul><a class="btn main" href="#pedido" data-plan="Profissional">Quero o Profissional</a></article>
-      <article class="panel plan"><h3>Completo</h3><div class="price"><strong class="num">R$ 397<small>/mês</small></strong><span>Montagem R$ 6.997 · pagamento único</span></div>
-        <ul><li>Tudo o que tem no Profissional</li><li>Partes sem limite: o app cresce junto com você</li><li>Partes novas sempre que precisar</li><li>Atendimento prioritário</li></ul><a class="btn" href="#pedido" data-plan="Completo">Quero o Completo</a></article>
+      <article class="panel plan"><span class="who">Pra testar sem compromisso</span><h3>Mensal</h3>
+        <div class="price"><strong class="num">R$ 297<small>/mês</small></strong><span>Montagem R$ 997 · sem fidelidade</span></div>
+        <p class="pitch">Quer ver o app funcionando antes de decidir? Começa no mensal e cancela quando quiser.</p>
+        <ul><li>Tudo o que vem em todos os planos (veja abaixo)</li><li>Cancela quando quiser, sem multa</li><li>Pode mudar pro Semestral ou Anual a qualquer momento</li></ul>
+        <a class="btn" href="#pedido" data-plan="Mensal">Quero o Mensal</a></article>
+      <article class="panel plan"><span class="who">Pra temporada de vendas</span><h3>Semestral</h3>
+        <div class="price"><strong class="num">R$ 247<small>/mês</small></strong><span>Montagem R$ 497 · compromisso de 6 meses</span></div>
+        <span class="save">Economia de R$ 800 em 6 meses</span>
+        <p class="pitch">Ideal pra quem tem época forte, como Natal, Páscoa, Dia das Mães ou volta às aulas.</p>
+        <ul><li>Tudo o que vem em todos os planos</li><li>Montagem pela metade do preço</li><li>1 parte nova no app sem custo no 3º mês</li><li>Depois dos 6 meses, segue mês a mês no mesmo valor</li></ul>
+        <a class="btn" href="#pedido" data-plan="Semestral">Quero o Semestral</a></article>
+      <article class="panel plan hot"><span class="who">Pra quem quer crescer de verdade</span><h3>Anual</h3>
+        <div class="price"><strong class="num">R$ 197<small>/mês</small></strong><span>Montagem só R$ 197 · compromisso de 12 meses</span></div>
+        <span class="save">Economia de R$ 2.000 no ano</span>
+        <p class="pitch">O menor preço. O app vira o braço direito do seu negócio e evolui junto com você o ano inteiro.</p>
+        <ul><li>Tudo o que vem em todos os planos</li><li>Montagem quase de graça</li><li>1 parte nova no app sem custo a cada 3 meses</li><li>Atendimento prioritário no WhatsApp</li><li>Revisão do app a cada 3 meses: o que vendeu, o que melhorar</li></ul>
+        <a class="btn main" href="#pedido" data-plan="Anual">Quero o Anual</a></article>
     </div>
-    <p style="text-align:center;color:var(--muted);margin:14px auto 0;max-width:60ch">Sem fidelidade em nenhum plano. A mensalidade cobre hospedagem, manutenção, suporte e ajustes.</p>
+    <div class="panel incl">
+      <h3>Tudo isso vem em todos os planos</h3>
+      <ul>
+        <li><b>App com a sua cara</b><span>Seu nome, sua logo, suas fotos, suas cores e sua história. Nada de modelo pronto.</span></li>
+        <li><b>Pedidos no WhatsApp</b><span>O cliente escolhe no app e o pedido chega pronto no seu WhatsApp.</span></li>
+        <li><b>Painel fácil</b><span>Você muda preço, foto e produto pelo celular, sem depender de ninguém.</span></li>
+        <li><b>Funciona em qualquer celular</b><span>iPhone ou Android. O cliente abre pelo link ou coloca o ícone na tela.</span></li>
+        <li><b>Hospedagem e manutenção</b><span>O app fica no ar, rápido e seguro. Se algo der problema, a gente resolve.</span></li>
+        <li><b>Suporte de gente de verdade</b><span>Você fala direto com quem fez o seu app, pelo WhatsApp. Sem robô e sem central.</span></li>
+        <li><b>Ajustes todo mês</b><span>Mudou o cardápio, a promoção ou o horário? A gente atualiza pra você.</span></li>
+        <li><b>Pronto em poucos dias</b><span>Você vê o app antes de ir pro ar e só publica quando gostar.</span></li>
+      </ul>
+    </div>
+    <ol class="steps-plan">
+      <li><b>1. Conversa</b><span>Você conta como é o seu negócio e o que precisa.</span></li>
+      <li><b>2. Montagem</b><span>Em poucos dias, o app fica pronto pra você ver.</span></li>
+      <li><b>3. No ar</b><span>Você aprova, divulga o link e começa a receber pedidos.</span></li>
+      <li><b>4. Evolução</b><span>Todo mês o app melhora com o que seus clientes pedem.</span></li>
+    </ol>
   </section>
 
   <!-- FAQ -->
@@ -753,7 +797,7 @@ body{background-color:var(--bg)}
       <details><summary>Em quanto tempo fica pronto?</summary><p>A primeira parte fica pronta em poucos dias depois da nossa conversa. Você vê antes de publicar.</p></details>
       <details><summary>E se eu quiser uma parte que ninguém tem?</summary><p>É pra isso que o LucIA Apps existe. Você explica o que precisa e a gente monta do seu jeito.</p></details>
       <details><summary>Quem me ajuda se der problema?</summary><p>Suporte direto pelo WhatsApp com a gente, não com robô de central.</p></details>
-      <details><summary>Posso cancelar?</summary><p>Pode, sem multa e sem fidelidade. A montagem é paga uma vez e a mensalidade só continua enquanto você quiser o app no ar. Se cancelar, você leva seus dados numa planilha.</p></details>
+      <details><summary>Posso cancelar?</summary><p>No plano Mensal, pode cancelar quando quiser, sem multa. No Semestral e no Anual existe um compromisso de 6 ou 12 meses, e é por isso que a montagem e a mensalidade saem bem mais baratas. Depois desse prazo, o plano segue mês a mês no mesmo valor e você pode cancelar quando quiser. Em qualquer caso, você leva seus dados numa planilha.</p></details>
     </div>
   </section>
 
@@ -884,7 +928,7 @@ function order(){
   const nome=document.getElementById("nome").value.trim(),neg=document.getElementById("negocio").value.trim();
   const mods=pick.filter(i=>i.type==="checkbox"&&i.checked&&i.id!=="p-fund").map(i=>"- "+i.value);
   const o=document.getElementById("outro").value.trim();if(o)mods.push("- "+o);
-  const n=mods.length,pl=plano||"Profissional";
+  const n=mods.length,pl=plano||"Anual";
   const fund=false;
   out.textContent=`Oi! Quero meu app no LucIA Apps.\n\nNome: ${nome||"(seu nome)"}${neg?"\nNegócio: "+neg:""}\n\nO que eu quero no app:\n${n?mods.join("\n"):"- (marque ao lado)"}\n\nPlano: ${n?pl:"-"}`;
   if(WHATS){send.hidden=false;send.href="https://wa.me/"+WHATS+"?text="+encodeURIComponent(out.textContent)}
@@ -1205,14 +1249,14 @@ new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){o.disconnect();setTim
    desenha o app sob medida. Se a IA não responder, um gerador local assume. */
 const AI_URL="https://text.pollinations.ai/openai";
 const W=typeof WHATS!=="undefined"?WHATS:"";
-const PLANS={Essencial:["R$ 2.997","R$ 197","até 3 partes, sem fidelidade"],Profissional:["R$ 4.497","R$ 297","até 6 partes, sem fidelidade"],Completo:["R$ 6.997","R$ 397","partes sem limite, sem fidelidade"]};
+const PLANS={Mensal:["R$ 997","R$ 297","sem fidelidade"],Semestral:["R$ 497","R$ 247","compromisso de 6 meses"],Anual:["R$ 197","R$ 197","compromisso de 12 meses"]};
 const COLORS={"Azul":"#3550ff","Rosa":"#ff4d8d","Verde":"#14a06a","Dourado":"#c9962b","Roxo":"#7048e8","Laranja":"#f0603a","Preto e dourado":"#2a2a2a"};
 const SYS=`Você é a LucIA, designer de apps da LucIA Apps ("aplicativos reais para pessoas normais"). A LucIA Apps cria um app próprio pra cada pessoa ou negócio, montado com IA, conferido por uma pessoa, que funciona no celular e cresce por partes que conversam entre si. Conecta com WhatsApp, Pix, Instagram e Google Agenda.
-Planos (todos sem fidelidade, montagem paga uma vez): Essencial (até 3 partes, montagem R$ 2.997 + R$ 197/mês), Profissional (até 6 partes, montagem R$ 4.497 + R$ 297/mês, o mais escolhido) e Completo (partes sem limite, montagem R$ 6.997 + R$ 397/mês).
+Planos: Anual (montagem R$ 197 + R$ 197/mês, compromisso de 12 meses, o recomendado), Semestral (montagem R$ 497 + R$ 247/mês, compromisso de 6 meses) e Mensal (montagem R$ 997 + R$ 297/mês, sem fidelidade).
 Você recebe a entrevista de um cliente e desenha o app dele, sob medida pra rotina e as dores que ele contou. Responda APENAS com JSON válido, sem texto fora dele, neste formato:
-{"mensagem":"2 frases calorosas, em português do Brasil, mostrando que você entendeu a dor principal e como o app resolve","nome_app":"...","para":"negócio ou vida pessoal","resumo":"1 frase sobre a pessoa e o objetivo","partes":[{"nome":"até 3 palavras","faz":"o que resolve pra essa pessoa, até 10 palavras","icone":"1 emoji"}],"conexoes":["frase curta mostrando uma parte avisando outra"],"primeiro_passo":"qual parte montar primeiro e por quê, 1 frase","plano":"Essencial, Profissional ou Completo"}
+{"mensagem":"2 frases calorosas, em português do Brasil, mostrando que você entendeu a dor principal e como o app resolve","nome_app":"...","para":"negócio ou vida pessoal","resumo":"1 frase sobre a pessoa e o objetivo","partes":[{"nome":"até 3 palavras","faz":"o que resolve pra essa pessoa, até 10 palavras","icone":"1 emoji"}],"conexoes":["frase curta mostrando uma parte avisando outra"],"primeiro_passo":"qual parte montar primeiro e por quê, 1 frase","plano":"Anual, Semestral ou Mensal"}
 Se for caminhoneiro, pense em partes como fretes (quanto ganhou e quanto sobrou), gastos da viagem (diesel, pedágio, comida, com foto da nota), lembretes de manutenção e documentos, rotas e paradas salvas, jornada e descanso, e contato com a família.
-Regras: de 3 a 7 partes, específicas pra rotina dele (nada genérico), começando pela que resolve a maior dor. 2 ou 3 conexões. No campo "plano", use Essencial se o app tiver até 3 partes, Profissional se tiver de 4 a 6 e Completo se tiver mais de 6. Não prometa integração com banco nem nota fiscal. Linguagem simples, sem termo técnico.`;
+Regras: de 3 a 7 partes, específicas pra rotina dele (nada genérico), começando pela que resolve a maior dor. 2 ou 3 conexões. No campo "plano", sugira Anual, que sai mais em conta. Sugira Semestral se a pessoa falar de uma época forte de vendas, e Mensal só se ela disser que não quer compromisso. Não prometa integração com banco nem nota fiscal. Linguagem simples, sem termo técnico.`;
 const log=document.getElementById("ai-log"),chips=document.getElementById("ai-chips"),form=document.getElementById("ai-f"),inp=document.getElementById("ai-in");
 const box=document.getElementById("ai"),fab=document.getElementById("ai-fab");
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
@@ -1286,7 +1330,7 @@ function localDesign(extra){const t=[A.ramo,A.clientes,A.usa,A.dor,A.sonho,extra
     partes:ks.map(k=>({nome:LIB[k][0],faz:LIB[k][1],icone:LIB[k][2]})),conexoes:ks.includes("agenda")&&ks.includes("caixa")?["Cliente marca na Agenda e o Caixa já espera o pagamento","Atendimento feito entra sozinho no Caixa do dia"]:[],primeiro_passo:`Começar por ${LIB[ks[0]][0]}, que resolve a sua maior dor.`,plano:""}}
 
 /* ---------- prévia ---------- */
-function planFor(o){let p=o.plano;if(!PLANS[p]){const n=o.partes.length;p=n<=3?"Essencial":n<=6?"Profissional":"Completo"}return p}
+function planFor(o){let p=o.plano;if(!PLANS[p])p="Anual";return p}
 function initials(n){const w=String(n||"App").split(/\s+/).filter(x=>x.length>1&&!/^(de|do|da|dos|das|e)$/i.test(x));return((w[0]||n||"A")[0]+(w[1]?w[1][0]:"")).toUpperCase()}
 function show(o){last=o;const p=planFor(o),pr=PLANS[p];
   const html=`<div class="pv-card" style="--ac:${o.cor}">
