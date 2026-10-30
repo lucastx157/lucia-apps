@@ -515,7 +515,7 @@ body{background-color:var(--bg)}
       <a class="btn main cta3d" id="cta-whats" href="#pedido">Quero meu app agora</a>
       <button class="btn ghostbtn" id="go">Ver os apps se conectando</button>
     </div>
-    <div class="proof3d"><span>A partir de <b>R$ 69/mês</b></span><span>Garantia de <b>30 dias</b></span><span><b>5 vagas</b> com 50% off</span></div>
+    <div class="proof3d"><span>A partir de <b>R$ 500/mês</b></span><span>Garantia de <b>30 dias</b></span><span>Pronto em <b>poucos dias</b></span></div>
   </div>
 </section>
 
@@ -732,18 +732,13 @@ body{background-color:var(--bg)}
       <h2>Um app feito só pra você</h2>
       <p>Cada app é desenhado do zero com você, não é modelo pronto. A montagem é paga uma vez. A mensalidade mantém tudo no ar, com suporte direto, ajustes e evolução contínua.</p>
     </div>
-    <div class="founders panel">
-      <div><span class="label">Clientes Fundadores</span><h3>Montagem pela metade pros 5 primeiros</h3><p>Em troca, você grava um depoimento curto em vídeo contando como está sendo usar o seu app.</p></div>
-      <div class="seats" aria-label="5 vagas"><i></i><i></i><i></i><i></i><i></i><small>5 vagas</small></div>
+    <div class="plans" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));max-width:860px;margin-left:auto;margin-right:auto">
+      <article class="panel plan hot"><h3>Plano Anual</h3><div class="price"><strong class="num">R$ 500<small>/mês</small></strong><span>Montagem R$ 3.000 · contrato de 12 meses</span></div>
+        <ul><li>App sob medida, com as partes que você precisa conversando entre si</li><li>Seu nome, suas fotos, suas cores e sua história</li><li>Pedidos e avisos direto no WhatsApp</li><li>Painel pra você mudar preços, fotos e produtos</li><li>Hospedagem, domínio e manutenção inclusos</li><li>Novos produtos e ajustes sempre que precisar</li></ul><a class="btn main" href="#pedido" data-plan="Anual">Quero o Plano Anual</a></article>
+      <article class="panel plan"><h3>Plano Mensal</h3><div class="price"><strong class="num">R$ 599<small>/mês</small></strong><span>Montagem R$ 4.499 · sem fidelidade</span></div>
+        <ul><li>Tudo o que tem no Plano Anual</li><li>Sem contrato: cancela quando quiser</li><li>Hospedagem, domínio e manutenção inclusos</li><li>Suporte direto pelo WhatsApp</li></ul><a class="btn" href="#pedido" data-plan="Mensal">Quero o Plano Mensal</a></article>
     </div>
-    <div class="plans">
-      <article class="panel plan"><h3>Essencial</h3><div class="price"><strong class="num">R$ 69<small>/mês</small></strong><span>Montagem <s>R$ 397</s> R$ 197 pra fundadores</span></div>
-        <ul><li>Até 2 partes (ex.: agenda + finanças)</li><li>Seu nome, sua foto, suas cores</li><li>Funciona no celular como app</li></ul><a class="btn" href="#pedido" data-plan="Essencial">Quero o Essencial</a></article>
-      <article class="panel plan hot"><h3>Profissional</h3><div class="price"><strong class="num">R$ 119<small>/mês</small></strong><span>Montagem <s>R$ 697</s> R$ 347 pra fundadores</span></div>
-        <ul><li>Até 5 partes que conversam entre si</li><li>1 parte nova por mês sem custo de montagem</li><li>Lembrete automático no WhatsApp</li><li>Ajustes sempre que precisar</li></ul><a class="btn main" href="#pedido" data-plan="Profissional">Quero o Profissional</a></article>
-      <article class="panel plan"><h3>Exclusivo</h3><div class="price"><strong class="num">R$ 197<small>/mês</small></strong><span>Montagem <s>R$ 1.197</s> R$ 597 pra fundadores</span></div>
-        <ul><li>Partes ilimitadas</li><li>Assistente com IA dentro do app</li><li>Atendimento com prioridade e reunião mensal</li><li>Design exclusivo da sua marca</li></ul><a class="btn" href="#pedido" data-plan="Exclusivo">Quero o Exclusivo</a></article>
-    </div>
+    <p style="text-align:center;color:var(--muted);margin:14px auto 0;max-width:60ch">A mensalidade cobre hospedagem, domínio, manutenção, novos produtos e ajustes.</p>
     <div class="guarantee panel">
       <div class="seal" aria-hidden="true"><b>30</b><small>dias</small></div>
       <div><h3>Garantia de 30 dias</h3><p>Use o seu app por 30 dias. Se não gostar, devolvemos o valor da montagem. Sem pergunta e sem burocracia.</p></div>
@@ -759,7 +754,7 @@ body{background-color:var(--bg)}
       <details><summary>Em quanto tempo fica pronto?</summary><p>A primeira parte fica pronta em poucos dias depois da nossa conversa. Você vê antes de publicar.</p></details>
       <details><summary>E se eu quiser uma parte que ninguém tem?</summary><p>É pra isso que o LucIA Apps existe. Você explica o que precisa e a gente monta do seu jeito.</p></details>
       <details><summary>Quem me ajuda se der problema?</summary><p>Suporte direto pelo WhatsApp com a gente, não com robô de central.</p></details>
-      <details><summary>Posso cancelar?</summary><p>Pode, quando quiser, sem multa. Você leva seus dados numa planilha.</p></details>
+      <details><summary>Posso cancelar?</summary><p>No Plano Mensal, pode cancelar quando quiser, sem multa. No Plano Anual o compromisso é de 12 meses, por isso a mensalidade e a montagem saem mais em conta. Em qualquer caso, você leva seus dados numa planilha.</p></details>
     </div>
   </section>
 
@@ -780,7 +775,6 @@ body{background-color:var(--bg)}
         <label><input type="checkbox" id="p-metas" value="Metas e hábitos"> Metas e hábitos</label>
         <label><input type="checkbox" id="p-dieta" value="Dieta e água"> Dieta e água</label>
         <input type="text" id="outro" placeholder="Outra coisa que você quer (opcional)" aria-label="Outra parte">
-        <label><input type="checkbox" id="p-fund" value="fundador" checked> Quero uma vaga de Cliente Fundador</label>
       </div>
       <div class="panel order">
         <pre id="out"></pre>
@@ -891,9 +885,9 @@ function order(){
   const nome=document.getElementById("nome").value.trim(),neg=document.getElementById("negocio").value.trim();
   const mods=pick.filter(i=>i.type==="checkbox"&&i.checked&&i.id!=="p-fund").map(i=>"- "+i.value);
   const o=document.getElementById("outro").value.trim();if(o)mods.push("- "+o);
-  const n=mods.length,pl=plano||(n<=2?"Essencial":n<=5?"Profissional":"Exclusivo");
-  const fund=document.getElementById("p-fund").checked;
-  out.textContent=`Oi! Quero meu app no LucIA Apps.\n\nNome: ${nome||"(seu nome)"}${neg?"\nNegócio: "+neg:""}\n\nO que eu quero no app:\n${n?mods.join("\n"):"- (marque ao lado)"}\n\nPlano: ${n?pl:"-"}${fund?"\nQuero uma vaga de Cliente Fundador.":""}`;
+  const n=mods.length,pl=plano||"Anual";
+  const fund=false;
+  out.textContent=`Oi! Quero meu app no LucIA Apps.\n\nNome: ${nome||"(seu nome)"}${neg?"\nNegócio: "+neg:""}\n\nO que eu quero no app:\n${n?mods.join("\n"):"- (marque ao lado)"}\n\nPlano: ${n?pl:"-"}`;
   if(WHATS){send.hidden=false;send.href="https://wa.me/"+WHATS+"?text="+encodeURIComponent(out.textContent)}
 }
 pick.forEach(i=>i.addEventListener("input",order));order();
@@ -1212,14 +1206,14 @@ new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){o.disconnect();setTim
    desenha o app sob medida. Se a IA não responder, um gerador local assume. */
 const AI_URL="https://text.pollinations.ai/openai";
 const W=typeof WHATS!=="undefined"?WHATS:"";
-const PLANS={Essencial:["R$ 197","R$ 69","até 2 partes"],Profissional:["R$ 347","R$ 119","até 5 partes"],Exclusivo:["R$ 597","R$ 197","partes ilimitadas"]};
+const PLANS={Anual:["R$ 3.000","R$ 500","contrato de 12 meses"],Mensal:["R$ 4.499","R$ 599","sem fidelidade"]};
 const COLORS={"Azul":"#3550ff","Rosa":"#ff4d8d","Verde":"#14a06a","Dourado":"#c9962b","Roxo":"#7048e8","Laranja":"#f0603a","Preto e dourado":"#2a2a2a"};
 const SYS=`Você é a LucIA, designer de apps da LucIA Apps ("aplicativos reais para pessoas normais"). A LucIA Apps cria um app próprio pra cada pessoa ou negócio, montado com IA, conferido por uma pessoa, que funciona no celular e cresce por partes que conversam entre si. Conecta com WhatsApp, Pix, Instagram e Google Agenda.
-Planos: Essencial (até 2 partes, R$ 69/mês), Profissional (até 5 partes, lembrete no WhatsApp, R$ 119/mês), Exclusivo (partes ilimitadas e assistente com IA dentro do app, R$ 197/mês).
+Planos: Anual (montagem R$ 3.000 + R$ 500/mês por 12 meses, o recomendado) e Mensal (montagem R$ 4.499 + R$ 599/mês, sem fidelidade).
 Você recebe a entrevista de um cliente e desenha o app dele, sob medida pra rotina e as dores que ele contou. Responda APENAS com JSON válido, sem texto fora dele, neste formato:
-{"mensagem":"2 frases calorosas, em português do Brasil, mostrando que você entendeu a dor principal e como o app resolve","nome_app":"...","para":"negócio ou vida pessoal","resumo":"1 frase sobre a pessoa e o objetivo","partes":[{"nome":"até 3 palavras","faz":"o que resolve pra essa pessoa, até 10 palavras","icone":"1 emoji"}],"conexoes":["frase curta mostrando uma parte avisando outra"],"primeiro_passo":"qual parte montar primeiro e por quê, 1 frase","plano":"Essencial ou Profissional ou Exclusivo"}
+{"mensagem":"2 frases calorosas, em português do Brasil, mostrando que você entendeu a dor principal e como o app resolve","nome_app":"...","para":"negócio ou vida pessoal","resumo":"1 frase sobre a pessoa e o objetivo","partes":[{"nome":"até 3 palavras","faz":"o que resolve pra essa pessoa, até 10 palavras","icone":"1 emoji"}],"conexoes":["frase curta mostrando uma parte avisando outra"],"primeiro_passo":"qual parte montar primeiro e por quê, 1 frase","plano":"Anual ou Mensal"}
 Se for caminhoneiro, pense em partes como fretes (quanto ganhou e quanto sobrou), gastos da viagem (diesel, pedágio, comida, com foto da nota), lembretes de manutenção e documentos, rotas e paradas salvas, jornada e descanso, e contato com a família.
-Regras: de 3 a 7 partes, específicas pra rotina dele (nada genérico), começando pela que resolve a maior dor. 2 ou 3 conexões. O plano segue a quantidade de partes (até 2 Essencial, até 5 Profissional, mais Exclusivo). Não prometa integração com banco nem nota fiscal. Linguagem simples, sem termo técnico.`;
+Regras: de 3 a 7 partes, específicas pra rotina dele (nada genérico), começando pela que resolve a maior dor. 2 ou 3 conexões. Sugira o plano Anual, que sai mais em conta; só sugira o Mensal se a pessoa disser que não quer contrato. Não prometa integração com banco nem nota fiscal. Linguagem simples, sem termo técnico.`;
 const log=document.getElementById("ai-log"),chips=document.getElementById("ai-chips"),form=document.getElementById("ai-f"),inp=document.getElementById("ai-in");
 const box=document.getElementById("ai"),fab=document.getElementById("ai-fab");
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
@@ -1290,10 +1284,10 @@ function localDesign(extra){const t=[A.ramo,A.clientes,A.usa,A.dor,A.sonho,extra
   if(TRUCK())ks=[...new Set(["fretes","gastos","manut","rotas"].concat(ks.filter(k=>!["agenda","lembrete","clientes","fidel"].includes(k))))];
   if(ks.length<3)ks=[...new Set(ks.concat(NEG()?["agenda","caixa","clientes"]:["metas","caixa","dieta"]))];ks=ks.slice(0,6);
   const n=ks.length;return{mensagem:`Pelo que você contou, ${A.nome.split(" ")[0]}, o que mais pesa hoje é: ${A.dor.split(".")[0].toLowerCase()}. Desenhei o seu app começando por isso.`,nome_app:A.nome_app,para:A.para,resumo:`${A.nome} quer ${A.sonho.toLowerCase()}.`,
-    partes:ks.map(k=>({nome:LIB[k][0],faz:LIB[k][1],icone:LIB[k][2]})),conexoes:ks.includes("agenda")&&ks.includes("caixa")?["Cliente marca na Agenda e o Caixa já espera o pagamento","Atendimento feito entra sozinho no Caixa do dia"]:[],primeiro_passo:`Começar por ${LIB[ks[0]][0]}, que resolve a sua maior dor.`,plano:n<=2?"Essencial":n<=5?"Profissional":"Exclusivo"}}
+    partes:ks.map(k=>({nome:LIB[k][0],faz:LIB[k][1],icone:LIB[k][2]})),conexoes:ks.includes("agenda")&&ks.includes("caixa")?["Cliente marca na Agenda e o Caixa já espera o pagamento","Atendimento feito entra sozinho no Caixa do dia"]:[],primeiro_passo:`Começar por ${LIB[ks[0]][0]}, que resolve a sua maior dor.`,plano:"Anual"}}
 
 /* ---------- prévia ---------- */
-function planFor(o){let p=o.plano;if(!PLANS[p]){const n=o.partes.length;p=n<=2?"Essencial":n<=5?"Profissional":"Exclusivo"}return p}
+function planFor(o){let p=o.plano;if(!PLANS[p]){const n=o.partes.length;p="Anual"}return p}
 function initials(n){const w=String(n||"App").split(/\s+/).filter(x=>x.length>1&&!/^(de|do|da|dos|das|e)$/i.test(x));return((w[0]||n||"A")[0]+(w[1]?w[1][0]:"")).toUpperCase()}
 function show(o){last=o;const p=planFor(o),pr=PLANS[p];
   const html=`<div class="pv-card" style="--ac:${o.cor}">
@@ -1305,7 +1299,7 @@ function show(o){last=o;const p=planFor(o),pr=PLANS[p];
     ${o.resumo?`<p class="pv-sum">${esc(o.resumo)}</p>`:""}
     ${Array.isArray(o.conexoes)&&o.conexoes.length?`<div class="pv-con"><b>As partes conversam</b>${o.conexoes.slice(0,3).map(c=>`<span>↳ ${esc(c)}</span>`).join("")}</div>`:""}
     ${o.primeiro_passo?`<div class="pv-con"><b>Primeiro passo</b><span>${esc(o.primeiro_passo)}</span></div>`:""}
-    <div class="pv-plan"><b>Plano ${p}</b><span>${pr[2]}</span><span>Montagem ${pr[0]} pra Cliente Fundador · depois ${pr[1]}/mês</span><span>Garantia de 30 dias</span></div>
+    <div class="pv-plan"><b>Plano ${p}</b><span>${pr[2]}</span><span>Montagem ${pr[0]} · depois ${pr[1]}/mês · ${pr[2]}</span><span>Garantia de 30 dias</span></div>
   </div>`;
   const card=add(html,"bot sum",true);setTimeout(()=>{log.scrollTop=card.offsetTop-10},60);
   setTimeout(()=>bot("Gostou? Se quiser, eu mudo o que você quiser antes de mandar.",()=>setChips([
@@ -1314,7 +1308,7 @@ function show(o){last=o;const p=planFor(o),pr=PLANS[p];
     {t:"Recomeçar",f:start}])),900);
   fill(o)}
 function whats(o){const p=planFor(o);
-  const txt=`Oi! Conversei com a LucIA no site e quero meu app.\n\nNome: ${A.nome}\nApp: ${o.nome_app}\nPra: ${o.para}${A.ramo?"\n"+(NEG()?"Negócio":"Quero organizar")+": "+A.ramo:""}\nMaior dor: ${A.dor}\n\nPartes do app:\n${o.partes.map(x=>`- ${x.nome}: ${x.faz||""}`).join("\n")}\n\nPlano sugerido: ${p}\nCor: ${A.corNome||""}\nQuero uma vaga de Cliente Fundador.`;
+  const txt=`Oi! Conversei com a LucIA no site e quero meu app.\n\nNome: ${A.nome}\nApp: ${o.nome_app}\nPra: ${o.para}${A.ramo?"\n"+(NEG()?"Negócio":"Quero organizar")+": "+A.ramo:""}\nMaior dor: ${A.dor}\n\nPartes do app:\n${o.partes.map(x=>`- ${x.nome}: ${x.faz||""}`).join("\n")}\n\nPlano sugerido: ${p}\nCor: ${A.corNome||""}`;
   if(W)window.open("https://wa.me/"+W+"?text="+encodeURIComponent(txt),"_blank","noopener");else{navigator.clipboard&&navigator.clipboard.writeText(txt);add("Pedido copiado. É só colar na conversa com a gente.","bot")}}
 function fill(o){try{document.getElementById("nome").value=A.nome||"";document.getElementById("negocio").value=o.nome_app||"";
   ["p-agenda","p-fin","p-est","p-metas","p-dieta"].forEach(id=>document.getElementById(id).checked=false);
