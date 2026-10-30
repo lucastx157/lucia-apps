@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: laboratório claro. Tese -> prévia -> partes que conversam -> calculadora -> pesquisa -> como funciona -> confiança -> planos+garantia -> FAQ -> pedido */
+/* Layout: laboratório claro. Tese -> prévia -> partes que conversam -> calculadora -> pesquisa -> como funciona -> confiança -> planos -> FAQ -> pedido */
 :root{
   --bg:#f3f5fa; --surface:#ffffff; --soft:#e7ebf4; --fg:#0b1020; --muted:#5a6275; --line:#d5dbe8;
   --accent:#3550ff; --accent-fg:#ffffff; --waste:#f0603a; --ok:#14a06a; --ink:#0b1020; --ink-fg:#f3f5fa;
@@ -515,7 +515,7 @@ body{background-color:var(--bg)}
       <a class="btn main cta3d" id="cta-whats" href="#pedido">Quero meu app agora</a>
       <button class="btn ghostbtn" id="go">Ver os apps se conectando</button>
     </div>
-    <div class="proof3d"><span>A partir de <b>R$ 500/mês</b></span><span>Garantia de <b>30 dias</b></span><span>Pronto em <b>poucos dias</b></span></div>
+    <div class="proof3d"><span>A partir de <b>R$ 500/mês</b></span><span>Suporte no <b>WhatsApp</b></span><span>Pronto em <b>poucos dias</b></span></div>
   </div>
 </section>
 
@@ -739,10 +739,6 @@ body{background-color:var(--bg)}
         <ul><li>Tudo o que tem no Plano Anual</li><li>Sem contrato: cancela quando quiser</li><li>Hospedagem, domínio e manutenção inclusos</li><li>Suporte direto pelo WhatsApp</li></ul><a class="btn" href="#pedido" data-plan="Mensal">Quero o Plano Mensal</a></article>
     </div>
     <p style="text-align:center;color:var(--muted);margin:14px auto 0;max-width:60ch">A mensalidade cobre hospedagem, domínio, manutenção, novos produtos e ajustes.</p>
-    <div class="guarantee panel">
-      <div class="seal" aria-hidden="true"><b>30</b><small>dias</small></div>
-      <div><h3>Garantia de 30 dias</h3><p>Use o seu app por 30 dias. Se não gostar, devolvemos o valor da montagem. Sem pergunta e sem burocracia.</p></div>
-    </div>
   </section>
 
   <!-- FAQ -->
@@ -1299,7 +1295,7 @@ function show(o){last=o;const p=planFor(o),pr=PLANS[p];
     ${o.resumo?`<p class="pv-sum">${esc(o.resumo)}</p>`:""}
     ${Array.isArray(o.conexoes)&&o.conexoes.length?`<div class="pv-con"><b>As partes conversam</b>${o.conexoes.slice(0,3).map(c=>`<span>↳ ${esc(c)}</span>`).join("")}</div>`:""}
     ${o.primeiro_passo?`<div class="pv-con"><b>Primeiro passo</b><span>${esc(o.primeiro_passo)}</span></div>`:""}
-    <div class="pv-plan"><b>Plano ${p}</b><span>${pr[2]}</span><span>Montagem ${pr[0]} · depois ${pr[1]}/mês · ${pr[2]}</span><span>Garantia de 30 dias</span></div>
+    <div class="pv-plan"><b>Plano ${p}</b><span>${pr[2]}</span><span>Montagem ${pr[0]} · depois ${pr[1]}/mês · ${pr[2]}</span><span>Suporte direto no WhatsApp</span></div>
   </div>`;
   const card=add(html,"bot sum",true);setTimeout(()=>{log.scrollTop=card.offsetTop-10},60);
   setTimeout(()=>bot("Gostou? Se quiser, eu mudo o que você quiser antes de mandar.",()=>setChips([
