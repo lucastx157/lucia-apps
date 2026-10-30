@@ -746,25 +746,25 @@ body{background-color:var(--bg)}
     <div class="sec-head">
       <span class="label">Planos</span>
       <h2>Comece pagando pouco. Cresça todo mês.</h2>
-      <p>A montagem custa quase nada, porque a gente não quer só te entregar um app: quer ficar do seu lado. Todo mês o seu app recebe ajustes, produtos novos e melhorias, e você fala direto com quem fez ele, pelo WhatsApp.</p>
+      <p>A gente não quer só te entregar um app: quer ficar do seu lado. Todo mês o seu app recebe ajustes, produtos novos e melhorias, e você fala direto com quem fez ele, pelo WhatsApp.</p>
     </div>
     <div class="plans">
       <article class="panel plan"><span class="who">Pra testar sem compromisso</span><h3>Mensal</h3>
-        <div class="price"><strong class="num">R$ 297<small>/mês</small></strong><span>Montagem R$ 997 · sem fidelidade</span></div>
+        <div class="price"><strong class="num">R$ 297<small>/mês</small></strong><span>Montagem R$ 2.499 · sem fidelidade</span></div>
         <p class="pitch">Quer ver o app funcionando antes de decidir? Começa no mensal e cancela quando quiser.</p>
         <ul><li>Tudo o que vem em todos os planos (veja abaixo)</li><li>Cancela quando quiser, sem multa</li><li>Pode mudar pro Semestral ou Anual a qualquer momento</li></ul>
         <a class="btn" href="#pedido" data-plan="Mensal">Quero o Mensal</a></article>
       <article class="panel plan"><span class="who">Pra temporada de vendas</span><h3>Semestral</h3>
-        <div class="price"><strong class="num">R$ 247<small>/mês</small></strong><span>Montagem R$ 497 · compromisso de 6 meses</span></div>
-        <span class="save">Economia de R$ 800 em 6 meses</span>
+        <div class="price"><strong class="num">R$ 247<small>/mês</small></strong><span>Montagem R$ 2.299 · contrato de 6 meses</span></div>
+        <span class="save">Economia de R$ 500 em 6 meses</span>
         <p class="pitch">Ideal pra quem tem época forte, como Natal, Páscoa, Dia das Mães ou volta às aulas.</p>
-        <ul><li>Tudo o que vem em todos os planos</li><li>Montagem pela metade do preço</li><li>1 parte nova no app sem custo no 3º mês</li><li>Depois dos 6 meses, segue mês a mês no mesmo valor</li></ul>
+        <ul><li>Tudo o que vem em todos os planos</li><li>Montagem R$ 200 mais barata que no Mensal</li><li>1 parte nova no app sem custo no 3º mês</li><li>Depois dos 6 meses, segue mês a mês no mesmo valor</li></ul>
         <a class="btn" href="#pedido" data-plan="Semestral">Quero o Semestral</a></article>
       <article class="panel plan hot"><span class="who">Pra quem quer crescer de verdade</span><h3>Anual</h3>
-        <div class="price"><strong class="num">R$ 197<small>/mês</small></strong><span>Montagem só R$ 197 · compromisso de 12 meses</span></div>
-        <span class="save">Economia de R$ 2.000 no ano</span>
+        <div class="price"><strong class="num">R$ 197<small>/mês</small></strong><span>Montagem R$ 1.999 · contrato de 12 meses</span></div>
+        <span class="save">Economia de R$ 1.700 no ano</span>
         <p class="pitch">O menor preço. O app vira o braço direito do seu negócio e evolui junto com você o ano inteiro.</p>
-        <ul><li>Tudo o que vem em todos os planos</li><li>Montagem quase de graça</li><li>1 parte nova no app sem custo a cada 3 meses</li><li>Atendimento prioritário no WhatsApp</li><li>Revisão do app a cada 3 meses: o que vendeu, o que melhorar</li></ul>
+        <ul><li>Tudo o que vem em todos os planos</li><li>A menor montagem e a menor mensalidade</li><li>1 parte nova no app sem custo a cada 3 meses</li><li>Atendimento prioritário no WhatsApp</li><li>Revisão do app a cada 3 meses: o que vendeu, o que melhorar</li></ul>
         <a class="btn main" href="#pedido" data-plan="Anual">Quero o Anual</a></article>
     </div>
     <div class="panel incl">
@@ -797,7 +797,7 @@ body{background-color:var(--bg)}
       <details><summary>Em quanto tempo fica pronto?</summary><p>A primeira parte fica pronta em poucos dias depois da nossa conversa. Você vê antes de publicar.</p></details>
       <details><summary>E se eu quiser uma parte que ninguém tem?</summary><p>É pra isso que o LucIA Apps existe. Você explica o que precisa e a gente monta do seu jeito.</p></details>
       <details><summary>Quem me ajuda se der problema?</summary><p>Suporte direto pelo WhatsApp com a gente, não com robô de central.</p></details>
-      <details><summary>Posso cancelar?</summary><p>No plano Mensal, pode cancelar quando quiser, sem multa. No Semestral e no Anual existe um compromisso de 6 ou 12 meses, e é por isso que a montagem e a mensalidade saem bem mais baratas. Depois desse prazo, o plano segue mês a mês no mesmo valor e você pode cancelar quando quiser. Em qualquer caso, você leva seus dados numa planilha.</p></details>
+      <details><summary>Posso cancelar?</summary><p>No plano Mensal, pode cancelar quando quiser, sem multa. No Semestral e no Anual tem contrato assinado de 6 ou 12 meses, e é por isso que a montagem e a mensalidade saem mais baratas. Depois desse prazo, o plano segue mês a mês no mesmo valor e você pode cancelar quando quiser. Em qualquer caso, você leva seus dados numa planilha.</p></details>
     </div>
   </section>
 
@@ -1249,10 +1249,10 @@ new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){o.disconnect();setTim
    desenha o app sob medida. Se a IA não responder, um gerador local assume. */
 const AI_URL="https://text.pollinations.ai/openai";
 const W=typeof WHATS!=="undefined"?WHATS:"";
-const PLANS={Mensal:["R$ 997","R$ 297","sem fidelidade"],Semestral:["R$ 497","R$ 247","compromisso de 6 meses"],Anual:["R$ 197","R$ 197","compromisso de 12 meses"]};
+const PLANS={Mensal:["R$ 2.499","R$ 297","sem fidelidade"],Semestral:["R$ 2.299","R$ 247","contrato de 6 meses"],Anual:["R$ 1.999","R$ 197","contrato de 12 meses"]};
 const COLORS={"Azul":"#3550ff","Rosa":"#ff4d8d","Verde":"#14a06a","Dourado":"#c9962b","Roxo":"#7048e8","Laranja":"#f0603a","Preto e dourado":"#2a2a2a"};
 const SYS=`Você é a LucIA, designer de apps da LucIA Apps ("aplicativos reais para pessoas normais"). A LucIA Apps cria um app próprio pra cada pessoa ou negócio, montado com IA, conferido por uma pessoa, que funciona no celular e cresce por partes que conversam entre si. Conecta com WhatsApp, Pix, Instagram e Google Agenda.
-Planos: Anual (montagem R$ 197 + R$ 197/mês, compromisso de 12 meses, o recomendado), Semestral (montagem R$ 497 + R$ 247/mês, compromisso de 6 meses) e Mensal (montagem R$ 997 + R$ 297/mês, sem fidelidade).
+Planos: Anual (montagem R$ 1.999 + R$ 197/mês, contrato de 12 meses, o recomendado), Semestral (montagem R$ 2.299 + R$ 247/mês, contrato de 6 meses) e Mensal (montagem R$ 2.499 + R$ 297/mês, sem fidelidade).
 Você recebe a entrevista de um cliente e desenha o app dele, sob medida pra rotina e as dores que ele contou. Responda APENAS com JSON válido, sem texto fora dele, neste formato:
 {"mensagem":"2 frases calorosas, em português do Brasil, mostrando que você entendeu a dor principal e como o app resolve","nome_app":"...","para":"negócio ou vida pessoal","resumo":"1 frase sobre a pessoa e o objetivo","partes":[{"nome":"até 3 palavras","faz":"o que resolve pra essa pessoa, até 10 palavras","icone":"1 emoji"}],"conexoes":["frase curta mostrando uma parte avisando outra"],"primeiro_passo":"qual parte montar primeiro e por quê, 1 frase","plano":"Anual, Semestral ou Mensal"}
 Se for caminhoneiro, pense em partes como fretes (quanto ganhou e quanto sobrou), gastos da viagem (diesel, pedágio, comida, com foto da nota), lembretes de manutenção e documentos, rotas e paradas salvas, jornada e descanso, e contato com a família.
