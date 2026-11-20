@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agente da Discórdia — Desbloqueados Mercosul</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0d12;--panel:#121821;--panel2:#18202b;--line:#243041;--txt:#e9eef5;--mut:#8b98aa;--cyan:#22e4ff;--fire:#ff6a1a;--fire2:#ffb21a;--ok:#3ddc84;--bad:#ff4d5e}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--txt);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.5}
+body{min-height:100vh;background:radial-gradient(900px 400px at 85% -10%,rgba(255,106,26,.16),transparent 60%),radial-gradient(700px 400px at -10% 10%,rgba(34,228,255,.10),transparent 60%),var(--bg)}
+.wrap{max-width:880px;margin:0 auto;padding:28px 18px 80px}
+.kicker{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);font-weight:700}
+h1{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:clamp(40px,9vw,72px);line-height:.95;margin:8px 0 10px}
+h1 span{background:linear-gradient(90deg,var(--fire),var(--fire2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--mut);max-width:640px}
+.tag{display:inline-block;margin-top:12px;font-size:13px;color:var(--fire2);font-weight:600}
+nav{display:flex;gap:8px;overflow-x:auto;padding:4px 0 14px;margin:20px 0 6px;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav button{flex:none;background:var(--panel);border:1px solid var(--line);color:var(--mut);padding:10px 14px;border-radius:999px;font:600 14px Inter;cursor:pointer}
+nav button.on{background:var(--cyan);color:#001318;border-color:var(--cyan)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:16px}
+label{display:block;font-size:13px;font-weight:600;color:var(--mut);margin:14px 0 6px}
+label:first-child{margin-top:0}
+input,textarea,select{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--txt);border-radius:10px;padding:12px 14px;font:16px Inter}
+textarea{min-height:120px;resize:vertical}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--cyan);border-color:transparent}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.row{grid-template-columns:1fr}}
+.go{margin-top:18px;width:100%;border:0;border-radius:12px;padding:15px;font:700 16px Inter;cursor:pointer;color:#1a0800;background:linear-gradient(90deg,var(--fire),var(--fire2));transition:transform .12s,opacity .2s}
+.go:active{transform:scale(.98)} .go:disabled{opacity:.5;cursor:wait}
+.hint{font-size:13px;color:var(--mut);margin-top:8px}
+.status{font-size:14px;color:var(--cyan);margin:14px 0;min-height:20px}
+.err{color:var(--bad)}
+.out h3,.sec{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:8px}
+.vs{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-family:Anton,sans-serif;font-size:30px;line-height:1.1}
+.vs b{font-weight:400} .vs i{font-style:normal;color:var(--fire);font-size:20px}
+.big{font-size:20px;font-weight:600;line-height:1.4}
+.screen{background:#000;border:2px solid var(--fire);border-radius:12px;padding:16px;font-size:20px;font-weight:700;text-align:center;line-height:1.35}
+ul.steps{padding-left:20px} ul.steps li{margin:6px 0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-size:14px;color:var(--cyan)}
+.copy{float:right;background:transparent;border:1px solid var(--line);color:var(--mut);border-radius:8px;padding:4px 10px;font:600 12px Inter;cursor:pointer}
+.copy.done{color:var(--ok);border-color:var(--ok)}
+.mut{color:var(--mut)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.grid2{grid-template-columns:1fr}}
+.day{border-left:3px solid var(--fire);padding-left:14px;margin-bottom:18px}
+.score{font-family:Anton,sans-serif;font-size:64px;line-height:1}
+.method p{margin:8px 0}
+.ex{background:var(--panel2);border-radius:10px;padding:12px 14px;margin:8px 0;font-size:15px}
+.ex small{display:block;color:var(--mut);margin-top:4px}
+.ex .lbl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--fire2);font-weight:700}
+.good{color:var(--ok)}
+.hidden{display:none}
+.thumbs{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.thumbs img{width:64px;height:110px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+footer{margin-top:40px;color:var(--mut);font-size:13px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="kicker">Desbloqueados Mercosul · Lucas Henrique</div>
+  <h1>AGENTE DA <span>DISCÓRDIA</span></h1>
+  <p class="lead">Um especialista em criar polêmica saudável entre rivais, treinado no TikTok @lkstx: 8,7 mil seguidores reais e vídeos de até 560 mil visualizações sem pedir para ninguém seguir. Funciona em qualquer nicho.</p>
+  <div class="tag">#caminhoneiroIA</div>
+</header>
+
+<nav id="tabs">
+  <button data-t="video" class="on">Criar vídeo</button>
+  <button data-t="semana">Semana completa</button>
+  <button data-t="comentarios">Minerar comentários</button>
+  <button data-t="avaliar">Testar meu vídeo</button>
+  <button data-t="metodo">O Método</button>
+</nav>
+
+<section id="t-video">
+  <div class="card">
+    <label for="v-nicho">Qual é o seu nicho?</label>
+    <input id="v-nicho" placeholder="Ex.: barbearia, confeitaria, academia, motos, pesca…">
+    <div class="row">
+      <div><label for="v-rival">Rivalidade (opcional)</label><input id="v-rival" placeholder="Ex.: Honda x Yamaha"></div>
+      <div><label for="v-acesso">O que você consegue filmar?</label><input id="v-acesso" placeholder="Ex.: meu salão, clientes, a rua"></div>
+    </div>
+    <div class="row">
+      <div><label for="v-girias">Como o seu público fala (opcional)</label><input id="v-girias" placeholder="Ex.: 'pai', 'chofer', 'meu patrão'"></div>
+      <div><label for="v-formula">Fórmula da pergunta</label>
+        <select id="v-formula">
+          <option value="">O agente escolhe a melhor</option>
+          <option>Boato para confirmar</option>
+          <option>Número desafiador</option>
+          <option>Quem mente mais</option>
+          <option>Rei de quê?</option>
+          <option>Erro proposital</option>
+          <option>Experiência e geração</option>
+        </select></div>
+    </div>
+    <button class="go" id="v-go">Gerar vídeo completo</button>
+    <p class="hint">Entrega o texto da tela, a legenda, o áudio, o que filmar e como alimentar a briga nos comentários.</p>
+  </div>
+  <div class="status" id="v-status"></div>
+  <div id="v-out"></div>
+</section>
+
+<section id="t-semana" class="hidden">
+  <div class="card">
+    <label for="s-nicho">Qual é o seu nicho?</label>
+    <input id="s-nicho" placeholder="Ex.: estética automotiva">
+    <label for="s-acesso">O que você consegue filmar?</label>
+    <input id="s-acesso" placeholder="Ex.: o lava-jato, carros de clientes">
+    <button class="go" id="s-go">Gerar 7 dias de conteúdo</button>
+    <p class="hint">Um vídeo por dia, cada um com uma fórmula e uma rivalidade diferentes.</p>
+  </div>
+  <div class="status" id="s-status"></div>
+  <div id="s-out"></div>
+</section>
+
+<section id="t-comentarios" class="hidden">
+  <div class="card">
+    <label for="c-nicho">Qual é o seu nicho?</label>
+    <input id="c-nicho" placeholder="Ex.: caminhão">
+    <label for="c-txt">Cole aqui os comentários dos seus vídeos</label>
+    <textarea id="c-txt" placeholder="Copie os comentários do TikTok e cole aqui, um embaixo do outro."></textarea>
+    <button class="go" id="c-go">Encontrar as brigas e as gírias</button>
+    <p class="hint">O seu público já diz quais rivalidades rendem e como fala. O agente transforma isso nos próximos vídeos.</p>
+  </div>
+  <div class="status" id="c-status"></div>
+  <div id="c-out"></div>
+</section>
+
+<section id="t-avaliar" class="hidden">
+  <div class="card">
+    <label for="a-nicho">Qual é o seu nicho?</label>
+    <input id="a-nicho" placeholder="Ex.: caminhão">
+    <label for="a-fala">O que você fala no vídeo (transcrição ou resumo)</label>
+    <textarea id="a-fala" style="min-height:100px" placeholder="Cole a sua fala ou descreva o que acontece no vídeo"></textarea>
+    <div class="row">
+      <div><label for="a-tela">Texto na tela (se tiver)</label><input id="a-tela" placeholder="A pergunta que aparece no vídeo"></div>
+      <div><label for="a-leg">Legenda que você pretende usar</label><input id="a-leg" placeholder="Opcional"></div>
+    </div>
+    <label for="a-img">Prints do vídeo (opcional, até 4)</label>
+    <input id="a-img" type="file" accept="image/*" multiple>
+    <div class="thumbs" id="a-thumbs"></div>
+    <button class="go" id="a-go">Testar pelo Método</button>
+    <p class="hint">O agente dá uma nota, mostra o que trava a polêmica e reescreve o texto da tela e a legenda.</p>
+  </div>
+  <div class="status" id="a-status"></div>
+  <div id="a-out"></div>
+</section>
+
+<section id="t-metodo" class="hidden">
+  <div class="card method">
+    <div class="sec">O combo de 4 peças</div>
+    <p><b>1. Gravação na mão.</b> Celular na mão, sem tripé e sem edição. Zoom direto no detalhe que gera a discussão. Entre 11 e 45 segundos.</p>
+    <p><b>2. Texto na tela = a pergunta.</b> É ali que mora a polêmica, com os rivais nomeados e um 🤔 no fim.</p>
+    <p><b>3. Legenda = a segunda provocação.</b> Uma opinião leve com 😂😂😂, que convida a discordar, e 5 hashtags com o nome dos rivais.</p>
+    <p><b>4. Som original.</b> O barulho real da cena ou um áudio original que combine com ela.</p>
+    <p class="mut">Você fica neutro. Quem briga é o público. Nunca peça para seguir e nunca faça "parte 1, parte 2".</p>
+  </div>
+  <div class="card method">
+    <div class="sec">As fórmulas, com os números reais do @lkstx</div>
+    <div class="ex"><span class="lbl">Boato para confirmar</span><br>Tela: "Ouvi dizer que a Scania na carroceria anda mais que no baú, tem isso mesmo?🤔"<br>Legenda: "Tem isso mesmo ou é papo pra boi dormir??? Eu acho que anda a mesma coisa 😂😂😂"<small class="good">560,1 mil visualizações · 528 salvamentos · 20s</small></div>
+    <div class="ex"><span class="lbl">Número desafiador</span><br>Tela: "Para fazer 600 km em 8 horas, o cara tem que…"<br>Legenda: "O cara tem que pisar com os dois pés e rezar para o carro não esquentar 😂😂😂"<small class="good">401,7 mil visualizações · 1.221 comentários · 18s. O público respondeu com os próprios tempos e rotas.</small></div>
+    <div class="ex"><span class="lbl">Quem mente mais</span><br>Tela: "Quem mente mais: o dono do 1620 ou os donos de P-zinha e Bob que falam que não tomam taca?🤔"<small class="good">232,2 mil visualizações · 658 compartilhamentos · 43s</small></div>
+    <div class="ex"><span class="lbl">Erro proposital</span><br>Tela: "Diz que só tem 1620 antigo arrumado, e essa Scania de 1976??🤔"<small class="good">81,8 mil visualizações · 11s. O comentário mais curtido corrige o ano.</small></div>
+    <div class="ex"><span class="lbl">Rei de quê?</span><br>Tela: "Scania dos rapidão, 1620 rei do tapetão caipira, e o Iveco é rei de quê??🤔"<small class="good">29,7 mil visualizações · 34s. O público completa a piada: "rei dos postos", "rei da oficina".</small></div>
+  </div>
+  <div class="card method">
+    <div class="sec">O que 226 posts ensinaram</div>
+    <ul class="steps">
+      <li><b>Constância:</b> em maio foram 36 vídeos e 2,47 milhões de visualizações. Em outubro, com 5 posts, a mediana caiu para 1,9 mil.</li>
+      <li><b>Vídeo vence foto:</b> mediana de 8,3 mil contra 1,9 mil.</li>
+      <li><b>Melhores dias:</b> domingo e segunda.</li>
+      <li><b>Melhor horário:</b> das 18h às 21h.</li>
+    </ul>
+  </div>
+  <div class="card method">
+    <div class="sec">O que o público faz nos comentários</div>
+    <ul class="steps">
+      <li>Conta a própria façanha, com números e rotas.</li>
+      <li>Acusa de mentira ("mentira da gota serena").</li>
+      <li>Corrige o erro técnico e se sente o especialista.</li>
+      <li>Defende a própria marca e zoa a rival com apelidos.</li>
+      <li>Marca o amigo ou diz "esse caminhão é do meu tio".</li>
+    </ul>
+  </div>
+</section>
+
+<footer>Método criado por Lucas Henrique · Desbloqueados Mercosul · @lkstx</footer>
+</div>
+
+<script>
+const METODO = `Você é o AGENTE DA DISCÓRDIA: especialista em criar polêmica saudável entre rivais para vídeos curtos, com foco no TikTok, em qualquer nicho. Seu método foi extraído do perfil @lkstx (Desbloqueados Mercosul), de Lucas Henrique, caminhoneiro: 8,7 mil seguidores reais, 252 mil curtidas, vídeos de até 560 mil visualizações, sem pedir para seguir, sem "parte 1/parte 2", sem IA e sem edição, gravado no próprio celular.
+
+=== O COMBO (sempre os 4) ===
+1. GRAVAÇÃO NA MÃO: celular na mão, sem tripé e sem cortes. Zoom no detalhe que gera a discussão. 11 a 45 segundos (os maiores sucessos tiveram 18, 20 e 43 s).
+2. TEXTO NA TELA = A PERGUNTA POLÊMICA. É o coração do vídeo: nomeia os rivais, termina com "?🤔" ou "??🤔". Curto, na linguagem falada do público.
+3. LEGENDA = SEGUNDA CAMADA DE PROVOCAÇÃO: uma opinião leve ou uma piada que convida a discordar, terminando com "😂😂😂" ou "🤣🤣🤣", seguida de 5 hashtags (nomes dos rivais + termos do nicho). A legenda NÃO repete o texto da tela.
+4. SOM ORIGINAL: o som real da cena (motor, ambiente) ou um áudio "som original" que combine com a imagem. Todos os sucessos usaram som original, não música da moda.
+O criador fica NEUTRO ou finge uma opinião fraca; quem briga é o público.
+
+=== AS 6 FÓRMULAS DE PERGUNTA (com dados reais) ===
+A) BOATO PARA CONFIRMAR: "Ouvi dizer que [A] faz [X], tem isso mesmo?🤔" + legenda "Tem isso mesmo ou é papo pra boi dormir??? Eu acho que [opinião contrária fraca] 😂😂😂". 560,1 mil views, 528 salvamentos. Público explica e discute o porquê.
+B) NÚMERO DESAFIADOR: "Para fazer [número] em [tempo], o cara tem que…" + legenda exagerada e engraçada. 401,7 mil views e 1.221 comentários: cada um responde com o próprio número, rota e façanha; outros chamam de mentiroso.
+C) QUEM MENTE MAIS: "Quem mente mais: o dono do [A] ou o dono do [B] que diz que [provocação]?🤔". 232,2 mil views, 658 compartilhamentos. Acusa os dois lados ao mesmo tempo.
+D) ERRO PROPOSITAL: afirmar um detalhe técnico levemente errado ("essa Scania de 1976??") para o público corrigir. 81,8 mil views em 11 s; comentário mais curtido corrigindo. O erro deve ser inofensivo (ano, modelo, apelido), nunca sobre segurança, saúde ou dinheiro de alguém.
+E) REI DE QUÊ?: "[A] rei de X, [B] rei de Y, e o [C] é rei de quê??🤔". 29,7 mil views; o público completa com apelidos ("rei dos postos", "rei da oficina"). Bom para engajar, alcance menor.
+F) EXPERIÊNCIA E GERAÇÃO: "Todos devem passar por isso??? Ou tem gente que começa no [jeito fácil] e nunca vai saber o que é fazer isso aí?" Divide veteranos e novatos.
+
+=== COMO O PÚBLICO REAGE (use para prever e alimentar a briga) ===
+- Conta a própria façanha com números e lugares ("já fiz 600 km em 7h30 carregado de banana").
+- Acusa de mentira ("mentira da gota serena", "tudo mentira 😂").
+- Corrige o erro e se sente especialista.
+- Defende a marca e zoa a rival com apelidos ("rei do posto", "beberrão", "só anda no documento").
+- Marca amigo ou reconhece o veículo/lugar ("esse caminhão é do meu tio").
+- Pergunta o nome da música.
+
+=== VOCABULÁRIO DO NICHO CAMINHÃO (exemplo de como captar gírias) ===
+chofer, pai, meu patrão, motora, trecho, fazer horário, pressão, toma taca, mexido, chipado, no talo, vintão/20tão (1620), lendário, P-zinha, Bob, mercedeiro, rapidão, tapetão caipira, galera da boiada, galera da verdura, peso de balança, carregado x vazio, papo pra boi dormir, kkkk. Rivalidades: 1620 x 24250, Scania x DAF/Volvo/Iveco, Mercedes x Scania, baú x carroceria, carregado x vazio, manual x automático, veterano x novato.
+Para outros nichos, descubra o equivalente: as marcas rivais, os estilos, os "times", os apelidos e as gírias que o público daquele nicho usa.
+
+=== DADOS DOS 226 POSTS DO @lkstx (quase 6 milhões de visualizações) ===
+- Maio de 2026, o mês da explosão: 36 vídeos, 2,47 milhões de visualizações, 12 vídeos acima de 50 mil; a mediana subiu de 1,7 mil (abril) para 30,8 mil.
+- Quando a frequência caiu (outubro: 5 posts), a mediana despencou para 1,9 mil. Constância de 1 vídeo por dia é parte do método.
+- Vídeo rende muito mais que foto/carrossel: mediana 8,3 mil contra 1,9 mil. Prefira vídeo.
+- Melhores dias: domingo e segunda (mediana ~15 mil); demais dias 8,5 mil a 11 mil.
+- Melhor horário: 18h às 21h (mediana 13,2 mil); manhã 9h-12h é o segundo melhor volume.
+- Mais um exemplo real: tela "Como que o cara tem coragem de falar que um 1620 empurrou uma máquina dessa??🤔🤔" + legenda "Quem mente mais??🤣🤣 o dono do 1620 ou o da Scania??" → 77,1 mil views, 114 comentários.
+
+=== O QUE EVITAR ===
+- Pedir para seguir, curtir ou compartilhar; "parte 1/parte 2"; edição exagerada; vídeo gerado por IA.
+- Venda direta no mesmo vídeo ("clica no carrinho"): 407 views mesmo impulsionado.
+- Pergunta que provoca todo mundo sem um rival claro.
+- Atenção: alguns vídeos com o formato certo tiveram pouco alcance logo depois de 2 meses sem postar. Constância conta: 1 vídeo por dia.
+
+=== LIMITES DA POLÊMICA ===
+A briga é sobre escolhas, marcas, estilos, times e jeitos de fazer. Nunca ataque pessoas reais, grupos protegidos, religião ou política; nunca incentive risco real (excesso de velocidade, dirigir cansado, golpes); nunca espalhe informação falsa que possa prejudicar alguém.
+
+=== REGRAS DE ENTREGA ===
+- Português do Brasil, na linguagem do público do nicho.
+- Concreto: o que filmar, de onde, zoom, segundos.
+- Áudio: descreva o som ou o estilo e como achar na biblioteca do TikTok; não invente que uma música específica está em alta.
+- Responda SOMENTE com JSON válido, sem texto antes ou depois e sem blocos de código.`;
+
+let sampleFn=null, sampleReady=null;
+function getSample(){
+  if(sampleFn) return Promise.resolve(sampleFn);
+  if(!sampleReady) sampleReady=new Promise(res=>{
+    try{ if(!window.claude||!claude.use) return res(null);
+      const t=setTimeout(()=>res(null),12000);
+      claude.use("sample").then(f=>{clearTimeout(t);sampleFn=f;res(f)}).catch(()=>{clearTimeout(t);res(null)});
+    }catch(e){res(null)}
+  });
+  return sampleReady;
+}
+getSample();
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const tagify=a=>(a||[]).map(h=>String(h).startsWith("#")?h:"#"+h);
+
+document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("on",x===b));
+  ["video","semana","comentarios","avaliar","metodo"].forEach(t=>$("t-"+t).classList.toggle("hidden",t!==b.dataset.t));
+});
+
+function parseJSON(t){ t=t.trim().replace(/^```(json)?/i,"").replace(/```$/,"").trim(); return JSON.parse(t.slice(t.indexOf("{"),t.lastIndexOf("}")+1)); }
+
+const OFFLINE_CODES=["not_granted","sampling_disabled","not_declared","capability_disabled","capability_removed","session_expired"];
+function offlineNote(st,why){ st.innerHTML='<span style="color:var(--fire2)">Modo básico, sem IA ('+why+'). Para respostas completas e personalizadas, abra o agente pelo app do Claude, logado na sua conta.</span>'; }
+async function ask(prompt,st,btn,images,offline){
+  btn.disabled=true; st.textContent="Conectando o agente…";
+  try{
+    const sample=await getSample();
+    if(!sample){ if(offline){ offlineNote(st,"a IA não está disponível nesta tela"); return offline(); } st.innerHTML='<span class="err">Abra o agente pelo app do Claude para usar esta função.</span>'; return null; }
+    st.textContent="O agente está pensando… (pode levar até 1 minuto)";
+    const opts={modelTier:"default",onText:({text})=>{ st.textContent="Escrevendo… "+Math.min(99,Math.round(text.length/35))+"%"; }};
+    if(images&&images.length){ try{ const lim=await sample.limits(); if(lim&&lim.images) opts.images=images; }catch(e){} }
+    let r;
+    try{ r=await sample(METODO+"\n\n"+prompt,opts); }
+    catch(e){
+      if(e&&OFFLINE_CODES.includes(e.code)&&offline){ offlineNote(st,"permissão não concedida"); return offline(); }
+      throw e;
+    }
+    try{ const d=parseJSON(r.text); st.textContent=""; return d; }
+    catch(e){
+      st.textContent="Organizando a resposta…";
+      const r2=await sample(METODO+"\n\n"+prompt+"\n\nIMPORTANTE: responda apenas com o JSON pedido, completo e válido.",{modelTier:"default",cache:false});
+      const d=parseJSON(r2.text); st.textContent=""; return d;
+    }
+  }catch(e){
+    const c=e&&e.code;
+    if(c==="rate_limited") st.innerHTML='<span class="err">Muitos pedidos seguidos ou limite de uso atingido. Aguarde um pouco e tente de novo.</span>';
+    else if(c==="refused") st.innerHTML='<span class="err">O agente recusou esse pedido. Mude a rivalidade ou o tema e tente de novo.</span>';
+    else if(offline){ offlineNote(st,"a IA falhou agora"); return offline(); }
+    else st.innerHTML='<span class="err">Não consegui gerar agora ('+esc(c||"erro")+'). Tente novamente.</span>';
+    return null;
+  }finally{ btn.disabled=false; }
+}
+function copyBtn(text){ const id="c"+Math.random().toString(36).slice(2); setTimeout(()=>{ const el=$(id); if(el) el.onclick=async()=>{ try{ await navigator.clipboard.writeText(text); el.textContent="Copiado"; el.classList.add("done"); }catch(e){ el.textContent="Selecione e copie"; } }; }); return `<button class="copy" id="${id}">Copiar</button>`; }
+function need(v,st){ if(!v.trim()){ st.innerHTML='<span class="err">Preencha o seu nicho.</span>'; return false;} return true; }
+const li=a=>(a||[]).map(x=>`<li>${esc(x)}</li>`).join("");
+
+
+/* ===== MODO BÁSICO (sem IA): o método do @lkstx em regras ===== */
+const NORM=t=>String(t||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const BANCO=[
+ {k:["caminh","truck","bitruck","carreta","chofer","frete","ceasa"],r:[["1620","24250"],["Scania","DAF"],["Scania","Volvo"],["Mercedes","Scania"],["baú","carroceria"],["carregado","vazio"],["câmbio manual","automatizado"],["chofer veterano","chofer novato"],["galera da boiada","galera da verdura"]],g:["chofer","pai","meu patrão","trecho","pressão","toma taca","no talo"],film:"o caminhão na estrada, no posto ou na carga e descarga",som:"o ronco do motor e o som real da estrada"},
+ {k:["barbe","cabel","corte"],r:[["máquina","tesoura"],["degradê navalhado","degradê na máquina"],["barbearia raiz","barbearia gourmet"],["barba cheia","rosto liso"]],g:["mano","na régua","tá na moda"],film:"as mãos do barbeiro trabalhando, em close no corte",som:"o barulho da máquina e da tesoura"},
+ {k:["confeit","bolo","doce","brigadeiro","padar"],r:[["chantilly","buttercream"],["massa caseira","massa pronta"],["Ninho","Nutella"],["bolo de pote","fatia no prato"],["receita da vó","receita da internet"]],g:["gente","que delícia","de comer rezando"],film:"a calda escorrendo ou a faca cortando a fatia, em close",som:"o som da colher, da batedeira ou do forno abrindo"},
+ {k:["academ","treino","muscul","fitness","crossfit"],r:[["treino de manhã","treino à noite"],["cardio","musculação"],["whey","comida de verdade"],["academia de bairro","academia de rede"]],g:["monstro","tá pago","bora"],film:"a carga na barra ou o pé batendo na esteira, em close",som:"o som das anilhas e da respiração"},
+ {k:["moto","biker","motoboy"],r:[["Honda","Yamaha"],["carburada","injetada"],["CG","Fazer"],["moto de rolê","moto de trabalho"]],g:["grau","na reta","piloto"],film:"o escapamento e o painel em movimento",som:"o ronco do escapamento"},
+ {k:["carro","automo","mecan","oficina"],r:[["manual","automático"],["álcool","gasolina"],["carro antigo","carro novo"],["oficina de bairro","concessionária"]],g:["patrão","na mão","de garagem"],film:"o motor aberto ou o volante em close",som:"o ronco do motor"},
+ {k:["pesca","pescar","peixe"],r:[["isca natural","isca artificial"],["carretilha","molinete"],["rio","represa"],["pesqueiro","pesca de barranco"]],g:["parceiro","fisgou","tamanho família"],film:"a linha esticando e o peixe saindo da água",som:"o som da água e da carretilha"},
+ {k:["unha","manicure","sobrancel","estetic","micropig","maquiag","beleza","cilio"],r:[["gel","fibra"],["henna","micropigmentação"],["unha curta","unha longa"],["maquiagem leve","maquiagem marcada"]],g:["amiga","diva","tá babado"],film:"o antes e depois em close, com a mão na frente da câmera",som:"som ambiente do estúdio"},
+ {k:["pet","cachorro","gato","racao"],r:[["ração","comida caseira"],["gato","cachorro"],["banho em casa","pet shop"]],g:["tutor","meu filho de quatro patas"],film:"o pet reagindo em close",som:"o som real do pet"},
+ {k:["cozinh","panela","comida","restaurante","lanche","churras"],r:[["panela de ferro","antiaderente"],["air fryer","forno"],["tempero pronto","tempero caseiro"],["churrasco de picanha","churrasco de linguiça"]],g:["que delícia","de lamber o dedo"],film:"a comida fritando ou sendo cortada, em close",som:"o chiado da panela"},
+ {k:["agro","gado","fazenda","roca","trator"],r:[["Nelore","Angus"],["John Deere","Massey Ferguson"],["trator antigo","trator novo"],["pasto","confinamento"]],g:["peão","sô","da roça"],film:"a máquina ou o gado no campo",som:"o som real do campo e da máquina"},
+ {k:["celular","iphone","android","tecnolog","game","jogo"],r:[["iPhone","Android"],["console","PC"],["celular caro","celular barato"]],g:["mano","top demais"],film:"a tela em uso em close",som:"o som real do aparelho"}
+];
+function nichoInfo(n){const t=NORM(n);return BANCO.find(b=>b.k.some(k=>t.includes(k)))||{r:[[n+" raiz",n+" nutella"],["quem começou cedo","quem começou tarde"],["o mais barato","o mais caro"],["o jeito antigo","o jeito novo"]],g:[],film:"o seu produto ou serviço em ação, em close",som:"o som real do ambiente"}}
+function rival(n,pedido){if(pedido&&/ x | vs /i.test(pedido)){const [a,b]=pedido.split(/ x | vs /i);return [a.trim(),b.trim()]}return pick(nichoInfo(n).r)}
+const FORMULAS={
+ "Boato para confirmar":(a,b)=>({tela:`Ouvi dizer que ${a} é melhor que ${b}, tem isso mesmo??🤔`,leg:`Tem isso mesmo ou é papo pra boi dormir??? Eu acho que dá na mesma 😂😂😂`}),
+ "Número desafiador":(a,b)=>({tela:`Quem usa ${a} faz o dobro de quem usa ${b}… será??🤔`,leg:`Fala o seu número aí nos comentários que eu quero ver 😂😂😂`}),
+ "Quem mente mais":(a,b)=>({tela:`Quem mente mais: quem tem ${a} ou quem tem ${b}??🤔`,leg:`Os dois juram que o deles é o melhor 😂😂😂`}),
+ "Rei de quê?":(a,b)=>({tela:`${a} é rei de um lado, ${b} é rei do outro… e o terceiro é rei de quê??🤔`,leg:`Completa aí que eu quero ver 🤣🤣🤣`}),
+ "Erro proposital":(a,b)=>({tela:`Dizem que ${a} e ${b} são a mesma coisa??🤔`,leg:`Eu acho que é igual, ou tô falando besteira? 😂😂😂`}),
+ "Experiência e geração":(a,b)=>({tela:`Todo mundo devia começar com ${a}??? Ou quem começa com ${b} nunca vai saber o que é isso?🤔`,leg:`Os antigos sabem do que eu tô falando 😂😂😂`})
+};
+const CAP=t=>t?t[0].toUpperCase()+t.slice(1):t;
+const QUANDO="Domingo ou segunda, entre 18h e 21h. No seu perfil esses foram os dias e o horário de maior alcance; poste 1 vídeo por dia para manter o ritmo.";
+function tags(n,a,b){const c=x=>"#"+NORM(x).replace(/[^a-z0-9]/g,"");return [c(a),c(b),c(n),"#"+c(n).slice(1)+"brasil","#fyp"].filter((v,i,arr)=>v.length>2&&arr.indexOf(v)===i).slice(0,5)}
+function offVideo(n,pedido,acesso,formula){
+  const info=nichoInfo(n),[a,b]=rival(n,pedido),fn=formula&&FORMULAS[formula]?formula:pick(Object.keys(FORMULAS)),f=FORMULAS[fn](a,b);
+  const outras=Object.keys(FORMULAS).filter(k=>k!==fn).slice(0,2).map(k=>FORMULAS[k](a,b).tela);
+  f.tela=CAP(f.tela);
+  return {formula:fn,rivalidade:{ladoA:a,ladoB:b,por_que_divide:`Quem prefere ${a} defende com unhas e dentes, e quem é do time ${b} também. Você só pergunta, quem briga é o público.`},
+   texto_na_tela:f.tela,legenda:f.leg,hashtags:tags(n,a,b),
+   filmagem:{o_que_filmar:acesso?`${acesso}, mostrando ${a} ou ${b} em ação`:info.film,angulo_e_zoom:"Celular na mão, na altura do peito, com zoom no detalhe que prova (ou provoca) a pergunta.",duracao_segundos:"15 a 25",passo_a_passo:["Comece já no detalhe, sem apresentação.","Segure firme e aproxime devagar com o zoom.","Deixe o som real rolar, sem música por cima.","Pare antes de completar 30 segundos.","Coloque a pergunta como texto na tela logo no primeiro segundo."]},
+   audio:{tipo:"Som original",por_que_combina:`${info.som[0].toUpperCase()+info.som.slice(1)} deixa o vídeo verdadeiro, e no seu perfil todos os sucessos usaram som original.`,como_encontrar:"Grave com o som do próprio celular. Se quiser música, use uma bem baixinha no fundo."},
+   girias_usadas:info.g.slice(0,3),comentarios_previstos:[`Quem é do time ${a} vai dizer que não tem comparação.`,`O pessoal do ${b} vai chamar de mentira.`,"Alguém vai contar a própria experiência com número e lugar."],
+   comentario_para_fixar:`E aí, time ${a} ou time ${b}? Fala sem medo 👇`,como_alimentar_a_briga:["Responda os primeiros comentários com outra pergunta, sem tomar lado.","Fixe o comentário mais engraçado de cada lado."],
+   variacoes_texto_na_tela:outras.map(CAP),quando_postar:QUANDO};
+}
+function offSemana(n,acesso){const ks=Object.keys(FORMULAS),dias=["Dia 1","Dia 2","Dia 3","Dia 4","Dia 5","Dia 6","Dia 7"];const info=nichoInfo(n);
+  return {semana:dias.map((d,i)=>{const [a,b]=info.r[i%info.r.length],fn=ks[i%ks.length],f=FORMULAS[fn](a,b);f.tela=CAP(f.tela);return {dia:d,formula:fn,rivalidade:a+" x "+b,texto_na_tela:f.tela,legenda:f.leg,o_que_filmar:acesso||info.film,som:"Som original: "+info.som,hashtags:tags(n,a,b)}})}}
+function offComentarios(n,txt){const linhas=txt.split(/\n+/).map(x=>x.trim()).filter(Boolean);const pares={};
+  const ev={};linhas.forEach(l=>{const m=l.match(/([\wÀ-ú0-9]+)\s+(?:x|vs|ou)\s+([\wÀ-ú0-9]+)/i);if(m){const A=CAP(m[1].toLowerCase()),B=CAP(m[2].toLowerCase());const k=[A,B].sort().join(" x ");pares[k]=(pares[k]||0)+1;ev[k]=ev[k]||l}});
+  const freq={};linhas.join(" ").toLowerCase().replace(/[^\wà-ú0-9 ]/g," ").split(/\s+/).filter(w=>w.length>3).forEach(w=>freq[w]=(freq[w]||0)+1);
+  const top=Object.entries(freq).sort((a,b)=>b[1]-a[1]).slice(0,12);
+  let riv=Object.entries(pares).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,c])=>{const [a,b]=k.split(" x ");return {ladoA:a,ladoB:b,evidencia:ev[k]||"",potencial:c>2?"alto":c>1?"médio":"baixo"}});
+  if(!riv.length) riv=nichoInfo(n).r.slice(0,3).map(([a,b])=>({ladoA:a,ladoB:b,evidencia:"rivalidade comum do nicho (não apareceu explícita nos comentários)",potencial:"médio"}));
+  return {rivalidades:riv,girias:top.map(([w,c])=>({termo:w,significado:`apareceu ${c} vezes nos comentários`})),comportamentos:[linhas.filter(l=>/\d/.test(l)).length+" comentários trazem números ou experiências próprias",linhas.filter(l=>/mentir|mentira/i.test(l)).length+" comentários falam em mentira",linhas.filter(l=>/\?/.test(l)).length+" comentários fazem perguntas"],
+   proximos_videos:riv.slice(0,3).map(r=>{const f=FORMULAS["Quem mente mais"](r.ladoA,r.ladoB);f.tela=CAP(f.tela);return {formula:"Quem mente mais",texto_na_tela:f.tela,legenda:f.leg,o_que_filmar:nichoInfo(n).film}})}}
+function offAvaliar(n,fala,tela,leg){const t=(tela||"")+" "+(leg||"");let nota=3;const ok=[],ruim=[];
+  if(/\?/.test(t)){nota+=2;ok.push("Tem pergunta, o que puxa comentário.")}else ruim.push("Não tem pergunta na tela nem na legenda.");
+  if(/ x | vs | ou /i.test(t)){nota+=2;ok.push("Coloca dois lados frente a frente.")}else ruim.push("Não deixa claros os dois rivais.");
+  if(/😂|🤣|🤔/.test(t)){nota+=1;ok.push("Usa o tom bem-humorado do método.")}
+  if(/segue|seguir|curte|parte 1|parte 2|carrinho/i.test(t+fala)){nota-=2;ruim.push("Pede para seguir, curtir ou vende direto: isso derruba o alcance.")}
+  if(fala.length>900){ruim.push("A fala é longa: corte em pedaços de até 45 segundos.")}
+  nota=Math.max(0,Math.min(10,nota));const [a,b]=rival(n,"");
+  return {nota,veredito:nota>=7?"Bom caminho.":"Dá para melhorar bastante com uma pergunta entre rivais.",o_que_funciona:ok.length?ok:["O assunto é do seu nicho."],o_que_trava:ruim.length?ruim:["Nada grave encontrado."],
+   rivalidade_escondida:`${a} x ${b}`,texto_na_tela_novo:Object.keys(FORMULAS).slice(0,3).map(k=>CAP(FORMULAS[k](a,b).tela)),legenda_nova:FORMULAS["Quem mente mais"](a,b).leg,hashtags:tags(n,a,b),cortes_sugeridos:["Comece pela frase mais forte da fala.","Deixe cada corte entre 15 e 45 segundos."]}}
+
+/* CRIAR VÍDEO */
+$("v-go").onclick=async()=>{
+  const nicho=$("v-nicho").value, st=$("v-status"); if(!need(nicho,st)) return;
+  const p=`TAREFA: criar UM vídeo completo pelo método.
+Nicho: ${nicho}
+Rivalidade pedida: ${$("v-rival").value||"(escolha a rivalidade que mais divide o público deste nicho)"}
+O que a pessoa consegue filmar: ${$("v-acesso").value||"(não informado; proponha algo simples e acessível)"}
+Como o público fala: ${$("v-girias").value||"(use as gírias reais do nicho)"}
+Fórmula: ${$("v-formula").value||"(escolha a fórmula mais forte para este caso)"}
+Formato JSON:
+{"formula":"","rivalidade":{"ladoA":"","ladoB":"","por_que_divide":""},
+"texto_na_tela":"","legenda":"","hashtags":["","","","",""],
+"filmagem":{"o_que_filmar":"","angulo_e_zoom":"","duracao_segundos":"","passo_a_passo":["",""]},
+"audio":{"tipo":"","por_que_combina":"","como_encontrar":""},
+"girias_usadas":["",""],
+"comentarios_previstos":["","",""],
+"comentario_para_fixar":"",
+"como_alimentar_a_briga":["",""],
+"quando_postar":"dia e horário recomendados, com o porquê",
+"variacoes_texto_na_tela":["",""]}`;
+  const d=await ask(p,st,$("v-go"),null,()=>offVideo(nicho,$("v-rival").value,$("v-acesso").value,$("v-formula").value)); if(!d) return;
+  const r=d.rivalidade||{}, f=d.filmagem||{}, a=d.audio||{}, tags=tagify(d.hashtags);
+  $("v-out").innerHTML=`
+  <div class="card out"><h3>A rivalidade · fórmula: ${esc(d.formula)}</h3>
+    <div class="vs"><b>${esc(r.ladoA)}</b><i>VS</i><b>${esc(r.ladoB)}</b></div>
+    <p class="mut" style="margin-top:8px">${esc(r.por_que_divide)}</p></div>
+  <div class="card out">${copyBtn(d.texto_na_tela||"")}<h3>Texto na tela</h3><div class="screen">${esc(d.texto_na_tela)}</div>
+    ${(d.variacoes_texto_na_tela||[]).length?`<p class="mut" style="margin-top:12px;font-size:14px">Outras opções:</p><ul class="steps">${li(d.variacoes_texto_na_tela)}</ul>`:""}</div>
+  <div class="card out">${copyBtn((d.legenda||"")+" "+tags.join(" "))}<h3>Legenda</h3><p class="big">${esc(d.legenda)}</p>
+    <div class="chips" style="margin-top:10px">${tags.map(t=>`<span class="chip">${esc(t)}</span>`).join("")}</div></div>
+  <div class="grid2">
+    <div class="card out"><h3>O que filmar</h3><p>${esc(f.o_que_filmar)}</p>
+      <p class="mut" style="margin-top:8px"><b>Ângulo e zoom:</b> ${esc(f.angulo_e_zoom)}</p>
+      <p class="mut"><b>Duração:</b> ${esc(f.duracao_segundos)} segundos</p></div>
+    <div class="card out"><h3>Som</h3><p><b>${esc(a.tipo)}</b></p>
+      <p class="mut" style="margin-top:6px">${esc(a.por_que_combina)}</p><p class="mut" style="margin-top:6px">${esc(a.como_encontrar)}</p></div>
+  </div>
+  <div class="card out"><h3>Passo a passo da gravação</h3><ul class="steps">${li(f.passo_a_passo)}</ul></div>
+  <div class="grid2">
+    <div class="card out"><h3>O que o público vai comentar</h3><ul class="steps">${li(d.comentarios_previstos)}</ul></div>
+    <div class="card out"><h3>Gírias usadas</h3><div class="chips">${(d.girias_usadas||[]).map(g=>`<span class="chip">${esc(g)}</span>`).join("")}</div></div>
+  </div>
+  <div class="grid2">
+    <div class="card out">${copyBtn(d.comentario_para_fixar||"")}<h3>Comentário para fixar</h3><p>${esc(d.comentario_para_fixar)}</p></div>
+    <div class="card out"><h3>Como alimentar a briga</h3><ul class="steps">${li(d.como_alimentar_a_briga)}</ul></div>
+  </div>
+  ${d.quando_postar?`<div class="card out"><h3>Quando postar</h3><p>${esc(d.quando_postar)}</p></div>`:""}`;
+};
+
+/* SEMANA */
+$("s-go").onclick=async()=>{
+  const nicho=$("s-nicho").value, st=$("s-status"); if(!need(nicho,st)) return;
+  const p=`TAREFA: planejar 7 dias (1 vídeo por dia) pelo método, variando fórmulas e rivalidades.
+Nicho: ${nicho}
+O que a pessoa consegue filmar: ${$("s-acesso").value||"(não informado; proponha algo simples)"}
+Formato JSON: {"semana":[{"dia":"Dia 1","formula":"","rivalidade":"A x B","texto_na_tela":"","legenda":"","o_que_filmar":"","som":"","hashtags":["","","","",""]}]}
+Exatamente 7 itens.`;
+  const d=await ask(p,st,$("s-go"),null,()=>offSemana(nicho,$("s-acesso").value)); if(!d) return;
+  $("s-out").innerHTML=`<div class="card out"><h3>Sua semana</h3>${(d.semana||[]).map(x=>{ const tags=tagify(x.hashtags).join(" ");
+    return `<div class="day">${copyBtn((x.texto_na_tela||"")+"\n\n"+(x.legenda||"")+" "+tags)}
+      <p class="mut" style="font-size:13px;font-weight:700">${esc(x.dia)} · ${esc(x.formula)} · ${esc(x.rivalidade)}</p>
+      <p class="big" style="font-size:17px;margin:4px 0">Tela: ${esc(x.texto_na_tela)}</p>
+      <p style="font-size:15px">Legenda: ${esc(x.legenda)}</p>
+      <p class="mut" style="font-size:14px"><b>Filmar:</b> ${esc(x.o_que_filmar)}</p>
+      <p class="mut" style="font-size:14px"><b>Som:</b> ${esc(x.som)}</p>
+      <p style="font-size:13px;color:var(--cyan)">${esc(tags)}</p></div>`;}).join("")}</div>`;
+};
+
+/* COMENTÁRIOS */
+$("c-go").onclick=async()=>{
+  const nicho=$("c-nicho").value, txt=$("c-txt").value, st=$("c-status"); if(!need(nicho,st)) return;
+  if(txt.trim().length<20){ st.innerHTML='<span class="err">Cole alguns comentários para o agente analisar.</span>'; return; }
+  const p=`TAREFA: ler comentários reais e extrair as rivalidades, as gírias e os comportamentos do público. Use SOMENTE o que aparece nos comentários como evidência.
+Nicho: ${nicho}
+COMENTÁRIOS:
+"""${txt.slice(0,15000)}"""
+Formato JSON:
+{"rivalidades":[{"ladoA":"","ladoB":"","evidencia":"trecho curto","potencial":"alto|médio|baixo"}],
+"girias":[{"termo":"","significado":""}],
+"comportamentos":[""],
+"proximos_videos":[{"formula":"","texto_na_tela":"","legenda":"","o_que_filmar":""}]}
+Até 6 rivalidades, até 12 gírias, até 5 próximos vídeos.`;
+  const d=await ask(p,st,$("c-go"),null,()=>offComentarios(nicho,txt)); if(!d) return;
+  $("c-out").innerHTML=`
+  <div class="card out"><h3>Brigas que o seu público já puxa</h3>${(d.rivalidades||[]).map(r=>`<div class="day"><div class="vs" style="font-size:22px"><b>${esc(r.ladoA)}</b><i>VS</i><b>${esc(r.ladoB)}</b></div><p class="mut" style="font-size:14px">"${esc(r.evidencia)}" · potencial ${esc(r.potencial)}</p></div>`).join("")}</div>
+  <div class="grid2">
+    <div class="card out"><h3>Gírias do seu público</h3><ul class="steps">${(d.girias||[]).map(g=>`<li><b>${esc(g.termo)}</b>: ${esc(g.significado)}</li>`).join("")}</ul></div>
+    <div class="card out"><h3>Como eles comentam</h3><ul class="steps">${li(d.comportamentos)}</ul></div>
+  </div>
+  <div class="card out"><h3>Próximos vídeos</h3>${(d.proximos_videos||[]).map(v=>`<div class="day">${copyBtn((v.texto_na_tela||"")+"\n\n"+(v.legenda||""))}<p class="mut" style="font-size:13px;font-weight:700">${esc(v.formula)}</p><p class="big" style="font-size:17px">Tela: ${esc(v.texto_na_tela)}</p><p>Legenda: ${esc(v.legenda)}</p><p class="mut" style="font-size:14px"><b>Filmar:</b> ${esc(v.o_que_filmar)}</p></div>`).join("")}</div>`;
+};
+
+/* TESTAR MEU VÍDEO */
+let imgs=[];
+$("a-img").onchange=e=>{ imgs=[...e.target.files].slice(0,4); $("a-thumbs").innerHTML=""; imgs.forEach(f=>{ const i=document.createElement("img"); i.src=URL.createObjectURL(f); $("a-thumbs").appendChild(i); }); };
+$("a-go").onclick=async()=>{
+  const nicho=$("a-nicho").value, fala=$("a-fala").value, st=$("a-status"); if(!need(nicho,st)) return;
+  if(!fala.trim()&&!$("a-tela").value.trim()&&!imgs.length){ st.innerHTML='<span class="err">Cole a sua fala, o texto da tela ou envie prints do vídeo.</span>'; return; }
+  const p=`TAREFA: testar um vídeo pelo método, com honestidade, e reescrever para virar polêmica entre rivais.
+Nicho: ${nicho}
+Fala ou descrição do vídeo: """${fala.slice(0,8000)}"""
+Texto na tela atual: ${$("a-tela").value||"(nenhum)"}
+Legenda atual: ${$("a-leg").value||"(nenhuma)"}
+${imgs.length?"Há prints do vídeo anexados.":""}
+Critérios: existe uma pergunta na tela? há dois lados claros? o criador fica neutro? imagem, som e texto combinam? usa a linguagem do público? evita pedir para seguir e venda direta? duração adequada?
+Formato JSON:
+{"nota":0,"veredito":"","o_que_funciona":[""],"o_que_trava":[""],
+"rivalidade_escondida":"a rixa que dá para tirar deste vídeo",
+"texto_na_tela_novo":["","",""],"legenda_nova":"","hashtags":["","","","",""],
+"cortes_sugeridos":[""]}
+A nota vai de 0 a 10.`;
+  const d=await ask(p,st,$("a-go"),imgs,()=>offAvaliar(nicho,fala,$("a-tela").value,$("a-leg").value)); if(!d) return;
+  const n=Number(d.nota)||0, cor=n>=7?"var(--ok)":n>=4?"var(--fire2)":"var(--bad)", tags=tagify(d.hashtags);
+  $("a-out").innerHTML=`
+  <div class="card out" style="display:flex;gap:20px;align-items:center"><div class="score" style="color:${cor}">${n}</div><div><h3 style="margin:0">Nota pelo Método</h3><p>${esc(d.veredito)}</p></div></div>
+  <div class="grid2">
+    <div class="card out"><h3>O que funciona</h3><ul class="steps">${li(d.o_que_funciona)}</ul></div>
+    <div class="card out"><h3>O que trava a polêmica</h3><ul class="steps">${li(d.o_que_trava)}</ul></div>
+  </div>
+  <div class="card out"><h3>A rixa escondida neste vídeo</h3><p class="big" style="font-size:18px">${esc(d.rivalidade_escondida)}</p></div>
+  <div class="card out"><h3>Texto na tela, reescrito</h3>${(d.texto_na_tela_novo||[]).map(t=>`<div class="day">${copyBtn(t)}<p class="big" style="font-size:17px">${esc(t)}</p></div>`).join("")}</div>
+  <div class="card out">${copyBtn((d.legenda_nova||"")+" "+tags.join(" "))}<h3>Legenda nova</h3><p class="big" style="font-size:18px">${esc(d.legenda_nova)}</p><div class="chips" style="margin-top:10px">${tags.map(t=>`<span class="chip">${esc(t)}</span>`).join("")}</div></div>
+  ${(d.cortes_sugeridos||[]).length?`<div class="card out"><h3>Cortes sugeridos</h3><ul class="steps">${li(d.cortes_sugeridos)}</ul></div>`:""}`;
+};
+</script>
+</body>
+</html>
