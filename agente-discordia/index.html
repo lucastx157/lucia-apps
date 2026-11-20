@@ -12,7 +12,7 @@
 <meta name="apple-mobile-web-app-title" content="Discórdia">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-7wiXRBMlChtVGrE2vDATp/ZQgxFj9LBS3Q3zUuhjeM0='; worker-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; manifest-src 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-D+CdCMMTNeqw3bCoWtxqrqQRhZ+Uo2dH2zueLF62rEk='; worker-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; manifest-src 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Agente da Discórdia — Desbloqueados Mercosul</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -106,6 +106,7 @@ footer{margin-top:40px;color:var(--mut);font-size:13px;text-align:center}
   <h1 class="grafite">AGENTE DA <span class="r">DISCÓRDIA</span></h1>
   <p class="lead">Um especialista em criar polêmica saudável entre rivais, treinado no TikTok @lkstx: 8,7 mil seguidores reais e vídeos de até 560 mil visualizações sem pedir para ninguém seguir. Funciona em qualquer nicho.</p>
   <div class="tag">#caminhoneiroIA</div>
+  <div class="tag" id="semana-info" hidden></div>
   <a class="tt" href="https://www.tiktok.com/@lkstx" target="_blank" rel="noopener"><img src="mascote-cabeca.webp" alt=""><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M16.6 3c.4 2.2 1.8 3.7 4 3.9v3.1c-1.5.1-2.8-.4-4-1.1v6.1c0 3.6-2.6 6-5.9 6-3.3 0-5.8-2.6-5.5-5.9.3-3 3-5.2 6.1-4.8v3.2c-1.4-.4-2.9.5-3 1.9-.2 1.4.9 2.6 2.4 2.6 1.4 0 2.5-1 2.5-2.7V3h3.4z"/></svg> Ver o @lkstx no TikTok</a>
   </div>
   <div class="gato"><img src="mascote.webp" alt="Mascote do Desbloqueados Mercosul com a caneca de café" width="564" height="500"><span class="fala">Bora criar discórdia?</span></div>
@@ -424,7 +425,7 @@ async function ask(prompt,st,btn,images,offline){
     const opts={modelTier:"default",onText:({text})=>{ st.textContent="Escrevendo… "+Math.min(99,Math.round(text.length/35))+"%"; }};
     if(images&&images.length){ try{ const lim=await sample.limits(); if(lim&&lim.images) opts.images=images; }catch(e){} }
     let r;
-    try{ r=await sample(METODO+"\n\n"+prompt,opts); }
+    try{ r=await sample(METODO+semanaContexto()+"\n\n"+prompt,opts); }
     catch(e){
       if(e&&OFFLINE_CODES.includes(e.code)&&offline){ offlineNote(st,"permissão não concedida"); return offline(); }
       if(e&&e.code==="limite_diario"&&offline){ offlineNote(st,"você já usou os "+IA_LIMITE_DIA+" pedidos com IA de hoje; amanhã libera de novo"); return offline(); }
@@ -433,7 +434,7 @@ async function ask(prompt,st,btn,images,offline){
     try{ const d=parseJSON(r.text); st.textContent=""; return d; }
     catch(e){
       st.textContent="Organizando a resposta…";
-      const r2=await sample(METODO+"\n\n"+prompt+"\n\nIMPORTANTE: responda apenas com o JSON pedido, completo e válido.",{modelTier:"default",cache:false});
+      const r2=await sample(METODO+semanaContexto()+"\n\n"+prompt+"\n\nIMPORTANTE: responda apenas com o JSON pedido, completo e válido.",{modelTier:"default",cache:false});
       const d=parseJSON(r2.text); st.textContent=""; return d;
     }
   }catch(e){
@@ -818,6 +819,25 @@ const noSiteProprio=/(vercel\.app|\.com\.br|\.com)$/.test(location.hostname)&&!/
 if(!noSiteProprio){ const lv=$("link-venda"); lv.href="https://agente-da-discordia.vercel.app/venda"; lv.target="_blank"; lv.rel="noopener"; }
 if(noSiteProprio&&"serviceWorker" in navigator&&location.protocol==="https:"){ navigator.serviceWorker.register("sw.js").catch(()=>{}); }
 memInit();
+
+/* RIVALIDADES DA SEMANA: arquivo atualizado toda segunda-feira */
+let SEMANA=null;
+function semanaContexto(){
+  if(!SEMANA||!SEMANA.nichos||!SEMANA.nichos.length) return "";
+  const linhas=SEMANA.nichos.slice(0,30).map(n=>"- "+clean(n.nome||n.k[0],40)+": "+n.r.slice(0,5).map(x=>clean(x[0],50)+" x "+clean(x[1],50)).join("; ")+(n.assunto?" (assunto da semana: "+clean(n.assunto,160)+")":""));
+  return "\n\nPOLÊMICAS DA SEMANA (pesquisadas em "+clean(SEMANA.atualizado,20)+"; use quando combinarem com o nicho pedido):\n"+linhas.join("\n");
+}
+fetch("semana.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(d=>{
+  if(!d||!Array.isArray(d.nichos)) return;
+  const ok=d.nichos.filter(n=>n&&Array.isArray(n.k)&&n.k.length&&Array.isArray(n.r)).map(n=>({nome:n.nome,assunto:n.assunto,k:n.k.map(x=>NORM(clean(x,40))).filter(Boolean).slice(0,8),r:n.r.filter(x=>Array.isArray(x)&&x.length===2).map(x=>[clean(x[0],60),clean(x[1],60)]).filter(x=>x[0]&&x[1]).slice(0,8)})).filter(n=>n.k.length&&n.r.length);
+  SEMANA={atualizado:String(d.atualizado||""),nichos:ok};
+  ok.forEach(n=>{
+    const b=BANCO.find(x=>x.k.some(k=>n.k.includes(k)));
+    if(b){ const tem=new Set(b.r.map(x=>NORM(x[0]+" x "+x[1]))); n.r.slice().reverse().forEach(x=>{ if(!tem.has(NORM(x[0]+" x "+x[1]))) b.r.unshift(x); }); }
+    else BANCO.push({k:n.k,r:n.r,g:[],film:"o seu dia a dia no nicho, em close",som:"o som real do ambiente"});
+  });
+  const sel=$("semana-info"); if(sel&&SEMANA.atualizado){ const [a,m,dd]=SEMANA.atualizado.split("-"); if(dd){ sel.textContent="🔥 Rivalidades da semana atualizadas em "+dd+"/"+m; sel.hidden=false; } }
+}).catch(()=>{});
 </script>
 </body>
 </html>
