@@ -1,0 +1,69 @@
+{
+ "nome": "Antônio Carlos",
+ "nome_curto": "Antônio",
+ "subtitulo": "Seu Consultor de Casa",
+ "chave": "ac",
+ "whatsapp": "5596991556552",
+ "whatsapp_exibicao": "(96) 99155-6552",
+ "chamada": "Mais de 390 produtos para a casa, das panelas e tapetes às caixas de som e perfumes.",
+ "foto_historia": "img/netinho.jpg",
+ "historia": [
+  "Desde menino, o Antônio Carlos é aquele que ajuda sem esperar nada em troca e chama todo mundo pelo nome.",
+  "Em casa, a esposa é o seu porto seguro. É nela que ele encontra força para cada dia de trabalho, e juntos levam uma vida digna, com fé em Deus.",
+  "Nas vendas, ele cuida de cada pedido como se fosse para a própria casa e faz questão de atender cada cliente da melhor forma.",
+  "Se tiver dúvida sobre um produto, uma cor ou um tamanho, é só chamar. Ele responde pessoalmente."
+ ],
+ "categorias": [
+  "Cama, Mesa e Banho",
+  "Quarto e Sala",
+  "Tapetes",
+  "Panelas",
+  "Cozinha e Utensílios",
+  "Mesa e Café",
+  "Eletroportáteis",
+  "Eletrodomésticos",
+  "Som e Eletrônicos",
+  "Perfumes",
+  "Beleza e Moda",
+  "Casa e Organização",
+  "Infantil",
+  "Mochilas e Bolsas",
+  "Malas e Viagem",
+  "Ferramentas",
+  "Doces"
+ ],
+ "destaques": [
+  {
+   "id": "T1",
+   "titulo": "Toalha de Banho Folha Perfumada",
+   "texto": "Toalha felpuda, em várias cores e estampas. Pergunte ao Antônio Carlos quais estão disponíveis.",
+   "img": "img/destaque-toalha.jpg",
+   "efeito": "towel",
+   "categoria": "Cama, Mesa e Banho"
+  },
+  {
+   "id": "L1",
+   "titulo": "Jogo de Lençol 4 Peças Golden",
+   "texto": "Jogo com acabamento bordado, em cinza, bege, branco, rosa e azul.",
+   "img": "img/destaque-lencol.jpg",
+   "efeito": "sheet",
+   "categoria": "Cama, Mesa e Banho"
+  },
+  {
+   "id": "109",
+   "titulo": "Caixa de Som Imenso",
+   "texto": "Caixa portátil com luz de LED e alça. No catálogo, toque na foto para ver o vídeo dela tocando.",
+   "img": "img/p109.jpg",
+   "efeito": "sound",
+   "categoria": "Som e Eletrônicos"
+  },
+  {
+   "id": "156",
+   "titulo": "Projetor 4K",
+   "texto": "Projeta filme, futebol e novela na parede da sala, do tamanho que couber.",
+   "img": "img/p156.jpg",
+   "efeito": "beam",
+   "categoria": "Som e Eletrônicos"
+  }
+ ]
+}
