@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    {"source": "/img/:arquivo*", "destination": "https://lucastx157.github.io/lucia-apps/antonio-carlos/img/:arquivo*"},
+    {"source": "/vid/:arquivo*", "destination": "https://lucastx157.github.io/lucia-apps/antonio-carlos/vid/:arquivo*"}
+  ],
+  "headers": [
+    {"source": "/sw.js", "headers": [{"key": "Cache-Control", "value": "no-cache"}]},
+    {"source": "/manifest.webmanifest", "headers": [{"key": "Content-Type", "value": "application/manifest+json"}]}
+  ]
+}

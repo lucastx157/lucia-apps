@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Antônio Carlos — Seu Consultor de Casa</title>
 <meta name="description" content="Catálogo do Antônio Carlos, seu Consultor de Casa: cama, mesa e banho, cozinha, eletrônicos, perfumes e muito mais. Peça pelo WhatsApp.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Antônio">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🏠%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -98,10 +105,11 @@ button{font-family:inherit;cursor:pointer}
 .chip{flex:none;border:2px solid var(--k);background:#fff;color:var(--k);border-radius:999px;padding:10px 16px;font-size:16px;font-weight:700}
 .chip.on{background:var(--k);color:#fff}
 .catalog{background:linear-gradient(180deg,#f2f2f2 0%,#fff 40%,#e9e9e9 100%);color:var(--k);padding:10px 14px 160px}
-.group{max-width:1180px;margin:0 auto;padding-top:34px}
+.group{max-width:1180px;margin:0 auto;padding-top:56px;scroll-margin-top:150px}
+.group+.group{margin-top:30px;border-top:3px solid #0a0a0a}
 .group{padding-left:2px;padding-right:2px}
-.group h3{font-weight:400;font-family:Fraunces,Georgia,serif;font-size:40px;line-height:1;display:flex;align-items:baseline;gap:12px;margin:0 4px 16px}
-.group h3 span{font-family:Figtree;font-size:14px;color:#777;font-weight:600}
+.group h3{font-weight:500;font-family:Fraunces,Georgia,serif;font-size:clamp(30px,7.5vw,44px);line-height:1.05;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 14px;margin:0 0 22px;padding:22px 22px;border-radius:20px;color:#fff;background:linear-gradient(120deg,#0a0a0a 0%,#2b2b2b 60%,#5a5a5a 100%);box-shadow:0 14px 34px rgba(0,0,0,.22)}
+.group h3 span{font-family:Figtree;font-size:15px;color:#0a0a0a;background:#fff;font-weight:800;border-radius:999px;padding:6px 14px;white-space:nowrap}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 @media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr);gap:22px}}@media(min-width:1100px){.grid{grid-template-columns:repeat(4,1fr)}}
 .card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 2px 0 rgba(0,0,0,.04),0 10px 30px rgba(0,0,0,.08);display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
@@ -126,11 +134,28 @@ button{font-family:inherit;cursor:pointer}
 .wa .ic svg{width:36px;height:36px;fill:#fff}
 .wa .ic:before{content:"";position:absolute;inset:-4px;border-radius:50%;border:3px solid var(--wa);animation:ring 2.4s infinite}
 @keyframes ring{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.55);opacity:0}}
+/* seta para voltar ao topo do catálogo */
+.subir{position:fixed;right:22px;bottom:104px;z-index:68;width:58px;height:58px;border-radius:50%;border:3px solid #fff;background:#0a0a0a;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 28px rgba(0,0,0,.45);opacity:0;transform:translateY(16px) scale(.8);pointer-events:none;transition:opacity .25s,transform .25s}
+.subir.on{opacity:1;transform:none;pointer-events:auto}
+.subir svg{width:30px;height:30px}
+.subir:active{transform:scale(.92)}
+/* instalar o app */
+.inst{position:fixed;inset:0;z-index:96;display:none;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.6)}
+.inst.on{display:flex}
+.inst .cx{width:min(520px,100%);background:#fff;color:#0a0a0a;border-radius:24px 24px 0 0;padding:26px 22px 34px;text-align:center;animation:pop .35s}
+.inst img{width:84px;height:84px;border-radius:20px;margin:0 auto 12px;box-shadow:0 8px 22px rgba(0,0,0,.25)}
+.inst h4{font-family:Fraunces,Georgia,serif;font-weight:500;font-size:30px;line-height:1.1;margin-bottom:8px}
+.inst p{color:#333;font-size:17px;margin-bottom:16px}
+.inst ol{text-align:left;margin:0 auto 18px;max-width:400px;padding-left:22px;font-size:17px;line-height:1.5}
+.inst ol li{margin-bottom:8px}
+.inst .btn{width:100%;margin-top:8px}
+.inst .btn.k{background:#0a0a0a;color:#fff;border-color:#0a0a0a}
+.inst .btn.ol{color:#0a0a0a;border-color:#0a0a0a}
 /* barra do pedido */
 .bar{position:fixed;left:12px;bottom:18px;z-index:69;display:none;align-items:center;gap:10px;background:var(--k);color:#fff;border:2px solid #fff;border-radius:999px;padding:12px 18px;font-weight:800;font-size:16px;box-shadow:0 10px 30px rgba(0,0,0,.45)}
 .bar.show{display:flex;animation:pop .4s}
 @keyframes pop{from{transform:scale(.7);opacity:0}to{transform:none;opacity:1}}
-@media(max-width:520px){.wa .lbl{font-size:14px;padding:8px 12px}.bar{bottom:96px}.wa .ic{width:60px;height:60px}}
+@media(max-width:520px){.wa .lbl{font-size:14px;padding:8px 12px}.bar{bottom:96px}.wa .ic{width:60px;height:60px}.subir{right:17px;bottom:96px;width:54px;height:54px}}
 
 /* gaveta e visualizador */
 .shade{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:opacity .3s}
@@ -314,7 +339,7 @@ button{font-family:inherit;cursor:pointer}
   <h2>Compartilhe o catálogo</h2>
   <p>Aponte a câmera do celular para o código e o catálogo abre na hora. Mande para quem também precisa de algo para a casa.</p>
   <div class="qrbox"><div id="qr"></div></div>
-  <div class="shacts"><button class="btn k" id="shareBtn">Compartilhar o catálogo</button><a class="btn ol" id="shareWa" href="#" target="_blank" rel="noopener">Enviar pelo WhatsApp</a></div>
+  <div class="shacts"><button class="btn k" id="instBtn">Instalar o app no celular</button><button class="btn k" id="shareBtn">Compartilhar o catálogo</button><a class="btn ol" id="shareWa" href="#" target="_blank" rel="noopener">Enviar pelo WhatsApp</a></div>
 </section>
 
 <footer class="foot">
@@ -324,6 +349,13 @@ button{font-family:inherit;cursor:pointer}
   <span style="font-size:12px;opacity:.7">Feito por LucIA Apps</span>
 </footer>
 
+<button class="subir" id="subir" aria-label="Voltar para o começo do catálogo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<div class="inst" id="inst" role="dialog" aria-modal="true" aria-labelledby="instT"><div class="cx">
+  <img src="icon-192.png" alt="">
+  <h4 id="instT">Instale o app do Antônio</h4>
+  <div id="instTxt"></div>
+  <button class="btn ol" id="instFechar">Agora não</button>
+</div></div>
 <a class="wa" id="waFix" href="#" target="_blank" rel="noopener" aria-label="Falar com o Antônio Carlos no WhatsApp">
   <span class="lbl">Falar com Antônio</span>
   <span class="ic"><svg viewBox="0 0 32 32"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.7l-.4-.3-3.8 1.2 1.2-3.7-.3-.4a10.4 10.4 0 0 1-1.6-5.6C5.2 10 10 5.3 16 5.3S26.8 10 26.8 15.8 22 26.4 16 26.4zm5.9-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6.3-.5c.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.7s1.2 3.2 1.4 3.4c.2.2 2.4 3.6 5.8 5 .8.4 1.4.6 1.9.7.8.3 1.6.2 2.2.1.7-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.3-.7-.4z"/></svg></span>
@@ -445,13 +477,38 @@ $("busca").addEventListener("input",e=>{const q=e.target.value.trim().toLowerCas
  document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("on",c.dataset.chip==="todos"));
  document.querySelectorAll(".group").forEach(g=>{let n=0;g.querySelectorAll(".card").forEach(c=>{const t=c.querySelector(".nm").textContent.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");const ok=!q||t.includes(q);c.style.display=ok?"":"none";if(ok)n++});g.style.display=n?"":"none"})});
 /* QR e compartilhar */
-const SITE=(location.href.split("#")[0]);
+const SITE=location.origin+location.pathname;
 function drawQR(){try{if(window.QRCode){$("qr").innerHTML="";new QRCode($("qr"),{text:SITE,width:440,height:440,colorDark:"#0a0a0a",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M})}}catch(e){}}
 if(window.QRCode)drawQR();else addEventListener("load",drawQR);
 const shareTxt="Olha o catálogo do Antônio Carlos, Seu Consultor de Casa: "+SITE;
 $("shareWa").href="https://wa.me/?text="+encodeURIComponent(shareTxt);
 $("shareBtn").onclick=async()=>{try{if(navigator.share){await navigator.share({title:"Antônio Carlos — Seu Consultor de Casa",text:"Olha o catálogo do Antônio Carlos",url:SITE});return}}catch(e){}
  try{await navigator.clipboard.writeText(SITE);toast("Link copiado ✓")}catch(e){toast("Copie o link do navegador")}};
+
+/* seta para voltar ao começo do catálogo */
+const subir=$("subir");
+addEventListener("scroll",()=>{const c=$("catalogo");subir.classList.toggle("on",scrollY>c.offsetTop+700)},{passive:true});
+subir.onclick=()=>window.scrollTo({top:$("catalogo").offsetTop+$("catalogo").offsetHeight-60,behavior:"smooth"});
+
+/* instalar o app (celular) */
+let pedidoInstalar=null;
+addEventListener("beforeinstallprompt",e=>{e.preventDefault();pedidoInstalar=e;});
+const instalado=()=>matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
+const ehIOS=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+function abrirInstalar(){
+  let h;
+  if(instalado()){h='<p>O app já está instalado neste celular. É só abrir pelo ícone na tela inicial.</p>';}
+  else if(ehIOS){h='<p>No iPhone são só 3 toques:</p><ol><li>Abra este link no <b>Safari</b>.</li><li>Toque no botão <b>Compartilhar</b> (o quadrado com a seta para cima).</li><li>Toque em <b>Adicionar à Tela de Início</b> e depois em <b>Adicionar</b>.</li></ol>';}
+  else if(pedidoInstalar){h='<p>Coloque o catálogo na tela do seu celular e abra com um toque, como um aplicativo.</p><button class="btn k" id="instAgora">Instalar agora</button>';}
+  else{h='<p>Para colocar o catálogo na tela do celular:</p><ol><li>Toque nos <b>três pontinhos</b> no canto de cima do navegador.</li><li>Toque em <b>Instalar app</b> ou <b>Adicionar à tela inicial</b>.</li></ol>';}
+  $("instTxt").innerHTML=h;$("inst").classList.add("on");
+  const b=$("instAgora");if(b)b.onclick=async()=>{try{pedidoInstalar.prompt();const r=await pedidoInstalar.userChoice;pedidoInstalar=null;$("inst").classList.remove("on");if(r&&r.outcome==="accepted")toast("App instalado ✓")}catch(e){}};
+}
+$("instBtn").onclick=abrirInstalar;
+$("instFechar").onclick=()=>$("inst").classList.remove("on");
+$("inst").onclick=e=>{if(e.target.id==="inst")$("inst").classList.remove("on")};
+if(/[?&]instalar\b/.test(location.search)){setTimeout(abrirInstalar,1600);}
+if("serviceWorker" in navigator&&location.protocol==="https:"){addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));}
 
 /* topo sólido ao rolar */
 addEventListener("scroll",()=>$("top").classList.toggle("solid",scrollY>60),{passive:true});
