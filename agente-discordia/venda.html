@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agente da Discórdia: vídeos que fazem o público comentar</title>
+<meta name="description" content="Cria vídeos de polêmica saudável entre rivais para qualquer nicho, com o método do @lkstx. Use grátis ou entre na lista do plano pago.">
+<meta name="theme-color" content="#0a0d12">
+<meta property="og:title" content="Agente da Discórdia">
+<meta property="og:description" content="Vídeos de polêmica saudável entre rivais, para qualquer nicho. Use grátis.">
+<meta property="og:image" content="https://agente-da-discordia.vercel.app/icon-512.png">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0d12;--panel:#121821;--panel2:#18202b;--line:#243041;--txt:#e9eef5;--mut:#8b98aa;--cyan:#22e4ff;--fire:#ff6a1a;--fire2:#ffb21a;--ok:#3ddc84}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{background:var(--bg);color:var(--txt);font-family:Inter,system-ui,sans-serif;font-size:17px;line-height:1.55;overflow-x:clip}
+body{background:radial-gradient(900px 420px at 85% -8%,rgba(255,106,26,.18),transparent 60%),radial-gradient(700px 400px at -10% 6%,rgba(34,228,255,.10),transparent 60%),var(--bg)}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+header.top{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.marca{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--txt);text-decoration:none}
+.marca img{width:34px;height:34px;border-radius:9px}
+.top a.mini{color:var(--cyan);font-weight:600;font-size:15px;text-decoration:none}
+.hero{padding:34px 0 46px}
+.kicker{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);font-weight:700}
+h1{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:clamp(42px,9vw,84px);line-height:.95;margin:12px 0 18px}
+h1 span,h2 span{background:linear-gradient(90deg,var(--fire),var(--fire2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:19px;color:#c7d0dc;max-width:640px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{display:inline-block;text-align:center;text-decoration:none;border-radius:12px;padding:15px 22px;font:700 16px Inter;transition:transform .12s,box-shadow .2s}
+.btn:active{transform:scale(.98)}
+.pri{background:linear-gradient(90deg,var(--fire),var(--fire2));color:#1a0800}
+.pri:hover{box-shadow:0 8px 28px rgba(255,106,26,.35)}
+.sec{background:var(--panel);border:1px solid var(--line);color:var(--txt)}
+.sec:hover{border-color:var(--cyan)}
+.provas{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px}
+.prova{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
+.prova b{display:block;font-family:Anton,sans-serif;font-weight:400;font-size:32px;line-height:1.05;color:var(--fire2)}
+.prova span{font-size:14px;color:var(--mut)}
+section{padding:46px 0;border-top:1px solid var(--line)}
+h2{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:clamp(30px,6vw,46px);line-height:1;margin-bottom:14px}
+.lead{color:var(--mut);max-width:640px;margin-bottom:24px}
+.exemplo{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;max-width:620px}
+.tela{background:#000;border-radius:12px;padding:18px;font-weight:700;font-size:20px;line-height:1.3;text-align:center;margin:10px 0 12px}
+.rot{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);font-weight:700}
+.passos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:p}
+.passo{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;counter-increment:p}
+.passo::before{content:counter(p);display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--panel2);color:var(--fire2);font-weight:700;margin-bottom:10px}
+.passo h3{font-size:17px;margin-bottom:6px}
+.passo p{font-size:15px;color:var(--mut)}
+.ferr{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.ferr div{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
+.ferr h3{font-size:16px;margin-bottom:4px}
+.ferr p{font-size:15px;color:var(--mut)}
+.planos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.plano{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column}
+.plano.pago{border-color:var(--fire);box-shadow:0 0 0 1px rgba(255,106,26,.35) inset}
+.plano h3{font-family:Anton,sans-serif;font-weight:400;font-size:30px;line-height:1}
+.plano .preco{color:var(--mut);margin:6px 0 16px;font-size:15px}
+.plano ul{list-style:none;flex:1}
+.plano li{padding:8px 0 8px 28px;position:relative;border-bottom:1px solid var(--line);font-size:15px}
+.plano li:last-child{border-bottom:0}
+.plano li::before{content:"";position:absolute;left:4px;top:15px;width:12px;height:7px;border-left:2px solid var(--ok);border-bottom:2px solid var(--ok);transform:rotate(-45deg)}
+.plano .btn{margin-top:18px;width:100%}
+.selo{display:inline-block;align-self:flex-start;background:rgba(255,106,26,.15);color:var(--fire2);font-size:12px;font-weight:700;border-radius:999px;padding:4px 10px;margin-bottom:10px;letter-spacing:.06em;text-transform:uppercase}
+.criador{display:grid;grid-template-columns:1fr;gap:12px;max-width:680px}
+.criador p{color:#c7d0dc}
+.regras{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.regras div{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;font-size:15px}
+.regras b{display:block;margin-bottom:4px}
+details{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:10px}
+summary{font-weight:700;cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";float:right;color:var(--fire2);font-size:20px;line-height:1}
+details[open] summary::after{content:"−"}
+details p{color:var(--mut);margin-top:10px;font-size:15px}
+.final{text-align:center;padding:56px 0}
+.final .cta{justify-content:center}
+footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--mut);font-size:13px;text-align:center}
+@media(max-width:720px){.provas{grid-template-columns:1fr 1fr}.provas .prova:last-child{grid-column:1/-1}.passos,.ferr,.planos,.regras{grid-template-columns:1fr}.btn{width:100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="marca" href="./"><img src="icon-192.png" alt="">Agente da Discórdia</a>
+  <a class="mini" href="./">Usar grátis</a>
+</header>
+
+<div class="hero">
+  <div class="kicker">Para criadores de qualquer nicho · TikTok, Reels e Shorts</div>
+  <h1>Vídeos que fazem o público <span>brigar nos comentários</span></h1>
+  <p class="sub">O Agente da Discórdia transforma o seu nicho em perguntas entre rivais. Ele entrega o texto da tela, a legenda, o que filmar e o som. Quem briga é o público; você só pergunta.</p>
+  <div class="cta">
+    <a class="btn pri" href="./">Usar grátis agora</a>
+    <a class="btn sec" id="lista-topo" href="https://wa.me/5537999999246?text=Ol%C3%A1%2C%20Lucas!%20Quero%20entrar%20na%20lista%20de%20espera%20do%20plano%20pago%20do%20Agente%20da%20Disc%C3%B3rdia." rel="noopener">Entrar na lista do plano pago</a>
+  </div>
+  <div class="provas">
+    <div class="prova"><b>560,1 mil</b><span>visualizações no maior vídeo do método</span></div>
+    <div class="prova"><b>1.221</b><span>comentários em um único vídeo de 18 segundos</span></div>
+    <div class="prova"><b>226</b><span>vídeos analisados para criar o agente</span></div>
+  </div>
+</div>
+
+<section>
+  <h2>Um exemplo <span>real</span></h2>
+  <p class="lead">O formato é sempre o mesmo: a pergunta vai na tela, a provocação vai na legenda e o vídeo é gravado na mão, com o som original.</p>
+  <div class="exemplo">
+    <div class="rot">Texto na tela</div>
+    <div class="tela">Ouvi dizer que a Scania na carroceria anda mais que no baú, tem isso mesmo?🤔</div>
+    <div class="rot">Legenda</div>
+    <p style="margin-top:6px">Tem isso mesmo ou é papo pra boi dormir??? Eu acho que anda a mesma coisa 😂😂😂</p>
+    <p style="margin-top:12px;color:var(--ok);font-weight:600">Resultado: 560,1 mil visualizações e 528 salvamentos, em 20 segundos de vídeo.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Como <span>funciona</span></h2>
+  <div class="passos">
+    <div class="passo"><h3>Diga o seu nicho</h3><p>Barbearia, academia, motocross, futebol, games, confeitaria. São 65 nichos com rivalidades prontas, e ele também entende nichos novos.</p></div>
+    <div class="passo"><h3>Receba o vídeo pronto</h3><p>A pergunta para a tela, a legenda, as hashtags, o que filmar, o som e o comentário para fixar.</p></div>
+    <div class="passo"><h3>Grave e anote o resultado</h3><p>O agente guarda o que rendeu mais e passa a escolher melhor as fórmulas para o seu público.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>O que ele <span>faz</span></h2>
+  <div class="ferr">
+    <div><h3>Criar vídeo</h3><p>Um vídeo completo, com seis fórmulas de pergunta testadas no @lkstx.</p></div>
+    <div><h3>Semana completa</h3><p>Sete vídeos, um por dia, cada um com uma rivalidade e uma fórmula diferentes.</p></div>
+    <div><h3>Minerar comentários</h3><p>Cole os comentários e ele mostra as brigas e as gírias que o seu público já usa.</p></div>
+    <div><h3>Testar meu vídeo</h3><p>Dá uma nota de 0 a 10 e reescreve a pergunta para gerar mais comentários.</p></div>
+    <div><h3>Memória</h3><p>Aprende com as rivalidades que você ensina e com os resultados que você anota.</p></div>
+    <div><h3>Rivalidades em alta</h3><p>Futebol, música, streamers, games, motocross e academia, atualizados toda semana.</p></div>
+  </div>
+</section>
+
+<section id="planos">
+  <h2>Grátis e <span>pago</span></h2>
+  <p class="lead">Comece de graça hoje. O plano pago está em lista de espera, com preço de fundador para os primeiros.</p>
+  <div class="planos">
+    <div class="plano">
+      <span class="selo" style="background:rgba(61,220,132,.12);color:var(--ok)">Disponível agora</span>
+      <h3>GRÁTIS</h3>
+      <p class="preco">Sem cadastro e sem cartão.</p>
+      <ul>
+        <li>Criar vídeo, semana completa, minerar comentários e testar vídeo</li>
+        <li>65 nichos com rivalidades prontas</li>
+        <li>As seis fórmulas do método @lkstx</li>
+        <li>Memória salva no seu celular</li>
+        <li>Instala como aplicativo e funciona sem internet</li>
+      </ul>
+      <a class="btn sec" href="./">Usar grátis agora</a>
+    </div>
+    <div class="plano pago">
+      <span class="selo">Lista de espera</span>
+      <h3>PAGO</h3>
+      <p class="preco">Preço anunciado na live. Quem entrar na lista garante o preço de fundador.</p>
+      <ul>
+        <li>Tudo do plano grátis</li>
+        <li>Inteligência artificial que escreve sob medida para o seu perfil</li>
+        <li>Lê os prints do seu vídeo e diz o que mudar</li>
+        <li>Memória na nuvem: troca de celular sem perder nada</li>
+        <li>Rivalidades em alta atualizadas toda semana</li>
+        <li>Grupo de acompanhamento com o Lucas</li>
+      </ul>
+      <a class="btn pri" id="lista-plano" href="https://wa.me/5537999999246?text=Ol%C3%A1%2C%20Lucas!%20Quero%20entrar%20na%20lista%20de%20espera%20do%20plano%20pago%20do%20Agente%20da%20Disc%C3%B3rdia." rel="noopener">Entrar na lista de espera</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Quem <span>criou</span></h2>
+  <div class="criador">
+    <p>Lucas Henrique é caminhoneiro e criador do perfil @lkstx, o Desbloqueados Mercosul. Sem tripé, sem edição e sem pedir para ninguém seguir, chegou a 8,7 mil seguidores reais e 252 mil curtidas, com vídeos gravados no próprio celular.</p>
+    <p>O agente nasceu da análise dos 226 vídeos do perfil: quais perguntas renderam, em que dia e horário, e como o público reagiu nos comentários. O método é ensinado de graça; o agente é a ferramenta para aplicar o método todos os dias.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Polêmica <span>saudável</span></h2>
+  <p class="lead">A briga é sobre escolhas, marcas, times e jeitos de fazer. Nunca sobre pessoas.</p>
+  <div class="regras">
+    <div><b>Sem ataque a pessoas</b>Com cantores, atletas e streamers, compara só o que é público: títulos, músicas, números e jogadas.</div>
+    <div><b>Sem política e sem religião</b>Nada de grupos protegidos, boatos ou informação falsa que prejudique alguém.</div>
+    <div><b>Sem isca barata</b>Nada de "segue para a parte 2" ou "curte se concorda", que derrubam o alcance.</div>
+    <div><b>Sem risco real</b>Nada que incentive excesso de velocidade, golpe ou perigo.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Perguntas <span>frequentes</span></h2>
+  <details><summary>Funciona no meu nicho?</summary><p>Ele já conhece 65 nichos, do caminhão à confeitaria, do motocross aos games. Em um nicho novo, monta rivalidades a partir do nome do nicho, e você pode ensinar as suas na aba Memória.</p></details>
+  <details><summary>Preciso aparecer no vídeo?</summary><p>Não. O método foi criado com vídeos gravados na mão, mostrando o assunto e não o rosto.</p></details>
+  <details><summary>Funciona no iPhone?</summary><p>Sim. Abra no Safari, toque em Compartilhar e depois em "Adicionar à Tela de Início". Ele abre como aplicativo, em tela cheia.</p></details>
+  <details><summary>Quanto vai custar o plano pago?</summary><p>O preço será anunciado na live. Quem entrar na lista de espera agora garante o preço de fundador.</p></details>
+  <details><summary>Os meus dados ficam guardados onde?</summary><p>No plano grátis, a memória fica só no seu celular. Você pode baixar uma cópia a qualquer momento.</p></details>
+</section>
+
+<div class="final">
+  <h2>Comece hoje. <span>É grátis.</span></h2>
+  <div class="cta">
+    <a class="btn pri" href="./">Usar o Agente da Discórdia</a>
+    <a class="btn sec" href="https://wa.me/5537999999246?text=Ol%C3%A1%2C%20Lucas!%20Quero%20entrar%20na%20lista%20de%20espera%20do%20plano%20pago%20do%20Agente%20da%20Disc%C3%B3rdia." rel="noopener">Lista do plano pago</a>
+  </div>
+</div>
+</div>
+<footer>Agente da Discórdia · Método criado por Lucas Henrique · Desbloqueados Mercosul · @lkstx</footer>
+</body>
+</html>
