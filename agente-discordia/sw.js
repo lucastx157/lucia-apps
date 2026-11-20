@@ -1,6 +1,6 @@
 /* Agente da Discórdia: guarda a página para abrir mesmo sem internet */
-const CACHE="discordia-v1";
-const ARQUIVOS=["./","venda","manifest.webmanifest","icon-192.png","icon-512.png","apple-touch-icon.png"];
+const CACHE="discordia-v2";
+const ARQUIVOS=["./","venda","manifest.webmanifest","icon-192.png","icon-512.png","apple-touch-icon.png","grafite.css","mascote.webp","mascote-cabeca.webp"];
 self.addEventListener("install",e=>{ e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ARQUIVOS)).then(()=>self.skipWaiting())); });
 self.addEventListener("activate",e=>{ e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())); });
 self.addEventListener("fetch",e=>{
