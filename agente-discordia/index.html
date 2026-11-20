@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E⚡%3C/text%3E%3C/svg%3E">
 <title>Agente da Discórdia — Desbloqueados Mercosul</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -325,11 +326,11 @@ function nichoInfo(n){const t=NORM(n);return BANCO.find(b=>b.k.some(k=>t.include
 function rival(n,pedido){if(pedido&&/ x | vs /i.test(pedido)){const [a,b]=pedido.split(/ x | vs /i);return [a.trim(),b.trim()]}return pick(nichoInfo(n).r)}
 const FORMULAS={
  "Boato para confirmar":(a,b)=>({tela:`Ouvi dizer que ${a} é melhor que ${b}, tem isso mesmo??🤔`,leg:`Tem isso mesmo ou é papo pra boi dormir??? Eu acho que dá na mesma 😂😂😂`}),
- "Número desafiador":(a,b)=>({tela:`Quem usa ${a} faz o dobro de quem usa ${b}… será??🤔`,leg:`Fala o seu número aí nos comentários que eu quero ver 😂😂😂`}),
- "Quem mente mais":(a,b)=>({tela:`Quem mente mais: quem tem ${a} ou quem tem ${b}??🤔`,leg:`Os dois juram que o deles é o melhor 😂😂😂`}),
- "Rei de quê?":(a,b)=>({tela:`${a} é rei de um lado, ${b} é rei do outro… e o terceiro é rei de quê??🤔`,leg:`Completa aí que eu quero ver 🤣🤣🤣`}),
- "Erro proposital":(a,b)=>({tela:`Dizem que ${a} e ${b} são a mesma coisa??🤔`,leg:`Eu acho que é igual, ou tô falando besteira? 😂😂😂`}),
- "Experiência e geração":(a,b)=>({tela:`Todo mundo devia começar com ${a}??? Ou quem começa com ${b} nunca vai saber o que é isso?🤔`,leg:`Os antigos sabem do que eu tô falando 😂😂😂`})
+ "Número desafiador":(a,b)=>({tela:`${a} rende o dobro de ${b}… é verdade ou é conversa??🤔`,leg:`Fala o seu número aí nos comentários que eu quero ver 😂😂😂`}),
+ "Quem mente mais":(a,b)=>({tela:`Quem mente mais: o time ${a} ou o time ${b}??🤔`,leg:`Os dois juram que o deles é o melhor 😂😂😂`}),
+ "Rei de quê?":(a,b)=>({tela:`${a} é rei de quê? E ${b}, é rei de quê??🤔`,leg:`Completa aí que eu quero ver 🤣🤣🤣`}),
+ "Erro proposital":(a,b)=>({tela:`Falaram que ${a} e ${b} são a mesma coisa… é isso mesmo??🤔`,leg:`Eu acho que é igual, ou tô falando besteira? 😂😂😂`}),
+ "Experiência e geração":(a,b)=>({tela:`Quem começou com ${a} sabe mais do que quem começou com ${b}??🤔`,leg:`Os antigos sabem do que eu tô falando 😂😂😂`})
 };
 const CAP=t=>t?t[0].toUpperCase()+t.slice(1):t;
 const QUANDO="Domingo ou segunda, entre 18h e 21h. No seu perfil esses foram os dias e o horário de maior alcance; poste 1 vídeo por dia para manter o ritmo.";
