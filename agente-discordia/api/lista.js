@@ -9,6 +9,7 @@ const { put, head, list, get } = require("@vercel/blob");
 const LIMITE_IP_HORA = 8;
 const usos = new Map();
 let cacheTotal = { t: 0, n: 0 };
+const erros = new Map(); // tentativas de senha errada por IP
 
 function responde(res, status, obj, extra) {
   res.statusCode = status;
@@ -62,7 +63,15 @@ module.exports = async (req, res) => {
   if (req.method === "GET") {
     const chave = url.searchParams.get("chave");
     if (chave) {
-      if (!process.env.LISTA_CHAVE || !iguais(chave, process.env.LISTA_CHAVE)) return responde(res, 401, { code: "chave" });
+      const ipc = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim() || "anon";
+      const e = erros.get(ipc) || { n: 0, ate: 0 };
+      if (e.ate > Date.now()) return responde(res, 429, { code: "bloqueado" });
+      if (!process.env.LISTA_CHAVE || !iguais(chave, process.env.LISTA_CHAVE)) {
+        e.n += 1; if (e.n >= 5) { e.ate = Date.now() + 30 * 60 * 1000; e.n = 0; }
+        erros.set(ipc, e);
+        return responde(res, 401, { code: "chave" });
+      }
+      erros.delete(ipc);
       const blobs = await todos();
       const itens = (await Promise.all(blobs.map(b => lerBlob(b.pathname)))).filter(Boolean)
         .sort((a, b) => String(a.data).localeCompare(String(b.data)));
@@ -83,7 +92,7 @@ module.exports = async (req, res) => {
 
   if (req.method !== "POST") return responde(res, 405, { code: "metodo" });
   const origem = req.headers.origin || "";
-  if (origem && !/^https:\/\/agente-da-discordia[a-z0-9-]*\.vercel\.app$/.test(origem)) return responde(res, 403, { code: "origem" });
+  if (!/^https:\/\/agente-da-discordia(\.vercel\.app|(-[a-z0-9-]+)?-desbloqueados1\.vercel\.app)$/.test(origem)) return responde(res, 403, { code: "origem" });
   const ip = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim() || "anon";
   if (contaIP(ip) > LIMITE_IP_HORA) return responde(res, 429, { code: "limite" });
 
