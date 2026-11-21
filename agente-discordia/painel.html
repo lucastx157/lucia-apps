@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Painel da fila — Agente da Discórdia</title>
+<link rel="icon" href="icon-192.png">
+<style>
+:root{--bg:#0a0d12;--panel:#121821;--line:#243041;--txt:#e9eef5;--mut:#8b98aa;--fire:#ff6a1a;--fire2:#ffb21a;--ok:#3ddc84}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:22px;margin:0 0 4px}p{color:var(--mut);margin:0 0 16px}
+input{font:16px inherit;width:100%;padding:14px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--txt)}
+button,.btn{display:inline-block;font:700 15px system-ui,sans-serif;border:0;border-radius:12px;padding:13px 18px;background:linear-gradient(90deg,var(--fire),var(--fire2));color:#1a0800;cursor:pointer;text-decoration:none;margin-top:10px}
+.sec{background:var(--panel);color:var(--txt);border:1px solid var(--line)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:18px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px}
+.card b{display:block;font-size:30px;color:var(--fire2);line-height:1.1}.card span{color:var(--mut);font-size:13px}
+.item{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.item small{color:var(--mut);display:block}.item a{white-space:nowrap;color:var(--ok);font-weight:700;text-decoration:none}
+.erro{color:#ff6b7a}#area{display:none}
+</style>
+</head>
+<body><div class="wrap">
+<h1>Fila do plano pago</h1>
+<p>Painel do Lucas. Só abre com a senha.</p>
+<form id="entrar"><input id="chave" type="password" placeholder="Senha do painel" autocomplete="current-password"><button type="submit">Abrir painel</button><p class="erro" id="erro"></p></form>
+<div id="area">
+  <div class="cards" id="cards"></div>
+  <a class="btn" id="csv" href="#">Baixar planilha (Excel)</a> <button class="sec" id="atualizar" type="button">Atualizar</button>
+  <h1 style="margin-top:24px">Pessoas na fila</h1>
+  <div id="lista"></div>
+</div>
+</div>
+<script src="painel.js" defer></script>
+</body></html>
